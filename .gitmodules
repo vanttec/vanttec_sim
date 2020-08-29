@@ -1,0 +1,3 @@
+[submodule "uuv_simulator"]
+	path = uuv_simulator
+	url = https://github.com/uuvsimulator/uuv_simulator.git
