@@ -15,7 +15,7 @@
 
   <xacro:property name="mass" value="30"/>
   <!-- Center of gravity -->
-  <xacro:property name="cog" value="0 0 0.19"/> <!-- Superficie del barco esta a 0.16 m de COM en Z-->
+  <xacro:property name="cog" value="0 0 0.19"/> <!-- Superficie del barco esta a 0.19 m de COM en Z-->
 
   <!-- Fluid density -->
   <xacro:property name="rho" value="1000"/>
@@ -82,7 +82,7 @@
     <xacro:insert_block name="gazebo"/>
 
     <!-- Include the thruster modules -->
-    <!-- <xacro:include filename="$(find vtec_s3_description)/urdf/actuators.xacro"/> -->
+    <xacro:include filename="$(find vtec_s3_description)/urdf/actuators.xacro"/>
 
     <!-- Include the sensor modules -->
     <!-- <xacro:include filename="$(find vtec_s3_description)/urdf/sensors.xacro"/> -->

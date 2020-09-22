@@ -10,12 +10,12 @@
 
     <!-- Improve origin -->
     <xacro:thruster_macro robot_namespace="${namespace}" thruster_id="0">
-        <origin xyz="-0.2 -0.205 -0.25" rpy="0 0 0"/> 
+        <origin xyz="-0.305 -0.19905 -0.1473" rpy="0 0 3.14159"/> 
         <!-- yaw anterior : "${pi}" -->
     </xacro:thruster_macro>
     <!-- Improve origin -->
     <xacro:thruster_macro robot_namespace="${namespace}" thruster_id="1">
-        <origin xyz="-0.2 0.205 -0.25" rpy="0 0 0" />
+        <origin xyz="-0.305 0.19905 -0.1473" rpy="0 0 3.14159" />
         <!-- yaw anterior : "${pi}" -->
     </xacro:thruster_macro>
     

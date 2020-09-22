@@ -62,10 +62,10 @@
         <gain>1</gain>
 
         <!-- Maximum allowed input value for the input signal for thruster unit -->
-        <!-- <clampMax>0</clampMax> -->
+        <!-- <clampMax>-3000</clampMax> -->
 
         <!-- Minimum allowed value for the input signal for thruster unit -->
-        <!-- <clampMin>0</clampMin> -->
+        <!-- <clampMin>3000</clampMin> -->
 
         <!-- Minimum and maximum thrust force output allowed -->
         <thrustMin>-30</thrustMin>
@@ -99,7 +99,7 @@
         <!-- 2) First order model -->
         <dynamics>
           <type>FirstOrder</type>
-          <timeConstant>0.2</timeConstant>
+          <timeConstant>0.002</timeConstant>
         </dynamics>
 
         <!-- 3) Yoerger's nonlinear dynamic model
@@ -143,7 +143,7 @@
         -->
         <conversion>
           <type>Basic</type>
-          <rotorConstant>0.00001</rotorConstant>
+          <rotorConstant>0.002</rotorConstant>
         </conversion>
 
         <!-- 2) Dead-zone nonlinearity described in Bessa, 2006
