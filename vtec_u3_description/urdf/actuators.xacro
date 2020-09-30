@@ -21,7 +21,7 @@
     </xacro:thruster_macro>
 
     <!-- Instantiate fins, if necessary -->
-    <xacro:fin_macro namespace="${namespace}" fin_id="0">
+    <!-- <xacro:fin_macro namespace="${namespace}" fin_id="0">
       <origin xyz="0 0 0" rpy="0 0 0" />
     </xacro:fin_macro>
     <xacro:fin_macro namespace="${namespace}" fin_id="1">
@@ -32,6 +32,5 @@
     </xacro:fin_macro>
     <xacro:fin_macro namespace="${namespace}" fin_id="3">
       <origin xyz="0 0 0" rpy="0 0 0" />
-    </xacro:fin_macro>
-
+    </xacro:fin_macro> -->
 </robot>

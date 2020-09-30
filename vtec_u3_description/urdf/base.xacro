@@ -47,7 +47,7 @@
           <inertia ixx="0.49770495" ixy="0.00275177" ixz="-0.0574426"
                    iyy="0.37089716" iyz="-0.0036791"
                    izz="0.64879823" />
-        </inertial>
+        </inertial> 
 
         <visual>
           <origin xyz="0 0 0" rpy="0 0 0"/>
@@ -72,7 +72,7 @@
     <xacro:insert_block name="gazebo"/>
 
     <!-- Include the thruster modules -->
-    <!-- <xacro:include filename="$(find vtec_u3_description)/urdf/actuators.xacro"/> -->
+    <xacro:include filename="$(find vtec_u3_description)/urdf/actuators.xacro"/>
 
     <!-- Include the sensor modules -->
     <!-- <xacro:include filename="$(find vtec_u3_description)/urdf/sensors.xacro"/> -->

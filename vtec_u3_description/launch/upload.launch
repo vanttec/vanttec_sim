@@ -24,7 +24,7 @@
 
   /robots/<mode>.xacro
   -->
-  <arg name="mode" default="default"/>
+  <arg name="mode" default="vtecu3_default"/>
 
   <!-- Vehicle's namespace -->
   <arg name="namespace" default="vtec_u3"/>
