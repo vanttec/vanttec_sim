@@ -72,7 +72,7 @@
     <xacro:insert_block name="gazebo"/>
 
     <!-- Include the thruster modules -->
-    <!-- <xacro:include filename="$(find vtec_u3_description)/urdf/actuators.xacro"/> -->
+    <xacro:include filename="$(find vtec_u3_description)/urdf/actuators.xacro"/>
 
     <!-- Include the sensor modules -->
     <!-- <xacro:include filename="$(find vtec_u3_description)/urdf/sensors.xacro"/> -->
