@@ -78,7 +78,7 @@
             or a full matrix (36 coefficients), like the added-mass coefficients above
           -->
           <quadratic_damping>
-            -45.808 -41.282 -42.243 0.3185 -0.4752 -0.607
+            -45.808 -41.282 -42.243 -0.3185 -0.4752 -0.607
           </quadratic_damping>
 
           <!--
