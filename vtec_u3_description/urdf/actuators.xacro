@@ -10,27 +10,27 @@
 
     <!-- Note: measurements are as exact as were possible from SolidWorks. Just check the result -->
     <xacro:thruster_macro robot_namespace="${namespace}" thruster_id="0">
-        <origin xyz="0.19511 0.30924 0.01005" rpy="0 0 ${0.75*pi}" />
+        <origin xyz="0.18829 0.30023 0" rpy="0 0 ${0.75*pi}" />
     </xacro:thruster_macro>
 
     <xacro:thruster_macro robot_namespace="${namespace}" thruster_id="1">
-        <origin xyz="0.19519 -0.29114 0.01005" rpy="0 0 -${0.75*pi}" />
+        <origin xyz="0.18829 -0.30023 0" rpy="0 0 -${0.75*pi}" />
     </xacro:thruster_macro>
 
     <xacro:thruster_macro robot_namespace="${namespace}" thruster_id="2">
-    <origin xyz="0.04519 -0.26079 -0.03151" rpy="0 ${0.5*pi} 0" />
+        <origin xyz="-0.03828 0.26988 -0.04156" rpy="0 ${0.5*pi} 0" />
     </xacro:thruster_macro>
 
     <xacro:thruster_macro robot_namespace="${namespace}" thruster_id="3">
-        <origin xyz="-0.03138 0.27898 -0.03151" rpy="0 ${0.5*pi} 0" />
+        <origin xyz="0.03828 -0.26988 -0.04156" rpy="0 ${0.5*pi} 0" />
     </xacro:thruster_macro>
 
     <xacro:thruster_macro robot_namespace="${namespace}" thruster_id="4">
-        <origin xyz="-0.18139 -0.29113 0.01005" rpy="0 0 -${0.25*pi}" />
+        <origin xyz="-0.18829 0.30023 0" rpy="0 0 ${0.25*pi}" />
     </xacro:thruster_macro>
 
     <xacro:thruster_macro robot_namespace="${namespace}" thruster_id="5">
-    <origin xyz="-0.18139 0.30932 0.01005" rpy="0 0 ${0.25*pi}" />
+        <origin xyz="-0.18829 -0.30023 0" rpy="0 0 -${0.25*pi}" />
     </xacro:thruster_macro>
 
 </robot>
