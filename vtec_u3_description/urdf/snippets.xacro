@@ -70,8 +70,8 @@
         <!-- <clampMin>3000</clampMin> -->
 
         <!-- Minimum and maximum thrust force output allowed -->
-        <thrustMin>-30</thrustMin>
-        <thrustMax>36.5</thrustMax>
+        <thrustMin>-100</thrustMin>
+        <thrustMax>100</thrustMax>
 
         <!--
         Value from 0 to 1 to set the efficiency of the output thrust force
@@ -145,7 +145,7 @@
         -->
         <conversion>
           <type>Basic</type>
-          <rotorConstant>0.02</rotorConstant>
+          <rotorConstant>0.02892</rotorConstant>
         </conversion>
 
         <!-- 2) Dead-zone nonlinearity described in Bessa, 2006
