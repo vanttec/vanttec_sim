@@ -14,8 +14,13 @@
   -->
 
   <xacro:property name="mass" value="18.74"/>
+
+  <!-- The origin of the model is at 0,0,0 in ENU, which is coincident with the COG of the CAD model, but to increase stability, the COG is assumed
+       to be in the same position as the geometric center of the UUV, hence the little offset presented when the COG is described below -->
+
   <!-- Center of gravity -->
-  <xacro:property name="cog" value="0 0 0"/>
+  <xacro:property name="cog" value="0 0 0"/> <!-- At the quasi geometric center -> we'll take it as the COG-->
+  <xacro:property name="geocenter" value="-0.0069 -0.00909 -0.01005"/>
   <!-- Fluid density -->
   <xacro:property name="rho" value="1000"/>
 
@@ -43,14 +48,19 @@
         -->
         <inertial>
           <mass value="${mass}" />
-          <origin xyz="${cog}" rpy="0 0 0"/>
-          <inertia ixx="0.49770495" ixy="0.00275177" ixz="-0.0574426"
+          <origin xyz="0 0 0" rpy="0 0 0"/>
+          <!-- From Pedro's report -->
+          <!-- <inertia ixx="0.49770495" ixy="0.00275177" ixz="-0.0574426"
                    iyy="0.37089716" iyz="-0.0036791"
-                   izz="0.64879823" />
+                   izz="0.64879823" /> -->
+          <!-- For COM nearly in geometric center -->
+            <inertia ixx="0.83639798529" ixy="-0.00503680373" ixz="0.0560001532"
+                      iyy="0.46118483068" iyz="-0.01377965358"
+                      izz="1.02986207702" />
         </inertial>
 
         <visual>
-          <origin xyz="0 0 0" rpy="0 0 0"/>
+          <origin xyz="${geocenter}" rpy="0 0 0"/>
           <geometry>
             <mesh filename="${visual_mesh_file}" scale="0.001 0.001 0.001" />
           </geometry>
@@ -72,7 +82,7 @@
     <xacro:insert_block name="gazebo"/>
 
     <!-- Include the thruster modules -->
-    <!-- <xacro:include filename="$(find vtec_u3_description)/urdf/actuators.xacro"/> -->
+    <xacro:include filename="$(find vtec_u3_description)/urdf/actuators.xacro"/>
 
     <!-- Include the sensor modules -->
     <!-- <xacro:include filename="$(find vtec_u3_description)/urdf/sensors.xacro"/> -->

@@ -8,7 +8,9 @@
   <!-- Provide the propeller mesh in a separate file with the rotation axis
   over propeller's frame X-axis in DAE (Collada) or STL format.
   -->
-  <xacro:property name="prop_mesh_file" value="file://$(find vtec_s3_description)/meshes/bluerob_propcw.dae"/>
+
+  <!-- To improve: add mirror propeller -->
+  <xacro:property name="prop_mesh_file" value="file://$(find vtec_u3_description)/meshes/bluerob_propcw.dae"/>
 
   <!--
     Thruster macro with integration of joint and link. The thrusters should
@@ -68,8 +70,8 @@
         <!-- <clampMin>3000</clampMin> -->
 
         <!-- Minimum and maximum thrust force output allowed -->
-        <thrustMin>-30</thrustMin>
-        <thrustMax>36.5</thrustMax>
+        <thrustMin>-100</thrustMin>
+        <thrustMax>100</thrustMax>
 
         <!--
         Value from 0 to 1 to set the efficiency of the output thrust force
@@ -143,7 +145,7 @@
         -->
         <conversion>
           <type>Basic</type>
-          <rotorConstant>0.002</rotorConstant>
+          <rotorConstant>0.02892</rotorConstant>
         </conversion>
 
         <!-- 2) Dead-zone nonlinearity described in Bessa, 2006
