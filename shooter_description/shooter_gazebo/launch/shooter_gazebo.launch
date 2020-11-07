@@ -1,0 +1,12 @@
+<launch>
+
+<!-- Utiliza empty.world (ya escrito y largo) para facilitar las cosas, se cambia solo el 
+    nombre del world que se launcheara-->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <!-- arg name="world_name" value="$(find shooter_description)/shooter_gazebo/worlds/shooter.world" / -->
+    </include> 
+
+  <!-- include our robots -->
+  <include file="$(find shooter_description)/shooter_gazebo/launch/robots.launch"/>
+
+</launch>

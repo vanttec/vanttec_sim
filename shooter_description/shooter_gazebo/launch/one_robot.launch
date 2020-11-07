@@ -1,0 +1,18 @@
+<launch>
+    <arg name="robot_name"/>
+    <arg name="init_pose"/>
+
+    <!-- Spawn model into gazebo-->
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
+     args="$(arg init_pose) -urdf -param /robot_description -model $(arg robot_name)"/>
+
+    <!-- Spawn model into gazebo ->
+    <node name="spawn_urdf_2" pkg="gazebo_ros" type="spawn_model"
+     args="$(arg init_pose) -urdf -param /robot_description -model $(arg robot_name)"/ -->
+
+    <!-- The odometry estimator, throttling, fake laser etc. go here -->
+</launch>
+
+<!-- NOTAS: 
+    MULTIPLE ROBOT SIMULATION ON GAZEBO 
+        https://answers.ros.org/question/360480/multi-robot-simulation-on-gazebo/-->
