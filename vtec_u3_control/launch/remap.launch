@@ -1,3 +1,0 @@
-<launch>
-    <node name="remap_thrust" pkg="vtec_u3_control" type="remap_thrust_messages.py"/>
-</launch>
