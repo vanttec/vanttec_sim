@@ -28,6 +28,7 @@
   <!--<xacro:default_rpt namespace="${namespace}" parent_link="${namespace}/base_link">
     <origin xyz="0 0 0" rpy="0 0 0"/>-->
   <!--</xacro:default_rpt>-->
+  
 
   <!-- Pressure  -->
   <xacro:default_pressure namespace="${namespace}" parent_link="${namespace}/base_link">
@@ -40,8 +41,10 @@
   </xacro:default_imu>
 
   <!-- Mount a camera  -->
+  <!--<xacro:stereo_camera namespace="${namespace}" parent_link="${namespace}/base_link" suffix="">-->
+  <!--  <origin xyz="0.19281 0.01961 0.06659" rpy="0 0 0"/>-->
+  <!-- </xacro:stereo_camera>-->
   <xacro:default_camera namespace="${namespace}" parent_link="${namespace}/base_link" suffix="">
-    <origin xyz="0.19281 0.01961 0.06659" rpy="0 0 0"/>
+   <origin xyz="0.19281 0.01961 0.06659" rpy="0 0 0"/>
   </xacro:default_camera>
-
 </robot>
