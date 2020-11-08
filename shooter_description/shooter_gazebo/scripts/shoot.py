@@ -2,13 +2,9 @@
 
 import rospy
 import keyboard 
-
-#Import the type of message type
 from std_msgs.msg import String
-   
-#-----------------------------Import from turtlebot3_telep_key
-import rospy
 from geometry_msgs.msg import Twist
+
 import sys, select, os
 if os.name == 'nt':
   import msvcrt
@@ -21,11 +17,12 @@ status = 0
 msg = """
 Shoot Torpedoes
 ---------------------------
-Moving around:
-    q = Torpedoes_1
-    w = Torpedoes_2
+1) Choose:
     a = Shoot
     s = Stop
+2) Which torpedo?
+    q = Torpedo 1
+    w = Torpedo 2
 
 CTRL-C to quit
 """
@@ -45,15 +42,15 @@ def getKey():
     return key
 
 #--------------------------------------------
-def talker():
-    #Publica: topic named chatter, type String, 
+def Shoot():
+    #Publish: Two topics Twist message type 
     pub = rospy.Publisher('Shoot_Torpedo_1', Twist, queue_size=10)
     pub2 = rospy.Publisher('Shoot_Torpedo_2', Twist, queue_size=10)
 
-    #Inicia el nodo
+    #Initiates node
     rospy.init_node('Torpedoes', anonymous=True)
 
-    #10 veces por segundo
+    #10 Hz
     rate = rospy.Rate(10) 
 
     target_linear_vel = 0
@@ -62,7 +59,7 @@ def talker():
     while not rospy.is_shutdown():
         key = getKey()
         if key=='a':
-            target_linear_vel = 0.5
+            target_linear_vel = 0.2
         elif key=='s':
             target_linear_vel = 0
         #This key is control+c for killing the terminal
@@ -80,7 +77,7 @@ def talker():
         twist.angular.y = 0.0
         twist.angular.z = 0.0 
 
-        if status == 20 :
+        if status == 10 :
             print (msg) 
             status = 0
 
@@ -94,6 +91,6 @@ if __name__ == '__main__':
     if os.name != 'nt':
         settings = termios.tcgetattr(sys.stdin)
     try:
-        talker()
+        Shoot()
     except rospy.ROSInterruptException:
         pass
