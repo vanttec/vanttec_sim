@@ -7,27 +7,27 @@
     Look into the sensor macros in the package uuv_sensor_ros_plugins/urdf for
     more examples or add you own custom sensor units.
   -->
-
+  <!-- Must be set with respect to COG -->
   <!-- Mount a GPS. -->
-  <!--<xacro:default_gps namespace="${namespace}" parent_link="${namespace}/base_link" />-->
+  <xacro:default_gps namespace="${namespace}" parent_link="${namespace}/base_link" />
 
   <!-- Mount a Pose 3D sensor. -->
-  <!--<xacro:default_pose_3d namespace="${namespace}" parent_link="${namespace}/base_link" /> -->
+  <xacro:default_pose_3d namespace="${namespace}" parent_link="${namespace}/base_link" />
 
   <!-- Forward-looking sonar sensor -->
-  <!--<xacro:forward_multibeam_p900 namespace="${namespace}" parent_link="${namespace}/base_link">
-    <origin xyz="0 0 0" rpy="0 0 0"/> -->
-  <!--</xacro:forward_multibeam_p900> -->
+  <xacro:forward_multibeam_p900 namespace="${namespace}" parent_link="${namespace}/base_link">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </xacro:forward_multibeam_p900>
 
   <!-- DVL  -->
-  <!--<xacro:default_dvl namespace="${namespace}" parent_link="${namespace}/base_link">
-    <origin xyz="0 0 0" rpy="0 0 0"/>-->
-  <!--</xacro:default_dvl> -->
+  <xacro:default_dvl namespace="${namespace}" parent_link="${namespace}/base_link">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </xacro:default_dvl>
 
-   <!-- RPT  -->
-  <!--<xacro:default_rpt namespace="${namespace}" parent_link="${namespace}/base_link">
-    <origin xyz="0 0 0" rpy="0 0 0"/>-->
-  <!--</xacro:default_rpt>-->
+  <!-- RPT  -->
+  <xacro:default_rpt namespace="${namespace}" parent_link="${namespace}/base_link">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </xacro:default_rpt>
 
   <!-- Pressure  -->
   <xacro:default_pressure namespace="${namespace}" parent_link="${namespace}/base_link">

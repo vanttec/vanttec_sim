@@ -24,7 +24,7 @@
 
   /robots/<mode>.xacro
   -->
-  <arg name="mode" default="vtecu3_default"/>
+  <arg name="mode" default="default"/>
 
   <!-- Vehicle's namespace -->
   <arg name="namespace" default="vtec_u3"/>
@@ -61,10 +61,17 @@
   </include>
   <include file="$(find realsense_gazebo_plugin)/launch/depth_proc.launch">
   </include>
+<<<<<<< HEAD
     <!-- check if you are simulating robot with gazebo -->
     <arg  name="gazebo" default="false" />
     <group unless="$(arg gazebo)">
     </group>
 
 
+=======
+  <!-- check if you are simulating robot with gazebo -->
+  <arg  name="gazebo" default="false" />
+  <group unless="$(arg gazebo)">
+  </group>
+>>>>>>> e946dcf003282f3560dc7e3e7b27018b34966df5
 </launch>

@@ -8,41 +8,28 @@
           aware that Gazebo does not use the SNAME convention per default.
     -->
 
+    <!-- Note: measurements are as exact as were possible from SolidWorks. Just check the result -->
     <xacro:thruster_macro robot_namespace="${namespace}" thruster_id="0">
-        <origin xyz="0.19789 -0.28839 0.01070" rpy="0 0 ${pi}" />
+        <origin xyz="0.18829 0.30023 0" rpy="0 0 ${0.75*pi}" />
     </xacro:thruster_macro>
 
     <xacro:thruster_macro robot_namespace="${namespace}" thruster_id="1">
-        <origin xyz="0.04583 -0.26083 -0.02765" rpy="0 0 ${pi}" />
+        <origin xyz="0.18829 -0.30023 0" rpy="0 0 -${0.75*pi}" />
     </xacro:thruster_macro>
 
     <xacro:thruster_macro robot_namespace="${namespace}" thruster_id="2">
-      <origin xyz="-0.18414 -0.28844 0.01070" rpy="0 -${0.5*pi} 0" />
+        <origin xyz="-0.03828 0.26988 -0.04156" rpy="0 ${0.5*pi} 0" />
     </xacro:thruster_macro>
-    
+
     <xacro:thruster_macro robot_namespace="${namespace}" thruster_id="3">
-      <origin xyz="0.19790 0.30658 0.01070" rpy="0 -${0.5*pi} 0" />
+        <origin xyz="0.03828 -0.26988 -0.04156" rpy="0 ${0.5*pi} 0" />
     </xacro:thruster_macro>
 
     <xacro:thruster_macro robot_namespace="${namespace}" thruster_id="4">
-        <origin xyz="-0.03203 0.279 -0.02765" rpy="0 0 ${pi}" />
+        <origin xyz="-0.18829 0.30023 0" rpy="0 0 ${0.25*pi}" />
     </xacro:thruster_macro>
 
     <xacro:thruster_macro robot_namespace="${namespace}" thruster_id="5">
-        <origin xyz="-0.18409 0.30657 0.01070" rpy="0 0 ${pi}" />
+        <origin xyz="-0.18829 -0.30023 0" rpy="0 0 -${0.25*pi}" />
     </xacro:thruster_macro>
-
-    <!-- Instantiate fins, if necessary -->
-    <!-- <xacro:fin_macro namespace="${namespace}" fin_id="0">
-      <origin xyz="0 0 0" rpy="0 0 0" />
-    </xacro:fin_macro>
-    <xacro:fin_macro namespace="${namespace}" fin_id="1">
-      <origin xyz="0 0 0" rpy="0 0 0" />
-    </xacro:fin_macro>
-    <xacro:fin_macro namespace="${namespace}" fin_id="2">
-      <origin xyz="0 0 0" rpy="0 0 0" />
-    </xacro:fin_macro>
-    <xacro:fin_macro namespace="${namespace}" fin_id="3">
-      <origin xyz="0 0 0" rpy="0 0 0" />
-    </xacro:fin_macro> -->
 </robot>
