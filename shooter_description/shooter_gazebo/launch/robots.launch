@@ -1,6 +1,6 @@
 <launch>
 
-  <!-- Begin Shooter -->
+  <!-- Begin Shooter-->
   <group ns="Shooter_base">
     <param name="tf_prefix" value="robot1_tf" />
     <param name="robot_description"
