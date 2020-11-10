@@ -8,9 +8,6 @@
   <xacro:include filename="$(find uuv_gazebo_ros_plugins)/urdf/snippets.xacro"/>  <!-- Don't take it out or it won't work  -->
   <!-- Loading vehicle's specific macros -->
   <!-- <xacro:include filename="$(find vtec_u3_description)/urdf/snippets.xacro"/> -->
-  <gazebo>
-    <plugin name="model_push" filename="libmodel_push.so"/>
-  </gazebo>
 
   <!--
     Vehicle's parameters (remember to enter the model parameters below)
@@ -79,6 +76,17 @@
 
     <gazebo reference="${namespace}/base_link">
       <selfCollide>false</selfCollide>
+    </gazebo>
+
+    <gazebo>
+      <plugin name="sixDOFMov" filename="libsixDOFMov.so">
+        <commandTopic>/UUV_velocity_gazebo</commandTopic>
+        <odometryTopic>odom</odometryTopic>
+        <odometryFrame>odom</odometryFrame>
+        <odometryRate>100.0</odometryRate>
+        <robotBaseFrame>${namespace}/base_link</robotBaseFrame>
+        <publishTF>false</publishTF>
+      </plugin>
     </gazebo>
 
     <!-- Set up hydrodynamic plugin given as input parameter -->
