@@ -80,7 +80,7 @@
 
     <gazebo>
       <plugin name="sixDOFMov" filename="libsixDOFMov.so">
-        <commandTopic>/UUV_velocity_gazebo</commandTopic>
+        <commandTopic>/uuv_desired_velocity</commandTopic>
         <odometryTopic>odom</odometryTopic>
         <odometryFrame>odom</odometryFrame>
         <odometryRate>100.0</odometryRate>
