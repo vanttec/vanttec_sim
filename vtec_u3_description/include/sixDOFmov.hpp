@@ -20,11 +20,11 @@
 
 namespace gazebo {
 
-  class GazeboRosPlanarMove : public ModelPlugin {
+  class sixDOFmove : public ModelPlugin {
 
     public: 
-      GazeboRosPlanarMove();
-      ~GazeboRosPlanarMove();
+      sixDOFmove();
+      ~sixDOFmove();
       void Load(physics::ModelPtr parent, sdf::ElementPtr sdf);
 
     protected: 
@@ -63,7 +63,10 @@ namespace gazebo {
 
       double x_;
       double y_;
-      double rot_;
+      double z_;
+      double roll_;
+      double pitch_;
+      double yaw_;
       bool alive_;
       common::Time last_odom_publish_time_;
       math::Pose last_odom_pose_;

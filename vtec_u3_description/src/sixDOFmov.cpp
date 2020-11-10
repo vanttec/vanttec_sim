@@ -3,12 +3,12 @@
  namespace gazebo 
  {
  
-   GazeboRosPlanarMove::GazeboRosPlanarMove() {}
+   sixDOFmove::sixDOFmove() {}
  
-   GazeboRosPlanarMove::~GazeboRosPlanarMove() {}
+   sixDOFmove::~sixDOFmove() {}
  
    // Load the controller 
-   void GazeboRosPlanarMove::Load(physics::ModelPtr parent, 
+   void sixDOFmove::Load(physics::ModelPtr parent, 
        sdf::ElementPtr sdf) 
    {
  
@@ -76,7 +76,7 @@
        robot_base_frame_ = sdf->GetElement("robotBaseFrame")->Get<std::string>();
      } 
  
-     odometry_rate_ = 20.0;
+     odometry_rate_ = 100.0;
      if (!sdf->HasElement("odometryRate")) 
      {
        ROS_WARN("PlanarMovePlugin (ns = %s) missing <odometryRate>, "
@@ -92,7 +92,10 @@
      last_odom_pose_ = parent_->GetWorldPose();
      x_ = 0;
      y_ = 0;
-     rot_ = 0;
+     z_ = 0;
+     roll_ = 0;
+     pitch_ = 0;
+     yaw_ = 0;
      alive_ = true;
  
      // Ensure that ROS has been initialized and subscribe to cmd_vel
@@ -115,7 +118,7 @@
      // subscribe to the odometry topic
      ros::SubscribeOptions so =
        ros::SubscribeOptions::create<geometry_msgs::Twist>(command_topic_, 1,
-           boost::bind(&GazeboRosPlanarMove::cmdVelCallback, this, _1),
+           boost::bind(&sixDOFmove::cmdVelCallback, this, _1),
            ros::VoidPtr(), &queue_);
  
      vel_sub_ = rosnode_->subscribe(so);
@@ -123,26 +126,29 @@
  
      // start custom queue for diff drive
      callback_queue_thread_ = 
-       boost::thread(boost::bind(&GazeboRosPlanarMove::QueueThread, this));
+       boost::thread(boost::bind(&sixDOFmove::QueueThread, this));
  
      // listen to the update event (broadcast every simulation iteration)
      update_connection_ = 
        event::Events::ConnectWorldUpdateBegin(
-           boost::bind(&GazeboRosPlanarMove::UpdateChild, this));
+           boost::bind(&sixDOFmove::UpdateChild, this));
  
    }
  
    // Update the controller
-   void GazeboRosPlanarMove::UpdateChild() 
+   void sixDOFmove::UpdateChild() 
    {
      boost::mutex::scoped_lock scoped_lock(lock);
      math::Pose pose = parent_->GetWorldPose();
      float yaw = pose.rot.GetYaw();
+     float pitch = pose.rot.GetPitch();
+     float roll = pose.rot.GetRoll();
      parent_->SetLinearVel(math::Vector3(
-           x_ * cosf(yaw) - y_ * sinf(yaw), 
-           y_ * cosf(yaw) + x_ * sinf(yaw), 
-           0));
-     parent_->SetAngularVel(math::Vector3(0, 0, rot_));
+           x_ * cosf(yaw) - y_ * sinf(yaw), //+ x_ * cosf(pitch) + z_ * sinf(pitch), 
+           y_ * cosf(yaw) + x_ * sinf(yaw),// + y_ * cosf(roll) - z_ * sinf(roll),
+           z_// * cosf(pitch) - x_ * sinf(pitch) + z_ * cosf(roll) + y_ * sinf(roll)
+           ));
+     parent_->SetAngularVel(math::Vector3(roll_, pitch_, yaw_));
      if (odometry_rate_ > 0.0) {
        common::Time current_time = parent_->GetWorld()->GetSimTime();
        double seconds_since_last_update = 
@@ -155,7 +161,7 @@
    }
  
    // Finalize the controller
-   void GazeboRosPlanarMove::FiniChild() {
+   void sixDOFmove::FiniChild() {
      alive_ = false;
      queue_.clear();
      queue_.disable();
@@ -163,16 +169,19 @@
      callback_queue_thread_.join();
    }
  
-   void GazeboRosPlanarMove::cmdVelCallback(
+   void sixDOFmove::cmdVelCallback(
        const geometry_msgs::Twist::ConstPtr& cmd_msg) 
    {
      boost::mutex::scoped_lock scoped_lock(lock);
      x_ = cmd_msg->linear.x;
      y_ = cmd_msg->linear.y;
-     rot_ = cmd_msg->angular.z;
+     z_ = cmd_msg->linear.z;
+     roll_ = cmd_msg->angular.x;
+     pitch_ = cmd_msg->angular.y;
+     yaw_ = cmd_msg->angular.z;
    }
  
-   void GazeboRosPlanarMove::QueueThread() 
+   void sixDOFmove::QueueThread() 
    {
      static const double timeout = 0.01;
      while (alive_ && rosnode_->ok()) 
@@ -181,7 +190,7 @@
      }
    }
  
-   void GazeboRosPlanarMove::publishOdometry(double step_time) 
+   void sixDOFmove::publishOdometry(double step_time) 
    {
  
      ros::Time current_time = ros::Time::now();
@@ -203,6 +212,7 @@
      // publish odom topic
      odom_.pose.pose.position.x = pose.pos.x;
      odom_.pose.pose.position.y = pose.pos.y;
+     odom_.pose.pose.position.z = pose.pos.z;
  
      odom_.pose.pose.orientation.x = pose.rot.x;
      odom_.pose.pose.orientation.y = pose.rot.y;
@@ -219,10 +229,11 @@
      math::Vector3 linear;
      linear.x = (pose.pos.x - last_odom_pose_.pos.x) / step_time;
      linear.y = (pose.pos.y - last_odom_pose_.pos.y) / step_time;
-     if (rot_ > M_PI / step_time) 
+     linear.z = (pose.pos.z - last_odom_pose_.pos.z) / step_time;
+     if (yaw_ > M_PI / step_time) 
      { 
        // we cannot calculate the angular velocity correctly
-       odom_.twist.twist.angular.z = rot_;
+       odom_.twist.twist.angular.z = yaw_;
      } 
      else 
      {
@@ -233,12 +244,43 @@
        float angular_diff = current_yaw - last_yaw;
        odom_.twist.twist.angular.z = angular_diff / step_time;
      }
+     if (roll_ > M_PI / step_time) 
+     { 
+       // we cannot calculate the angular velocity correctly
+       odom_.twist.twist.angular.x = roll_;
+     } 
+     else 
+     {
+       float last_roll = last_odom_pose_.rot.GetRoll();
+       float current_roll = pose.rot.GetRoll();
+       while (current_roll < last_roll - M_PI) current_roll += 2 * M_PI;
+       while (current_roll > last_roll + M_PI) current_roll -= 2 * M_PI;
+       float angular_diff = current_roll - last_roll;
+       odom_.twist.twist.angular.x = angular_diff / step_time;
+     }
+     if (pitch_ > M_PI / step_time) 
+     { 
+       // we cannot calculate the angular velocity correctly
+       odom_.twist.twist.angular.y = pitch_;
+     } 
+     else 
+     {
+       float last_pitch = last_odom_pose_.rot.GetPitch();
+       float current_pitch = pose.rot.GetPitch();
+       while (current_pitch < last_pitch - M_PI) current_pitch += 2 * M_PI;
+       while (current_pitch > last_pitch + M_PI) current_pitch -= 2 * M_PI;
+       float angular_diff = current_pitch - last_pitch;
+       odom_.twist.twist.angular.y = angular_diff / step_time;
+     }
      last_odom_pose_ = pose;
  
      // convert velocity to child_frame_id (aka base_footprint)
-     float yaw = pose.rot.GetYaw();
-     odom_.twist.twist.linear.x = cosf(yaw) * linear.x + sinf(yaw) * linear.y;
-     odom_.twist.twist.linear.y = cosf(yaw) * linear.y - sinf(yaw) * linear.x;
+     float roll = pose.rot.GetRoll();
+     float pitch = pose.rot.GetPitch();
+     float yaw = pose.rot.GetYaw(); 
+     odom_.twist.twist.linear.x = cosf(yaw) * linear.x + sinf(yaw) * linear.y;// + cosf(pitch) * linear.x - sinf(pitch) * linear.z;
+     odom_.twist.twist.linear.y = cosf(yaw) * linear.y - sinf(yaw) * linear.x;// + cosf(roll) * linear.y + sinf(roll) * linear.z;
+     odom_.twist.twist.linear.z = linear.z;// cosf(pitch) * linear.z + sinf(pitch) * linear.x + cosf(roll) * linear.z - sinf(roll) * linear.y;
  
      odom_.header.stamp = current_time;
      odom_.header.frame_id = odom_frame;
@@ -247,5 +289,5 @@
      odometry_pub_.publish(odom_);
    }
  
-   GZ_REGISTER_MODEL_PLUGIN(GazeboRosPlanarMove)
+   GZ_REGISTER_MODEL_PLUGIN(sixDOFmove)
  }
