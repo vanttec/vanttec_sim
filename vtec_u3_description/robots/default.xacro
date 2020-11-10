@@ -4,19 +4,19 @@
   <xacro:arg name="namespace" default="vtec_u3"/>
   <!-- Include the UUV macro file -->
   <xacro:include filename="$(find vtec_u3_description)/urdf/base.xacro"/>
-  <xacro:include filename="$(find vtec_u3_description)/urdf/gazebo.xacro"/>
+  <!-- <xacro:include filename="$(find vtec_u3_description)/urdf/gazebo.xacro"/> -->
 
   <!-- Create the vtec_u3 -->
   <xacro:vtec_u3_base namespace="$(arg namespace)">
     <!-- The underwater object plugin is given as an input block parameter to
      allow the addition of external models of manipulator units -->
     <gazebo>
-      <plugin name="uuv_plugin" filename="libuuv_underwater_object_ros_plugin.so">
+      <!-- <plugin name="uuv_plugin" filename="libuuv_underwater_object_ros_plugin.so">
         <fluid_density>1000.0</fluid_density>
         <flow_velocity_topic>hydrodynamics/current_velocity</flow_velocity_topic>
-        <debug>$(arg debug)</debug>
+        <debug>$(arg debug)</debug> -->
         <!-- Adding the hydrodynamic and hydrostatic parameters for the vehicle-->
-        <xacro:vtec_u3_hydro_model namespace="$(arg namespace)"/>
+        <!-- <xacro:vtec_u3_hydro_model namespace="$(arg namespace)"/> -->
         <!--
           In case other modules are added to the vehicle (such as a manipulator)
           that also have link running with the underwater object plugin, they
@@ -24,7 +24,7 @@
           have a file similar to gazebo.xacro above with the description of the
           parameter necessary for the underwater object plugin to be initialized.
         -->
-      </plugin>
+      <!-- </plugin> -->
     </gazebo>
   </xacro:vtec_u3_base>
 
