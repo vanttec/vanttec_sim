@@ -5,9 +5,9 @@
   <!-- Loading file with sensor macros -->
   <xacro:include filename="$(find uuv_sensor_ros_plugins)/urdf/sensor_snippets.xacro"/>
   <!-- Loading the UUV simulator ROS plugin macros -->
-  <xacro:include filename="$(find uuv_gazebo_ros_plugins)/urdf/snippets.xacro"/>  
+  <xacro:include filename="$(find uuv_gazebo_ros_plugins)/urdf/snippets.xacro"/>  <!-- Don't take it out or it won't work  -->
   <!-- Loading vehicle's specific macros -->
-  <xacro:include filename="$(find vtec_u3_description)/urdf/snippets.xacro"/>
+  <!-- <xacro:include filename="$(find vtec_u3_description)/urdf/snippets.xacro"/> -->
 
   <!--
     Vehicle's parameters (remember to enter the model parameters below)
@@ -78,11 +78,22 @@
       <selfCollide>false</selfCollide>
     </gazebo>
 
+    <gazebo>
+      <plugin name="sixDOFMov" filename="libsixDOFMov.so">
+        <commandTopic>/uuv_desired_velocity</commandTopic>
+        <odometryTopic>odom</odometryTopic>
+        <odometryFrame>odom</odometryFrame>
+        <odometryRate>100.0</odometryRate>
+        <robotBaseFrame>${namespace}/base_link</robotBaseFrame>
+        <publishTF>false</publishTF>
+      </plugin>
+    </gazebo>
+
     <!-- Set up hydrodynamic plugin given as input parameter -->
-    <xacro:insert_block name="gazebo"/>
+    <!-- <xacro:insert_block name="gazebo"/> -->
 
     <!-- Include the thruster modules -->
-    <xacro:include filename="$(find vtec_u3_description)/urdf/actuators.xacro"/>
+    <!-- <xacro:include filename="$(find vtec_u3_description)/urdf/actuators.xacro"/> -->
 
     <!-- Include the sensor modules -->
     <xacro:include filename="$(find vtec_u3_description)/urdf/sensors.xacro"/> 
