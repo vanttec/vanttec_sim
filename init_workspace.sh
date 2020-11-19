@@ -8,3 +8,4 @@ git submodule update --init --recursive
 cd 
 cd vanttec_uv_sim_ws
 catkin_make
+export GAZEBO_PLUGIN_PATH=${GAZEBO_PLUGIN_PATH}:~/vanttec_uv_sim_ws/build
