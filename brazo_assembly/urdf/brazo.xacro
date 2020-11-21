@@ -1,0 +1,217 @@
+<?xml version="1.0" ?>
+<robot name="robotic_arm" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <gazebo reference="arm_base_link">
+        <material>Gazebo/GrassFloor</material>
+        <turnGravityOff>true</turnGravityOff>
+        <selfCollide>false</selfCollide>
+    </gazebo>
+
+    <gazebo reference="arm_link">
+        <material>Gazebo/White</material>
+        <turnGravityOff>true</turnGravityOff>
+        <selfCollide>false</selfCollide>
+    </gazebo>
+
+    <gazebo reference="left_beam_link">
+        <material>Gazebo/White</material>
+        <turnGravityOff>true</turnGravityOff>
+        <selfCollide>true</selfCollide>
+    </gazebo>
+
+    <gazebo reference="left_beam_link">
+        <material>Gazebo/White</material>
+        <turnGravityOff>true</turnGravityOff>
+        <selfCollide>true</selfCollide>
+    </gazebo>
+    
+    <gazebo reference="right_beam_link">
+        <material>Gazebo/White</material>
+        <turnGravityOff>true</turnGravityOff>
+        <selfCollide>true</selfCollide>
+    </gazebo>
+    
+    <gazebo reference="left_tip_link">
+        <material>Gazebo/White</material>
+        <turnGravityOff>true</turnGravityOff>
+        <selfCollide>true</selfCollide>
+    </gazebo>
+    
+    <gazebo reference="right_tip_link">
+        <material>Gazebo/White</material>
+        <turnGravityOff>true</turnGravityOff>
+        <selfCollide>true</selfCollide>
+    </gazebo>
+
+  <!-- Used to fix arm_base_link -->
+  <link name="world"></link>
+  <joint name="fixed" type="fixed">
+     <parent link="world"/>
+     <child link="arm_base_link"/>
+  </joint>
+
+  <link name= "arm_base_link">
+      <visual>
+        <origin rpi="0 0 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://brazo_assembly/meshes/base_link.STL" />
+        </geometry>
+      </visual>
+      <!-- Leave commented. This makes the whole arm to move -->
+      <!-- <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://brazo_assembly/meshes/base_link.STL" />
+        </geometry>
+      </collision> -->
+      <inertial>
+        <origin xyz="-0.000143143841055618 0.0093355201368952 0.0425505188622381" rpy="0 0 0" />
+        <mass value="0.214808103264679" />
+        <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001" />
+      </inertial>
+    </link>
+
+    <joint name="arm_base_link/arm_link" type="prismatic">
+      <axis xyz="0 0 1" />
+      <limit effort="1000.0" lower="-0.09" upper="0.12" velocity="0.001" />
+      <origin xyz="0.15257 -0.00014633 0.003" rpy="1.5708 0 1.5708" />
+      <parent link="arm_base_link" />
+      <child link="arm_link" />
+    </joint>
+
+    <link name ="arm_link">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://brazo_assembly/meshes/Link_brazo.STL" />
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://brazo_assembly/meshes/Link_brazo.STL" />
+        </geometry>
+      </collision>
+      <inertial>
+        <origin xyz="0.00011792 0.019454 -0.085978" rpy="0 0 0" />
+        <mass value="0.14" />
+        <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001" />
+      </inertial>
+    </link>
+
+    <link name="left_beam_link">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://brazo_assembly/meshes/Link_viga_izquierda.STL" />
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://brazo_assembly/meshes/Link_viga_izquierda.STL" />
+        </geometry>
+      </collision>
+      <inertial>
+        <origin xyz="-0.0054587 -0.0045 0.020602" rpy="0 0 0" />
+        <mass value="0.0028443" />
+        <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001" />
+      </inertial>
+    </link>
+
+    <joint name="arm_link/left_beam_link" type="revolute">
+      <axis xyz="0 1 0" />
+      <limit lower="0" upper="1" effort="100" velocity="0.001" />
+      <origin xyz="0.025315 0.0212 0.078512" rpy="0 -0.13439 0" />
+      <parent link="arm_link" />
+      <child link="left_beam_link" />
+    </joint>
+
+    <link name="left_tip_link">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://brazo_assembly/meshes/Link_punta_izquierda.STL" />
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://brazo_assembly/meshes/Link_punta_izquierda.STL" />
+        </geometry>
+      </collision>
+      <inertial>
+        <origin xyz="-0.010353 -0.0025 0.013922" rpy="0 0 0" />
+        <mass value="0.0028494" />
+        <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001" />
+      </inertial>
+    </link>
+
+    <joint name="left_beam_link/left_tip_link" type="revolute">
+      <axis xyz="0 1 0" />
+      <limit lower="-1" upper="0" effort="100" velocity="0.001" />
+      <origin xyz="0 -0.002 0.04" rpy="0 0.10761 0" />
+      <child link="left_tip_link" />
+      <parent link="left_beam_link" />
+      <mimic joint="arm_link/left_beam_link" multiplier="-1" offset="0" />
+    </joint>
+
+    <link name="right_beam_link">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://brazo_assembly/meshes/Link_viga_derecha.STL" />
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://brazo_assembly/meshes/Link_viga_derecha.STL" />
+        </geometry>
+      </collision>
+      <inertial>
+        <origin xyz="0.0054603 -0.0045 0.020616" rpy="0 0 0" />
+        <mass value="0.0028443" />
+        <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001" />
+      </inertial>
+    </link>
+
+    <joint name="arm_link/right_beam_link" type="revolute">
+      <axis xyz="0 1 0" />
+      <limit lower="-1" upper="0" effort="100" velocity="0.001" />
+      <origin xyz="-0.025315 0.0212 0.078512" rpy="0 0.13167 0" />
+      <child link="right_beam_link" />
+      <parent link="arm_link" />
+      <mimic joint="arm_link/left_beam_link" multiplier="-1" offset="0" />
+    </joint>
+
+    <link name="right_tip_link">
+      <visual>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://brazo_assembly/meshes/Link_punta_derecha.STL" />
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <geometry>
+          <mesh filename="package://brazo_assembly/meshes/Link_punta_derecha.STL" />
+        </geometry>
+      </collision>
+      <inertial>
+        <origin xyz="0.010353 -0.0025 0.013922" rpy="0 0 0" />
+        <mass value="0.0028494" />
+        <inertia ixx="0.0001" ixy="0.0" ixz="0.0" iyy="0.0001" iyz="0.0" izz="0.0001" />
+      </inertial>
+    </link>
+
+    <joint name="right_beam_link/right_tip_link" type="revolute">
+      <axis xyz="0 1 0" />
+      <limit lower="0" upper="1" effort="100" velocity="0.001" />
+      <origin xyz="0 -0.002 0.04" rpy="0 -0.10535 0" />
+      <child link="right_tip_link" />
+      <parent link="right_beam_link" />
+      <mimic joint="arm_link/right_beam_link" multiplier="-1" offset="0" />
+    </joint>
+
+</robot>
