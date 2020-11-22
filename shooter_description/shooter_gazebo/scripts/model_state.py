@@ -30,7 +30,9 @@ def Publisher(): #Pose
     rate = rospy.Rate(10)
 
     while not rospy.is_shutdown():
+        #Inherits ModelState class
         model_state = ModelState()
+        #ModelState.Pose.Point.x,y or z
         model_state.model_name = "torpedoes_1"
         model_state.pose.position.x = 1.0
         model_state.pose.position.y = 1.0
