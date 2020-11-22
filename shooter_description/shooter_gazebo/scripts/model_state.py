@@ -19,7 +19,6 @@ pose:
 import rospy 
 from gazebo_msgs.msg import ModelState
 
-
 def Publisher(): #Pose
 
     #Publish: (topic_name, message type ModelState)
