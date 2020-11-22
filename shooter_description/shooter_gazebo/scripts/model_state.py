@@ -18,7 +18,10 @@ pose:
 
 import rospy 
 from gazebo_msgs.msg import ModelState
+from geometry_msgs.msg import Pose
+from std_msgs.msg import String 
 
+"""
 def Publisher(): #Pose
 
     #Publish: (topic_name, message type ModelState)
@@ -39,13 +42,44 @@ def Publisher(): #Pose
         model_state.pose.position.z = 0.0
         pose_publisher.publish(model_state)
         rate.sleep()
+"""
 
+class Model_Pose:
+    def __init__(self):
+        self.value = 0
+        rospy.init_node ("Pose_Models")
+
+        self.pub = rospy.Publisher('topico_a_gazebo', String, queue_size= 10, latch=True)
+        
+        rospy.Subscriber('/topico_de_Mendivil', String, self.update_value)
+
+    def update_value(self, msg):
+        self.value = msg.data 
+    
+    def run (self):
+        r = rospy.Rate(10)
+        while not rospy.is_shutdown():
+            self.pub.publish(self.value)
+            print self.value
+            r.sleep()
+    
 if __name__ == '__main__': 
-    """try:
-        Publisher()
-    except rospy.ROSInterruptException:
-        pass"""
-    Publisher() 
+    pose = Model_Pose()
+    pose.run()
 
+"""
+#Whenever a message is published on the topic, a function callback will be called
+def Pose_node():
+    rospy.Subscriber("/Mendivil", String, Callback)
+    
+    rospy.init_node("Subscriber", anonymous= False)
 
+    #Inherits String class 
+    string = String()
+    string.data = 'RECIBIENDO'
+    rospy.spin
 
+def Callback(msg):
+    #Publish: (topic_name, message type ModelState)
+    pose_publisher = rospy.Publisher("/Mendivil_pub", String, queue_size=10)
+"""
