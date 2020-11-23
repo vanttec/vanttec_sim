@@ -47,8 +47,8 @@ def Shoot():
     pub = rospy.Publisher('Shoot_Torpedo_1', Twist, queue_size=10)
     pub2 = rospy.Publisher('Shoot_Torpedo_2', Twist, queue_size=10)
 
-    #Initiates node
-    rospy.init_node('Torpedoes', anonymous=True)
+    #Initiates node 
+    rospy.init_node('Torpedoes', anonymous=False)
 
     #10 Hz
     rate = rospy.Rate(10) 
