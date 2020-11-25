@@ -16,35 +16,35 @@
     <gazebo reference="left_beam_link">
         <material>Gazebo/White</material>
         <turnGravityOff>true</turnGravityOff>
-        <selfCollide>true</selfCollide>
+        <selfCollide>false</selfCollide>
     </gazebo>
     
     <gazebo reference="right_beam_link">
         <material>Gazebo/White</material>
         <turnGravityOff>true</turnGravityOff>
-        <selfCollide>true</selfCollide>
+        <selfCollide>false</selfCollide>
     </gazebo>
     
     <gazebo reference="left_tip_link">
         <material>Gazebo/White</material>
-        <turnGravityOff>true</turnGravityOff>
-        <selfCollide>true</selfCollide>
+        <turnGravityOff>false</turnGravityOff>
+        <selfCollide>false</selfCollide>
         <kp>1000000.0</kp>
-        <kd>1.0</kd>
-        <mu1>1.0</mu1>
-        <mu2>1.0</mu2>
-        <minDepth>0.001</minDepth>
+        <kd>1.5</kd>
+        <mu1>1.5</mu1>
+        <mu2>1.5</mu2>
+        <minDepth>0.0001</minDepth>
     </gazebo>
     
     <gazebo reference="right_tip_link">
         <material>Gazebo/White</material>
         <turnGravityOff>true</turnGravityOff>
-        <selfCollide>true</selfCollide>
+        <selfCollide>false</selfCollide>
         <kp>1000000.0</kp>
-        <kd>1.0</kd>
-        <mu1>1.0</mu1>
-        <mu2>1.0</mu2>
-        <minDepth>0.001</minDepth>
+        <kd>1.5</kd>
+        <mu1>1.5</mu1>
+        <mu2>1.5</mu2>
+        <minDepth>0.0001</minDepth>
     </gazebo>
 
   <!-- Used to fix arm_base_link -->

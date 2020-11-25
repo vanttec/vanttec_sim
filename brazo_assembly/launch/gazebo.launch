@@ -48,4 +48,12 @@
 
     <!-- <node name="rviz" pkg="rviz" type="rviz" args="-d $(find brazo_assembly)/urdf.rviz" /> -->
 
+
+  <group ns="object">
+    <param name="robot_description" textfile= '$(find brazo_assembly)/urdf/bola.urdf' />
+
+    <!-- Spawn in gazebo -->
+    <node name="spawn_model" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -x 0.36 -model bola -param robot_description"/>
+
+  </group>
 </launch>
