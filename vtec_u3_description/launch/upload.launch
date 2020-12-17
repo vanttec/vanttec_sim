@@ -60,4 +60,13 @@
     	<arg name="namespace" value="$(arg namespace)"/>
   </include>
 
+  <!-- Enable camera gazebo plugin-->
+  <include file="$(find realsense_gazebo_plugin)/launch/depth_proc.launch">
+  </include>
+    <!-- check if you are simulating robot with gazebo -->
+    <arg  name="gazebo" default="false" />
+    <group unless="$(arg gazebo)">
+    </group>
+
 </launch>
+ 

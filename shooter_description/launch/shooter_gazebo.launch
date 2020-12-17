@@ -1,0 +1,9 @@
+<launch>
+
+<!-- Launches Empty World-->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch"/>
+
+  <!-- include our robots -->
+  <include file="$(find shooter_description)/launch/robots.launch"/>
+
+</launch>
