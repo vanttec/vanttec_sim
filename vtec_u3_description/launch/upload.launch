@@ -54,6 +54,25 @@
       <param name="robot_description" value="/$(arg namespace)/robot_description" />
     </node>
   </group>
+    <!-- Begin Torpedoes_1 -->
+  <group ns="Torpedoes_1">
+    <param name="tf_prefix" value="robot2_tf" />
+    <param name="robot_description"
+          command="$(find xacro)/xacro --inorder '$(find shooter_description)/urdf/torpedoes.xacro' "/> 
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
+          args="-urdf -param robot_description -model torpedoes_1"/>
+    <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher"/>
+  </group>
+
+  <!-- Begin Torpedoes_2 -->
+  <group ns="Torpedoes_2">
+    <param name="tf_prefix" value="robot3_tf" />
+    <param name="robot_description"
+          command="$(find xacro)/xacro --inorder '$(find shooter_description)/urdf/torpedoes_1.xacro' "/> 
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
+          args="-urdf -param robot_description -model torpedoes_2"/>
+    <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher"/>
+  </group>
 
   <!-- Publish state and tf for in relation to the world frame -->
   <include file="$(find uuv_assistants)/launch/message_to_tf.launch">
