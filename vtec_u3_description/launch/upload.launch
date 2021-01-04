@@ -74,6 +74,36 @@
     <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher"/>
   </group>
 
+  <!-- Begin Gate -->
+  <group ns="Gate">
+    <param name="tf_prefix" value="robot3_tf" />
+    <param name="robot_description"
+          command="$(find xacro)/xacro --inorder '$(find uuv_world)/urdf/gate.xacro' "/> 
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
+          args="-urdf -param robot_description -model gate_1"/>
+  </group>
+  
+  <?ignore
+  <!-- Begin Buoys -->
+  <group ns="Buoys">
+    <param name="tf_prefix" value="robot3_tf" />
+    <param name="robot_description"
+          command="$(find xacro)/xacro --inorder '$(find uuv_world)/urdf/buoys.xacro' "/> 
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
+          args="-urdf -param robot_description -model buoys_1"/>
+  </group>
+
+  <!-- Begin Octagon -->
+
+  <group ns="Octagon">
+    <param name="tf_prefix" value="robot3_tf" />
+    <param name="robot_description"
+          command="$(find xacro)/xacro --inorder '$(find uuv_world)/urdf/octagon.xacro' "/> 
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
+          args="-urdf -param robot_description -model octagon_1"/>
+  </group>
+  ?>
+
   <!-- Publish state and tf for in relation to the world frame -->
   <include file="$(find uuv_assistants)/launch/message_to_tf.launch">
     	<arg name="namespace" value="$(arg namespace)"/>
