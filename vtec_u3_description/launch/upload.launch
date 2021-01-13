@@ -84,14 +84,26 @@
   </group>
   
   <?ignore
-  <!-- Begin Buoys -->
-  <group ns="Buoys">
+  <!-- Begin Buoy1 -->
+
+  <group ns="Buoy1">
     <param name="tf_prefix" value="robot3_tf" />
     <param name="robot_description"
-          command="$(find xacro)/xacro --inorder '$(find uuv_world)/urdf/buoys.xacro' "/> 
+          command="$(find xacro)/xacro --inorder '$(find uuv_world)/urdf/buoy.xacro' "/> 
     <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
-          args="-urdf -param robot_description -model buoys_1"/>
+          args="-urdf -param robot_description -model buoy_1"/>
   </group>
+
+  <!-- Begin Buoy2-->
+
+  <group ns="Buoy2">
+    <param name="tf_prefix" value="robot3_tf" />
+    <param name="robot_description"
+          command="$(find xacro)/xacro --inorder '$(find uuv_world)/urdf/buoy2.xacro' "/> 
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
+          args="-urdf -param robot_description -model buoy_2"/>
+  </group>
+  ?>
 
   <!-- Begin Octagon -->
 
@@ -102,8 +114,25 @@
     <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
           args="-urdf -param robot_description -model octagon_1"/>
   </group>
-  ?>
+  <!-- Begin Bin1-->
 
+  <group ns="Bin1">
+    <param name="tf_prefix" value="robot3_tf" />
+    <param name="robot_description"
+          command="$(find xacro)/xacro --inorder '$(find uuv_world)/urdf/bin1.xacro' "/> 
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
+          args="-urdf -param robot_description -model bin_1"/>
+  </group>
+
+  <!-- Begin Bin2-->
+
+  <group ns="Bin2">
+    <param name="tf_prefix" value="robot3_tf" />
+    <param name="robot_description"
+          command="$(find xacro)/xacro --inorder '$(find uuv_world)/urdf/bin2.xacro' "/> 
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
+          args="-urdf -param robot_description -model bin_2"/>
+  </group>
   <!-- Publish state and tf for in relation to the world frame -->
   <include file="$(find uuv_assistants)/launch/message_to_tf.launch">
     	<arg name="namespace" value="$(arg namespace)"/>
