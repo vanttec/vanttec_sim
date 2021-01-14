@@ -83,7 +83,6 @@
           args="-urdf -param robot_description -model gate_1"/>
   </group>
   
-  <?ignore
   <!-- Begin Buoy1 -->
 
   <group ns="Buoy1">
@@ -103,7 +102,6 @@
     <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
           args="-urdf -param robot_description -model buoy_2"/>
   </group>
-  ?>
 
   <!-- Begin Octagon -->
 
@@ -132,6 +130,24 @@
           command="$(find xacro)/xacro --inorder '$(find uuv_world)/urdf/bin2.xacro' "/> 
     <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
           args="-urdf -param robot_description -model bin_2"/>
+  </group>
+  <!-- Begin Torpedo1-->
+  <group ns="Torpedo1">
+    <param name="tf_prefix" value="robot3_tf" />
+    <param name="robot_description"
+          command="$(find xacro)/xacro --inorder '$(find uuv_world)/urdf/torpedos1.xacro' "/> 
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
+          args="-urdf -param robot_description -model torpedos_1"/>
+  </group>
+
+  <!-- Begin Torpedo2-->
+
+  <group ns="Torpedo2">
+    <param name="tf_prefix" value="robot3_tf" />
+    <param name="robot_description"
+          command="$(find xacro)/xacro --inorder '$(find uuv_world)/urdf/torpedos2.xacro' "/> 
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
+          args="-urdf -param robot_description -model torpedos_2"/>
   </group>
   <!-- Publish state and tf for in relation to the world frame -->
   <include file="$(find uuv_assistants)/launch/message_to_tf.launch">
