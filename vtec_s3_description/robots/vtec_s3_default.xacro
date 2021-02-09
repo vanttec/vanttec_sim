@@ -2,7 +2,7 @@
 <robot name="vtec_s3" xmlns:xacro="http://www.ros.org/wiki/xacro" >
   <xacro:arg name="debug" default="0"/>
   <xacro:arg name="namespace" default="vtec_s3"/>
-  <xacro:arg name="inertial_reference_frame" default="map"/>
+  <xacro:arg name="inertial_reference_frame" default="world_ned"/>
   <!-- Include the USV macro file -->
   <xacro:include filename="$(find vtec_s3_description)/urdf/base.xacro"/>
 

@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
   <!-- Loading file with sensor macros -->
-  <!-- <xacro:include filename="$(find uuv_sensor_ros_plugins)/urdf/sensor_snippets.xacro"/> -->
+  <xacro:include filename="$(find sensor_plugins)/sensor_ros_plugins/urdf/sensor_snippets.xacro"/>
 
   <!--
     Vehicle's parameters (remember to enter the model parameters below)
@@ -74,7 +74,7 @@
     </gazebo>
 
     <!-- Include the sensor modules -->
-    <!-- <xacro:include filename="$(find vtec_s3_description)/urdf/sensors.xacro"/> -->
+    <xacro:include filename="$(find vtec_s3_description)/urdf/sensors.xacro"/>
 
   </xacro:macro>
 
