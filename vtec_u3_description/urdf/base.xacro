@@ -1,7 +1,5 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <!-- Loading some constants -->
-  <xacro:include filename="$(find uuv_descriptions)/urdf/common.urdf.xacro"/>
   <!-- Loading file with sensor macros -->
   <xacro:include filename="$(find uuv_sensor_ros_plugins)/urdf/sensor_snippets.xacro"/>
   <!-- Loading the UUV simulator ROS plugin macros -->
@@ -22,7 +20,7 @@
   <xacro:property name="cog" value="0 0 0"/> <!-- At the quasi geometric center -> we'll take it as the COG-->
   <xacro:property name="geocenter" value="-0.0069 -0.00909 -0.01005"/>
   <!-- Fluid density -->
-  <xacro:property name="rho" value="1000"/>
+  <!-- <xacro:property name="rho" value="1000"/> -->
 
   <!--
     Visual mesh file for the vehicle, usually in DAE (Collada) format. Be sure to store the
@@ -75,7 +73,8 @@
       </link>
 
     <gazebo reference="${namespace}/base_link">
-      <selfCollide>false</selfCollide>
+      <selfCollide>0</selfCollide>
+      <turnGravityOff>1</turnGravityOff>
     </gazebo>
 
     <gazebo>
