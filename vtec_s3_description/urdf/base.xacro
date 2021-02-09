@@ -1,13 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <!-- Loading some constants -->
-  <xacro:include filename="$(find uuv_descriptions)/urdf/common.urdf.xacro"/>
   <!-- Loading file with sensor macros -->
-  <xacro:include filename="$(find uuv_sensor_ros_plugins)/urdf/sensor_snippets.xacro"/>
-  <!-- Loading the UUV simulator ROS plugin macros -->
-  <xacro:include filename="$(find uuv_gazebo_ros_plugins)/urdf/snippets.xacro"/>
-  <!-- Loading vehicle's specific macros -->
-  <xacro:include filename="$(find vtec_s3_description)/urdf/snippets.xacro"/>
+  <!-- <xacro:include filename="$(find uuv_sensor_ros_plugins)/urdf/sensor_snippets.xacro"/> -->
 
   <!--
     Vehicle's parameters (remember to enter the model parameters below)
@@ -15,10 +9,10 @@
 
   <xacro:property name="mass" value="30"/>
   <!-- Center of gravity -->
-  <xacro:property name="cog" value="0 0 0.19"/> <!-- Superficie del barco esta a 0.19 m de COM en Z-->
+  <xacro:property name="cog" value="0 0 0.19"/> <!-- Superficie del barco esta a 0.19 m de COM en Z -->
 
   <!-- Fluid density -->
-  <xacro:property name="rho" value="1000"/>
+  <!-- <xacro:property name="rho" value="1000"/> -->
 
   <!-- For the collision cube -->
   <xacro:property name="x_size" value="1"/>
@@ -75,14 +69,9 @@
       </link>
 
     <gazebo reference="${namespace}/base_link">
-      <selfCollide>false</selfCollide>
+      <selfCollide>0</selfCollide>
+      <turnGravityOff>1</turnGravityOff>
     </gazebo>
-
-    <!-- Set up hydrodynamic plugin given as input parameter -->
-    <xacro:insert_block name="gazebo"/>
-
-    <!-- Include the thruster modules -->
-    <xacro:include filename="$(find vtec_s3_description)/urdf/actuators.xacro"/>
 
     <!-- Include the sensor modules -->
     <!-- <xacro:include filename="$(find vtec_s3_description)/urdf/sensors.xacro"/> -->
