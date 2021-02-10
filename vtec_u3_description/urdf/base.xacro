@@ -1,11 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
   <!-- Loading file with sensor macros -->
-  <xacro:include filename="$(find uuv_sensor_ros_plugins)/urdf/sensor_snippets.xacro"/>
-  <!-- Loading the UUV simulator ROS plugin macros -->
-  <xacro:include filename="$(find uuv_gazebo_ros_plugins)/urdf/snippets.xacro"/>  <!-- Don't take it out or it won't work  -->
-  <!-- Loading vehicle's specific macros -->
-  <!-- <xacro:include filename="$(find vtec_u3_description)/urdf/snippets.xacro"/> -->
+  <!-- <xacro:include filename="$(find uuv_sensor_ros_plugins)/urdf/sensor_snippets.xacro"/> -->
 
   <!--
     Vehicle's parameters (remember to enter the model parameters below)
@@ -19,8 +15,6 @@
   <!-- Center of gravity -->
   <xacro:property name="cog" value="0 0 0"/> <!-- At the quasi geometric center -> we'll take it as the COG-->
   <xacro:property name="geocenter" value="-0.0069 -0.00909 -0.01005"/>
-  <!-- Fluid density -->
-  <!-- <xacro:property name="rho" value="1000"/> -->
 
   <!--
     Visual mesh file for the vehicle, usually in DAE (Collada) format. Be sure to store the
@@ -75,24 +69,18 @@
     <gazebo reference="${namespace}/base_link">
       <selfCollide>0</selfCollide>
       <turnGravityOff>1</turnGravityOff>
-    </gazebo>
 
-    <gazebo>
-      <plugin name="sixDOFMov" filename="libsixDOFMov.so">
+      <!-- CUSTOM PLUG-IN -->
+      <!-- <plugin name="sixDOFMov" filename="libsixDOFMov.so">
         <commandTopic>/uuv_desired_velocity</commandTopic>
         <odometryTopic>odom</odometryTopic>
         <odometryFrame>odom</odometryFrame>
         <odometryRate>100.0</odometryRate>
         <robotBaseFrame>${namespace}/base_link</robotBaseFrame>
         <publishTF>false</publishTF>
-      </plugin>
+      </plugin> -->
+
     </gazebo>
-
-    <!-- Set up hydrodynamic plugin given as input parameter -->
-    <!-- <xacro:insert_block name="gazebo"/> -->
-
-    <!-- Include the thruster modules -->
-    <!-- <xacro:include filename="$(find vtec_u3_description)/urdf/actuators.xacro"/> -->
 
     <!-- Include the sensor modules -->
     <xacro:include filename="$(find vtec_u3_description)/urdf/sensors.xacro"/> 

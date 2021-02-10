@@ -37,15 +37,8 @@
            command="$(find xacro)/xacro.py '$(find vtec_u3_description)/robots/$(arg mode).xacro' debug:=$(arg debug) namespace:=$(arg namespace)" />
     
     <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
-    <group if="$(arg use_geodetic)">
-      <node name="urdf_spawner" pkg="uuv_descriptions" type="spawn_model" respawn="false" output="screen"
-            args="-urdf -latitude $(arg latitude) -longitude $(arg longitude) -depth $(arg depth) -latitude_ref $(arg latitude_ref) -longitude_ref $(arg longitude_ref) -altitude_ref $(arg altitude_ref) -R $(arg roll) -P $(arg pitch) -Y $(arg yaw) -model $(arg namespace) -param /$(arg namespace)/robot_description"/>
-    </group>
-
-    <group unless="$(arg use_geodetic)">
-      <node name="urdf_spawner" pkg="uuv_descriptions" type="spawn_model" respawn="false" output="screen"
+      <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
             args="-urdf -x $(arg x) -y $(arg y) -z $(arg z) -R $(arg roll) -P $(arg pitch) -Y $(arg yaw) -model $(arg namespace) -param /$(arg namespace)/robot_description"/>
-    </group>
 
     <!-- A joint state publisher plugin already is started with the model, no need to use the default joint state publisher -->
 
@@ -53,121 +46,10 @@
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="true" output="screen">
       <param name="robot_description" value="/$(arg namespace)/robot_description" />
     </node>
+
+      <!-- <include file="$(find vtec_u3_description)/launch/peripherals.launch" /> -->
+
   </group>
-    <!-- Begin Torpedoes_1 -->
-  <group ns="Torpedoes_1">
-    <param name="tf_prefix" value="robot2_tf" />
-    <param name="robot_description"
-          command="$(find xacro)/xacro --inorder '$(find shooter_description)/urdf/torpedoes.xacro' "/> 
-    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
-          args="-urdf -param robot_description -model torpedoes_1"/>
-    <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher"/>
-  </group>
-
-  <!-- Begin Torpedoes_2 -->
-  <group ns="Torpedoes_2">
-    <param name="tf_prefix" value="robot3_tf" />
-    <param name="robot_description"
-          command="$(find xacro)/xacro --inorder '$(find shooter_description)/urdf/torpedoes_1.xacro' "/> 
-    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
-          args="-urdf -param robot_description -model torpedoes_2"/>
-    <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher"/>
-  </group>
-
-  <!-- Begin Gate -->
-  <group ns="Gate">
-    <param name="tf_prefix" value="robot3_tf" />
-    <param name="robot_description"
-          command="$(find xacro)/xacro --inorder '$(find uuv_world)/urdf/gate.xacro' "/> 
-    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
-          args="-urdf -param robot_description -model gate_1"/>
-  </group>
-  
-  <!-- Begin Buoy1 -->
-
-  <group ns="Buoy1">
-    <param name="tf_prefix" value="robot3_tf" />
-    <param name="robot_description"
-          command="$(find xacro)/xacro --inorder '$(find uuv_world)/urdf/buoy.xacro' "/> 
-    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
-          args="-urdf -param robot_description -model buoy_1"/>
-  </group>
-
-  <!-- Begin Buoy2-->
-
-  <group ns="Buoy2">
-    <param name="tf_prefix" value="robot3_tf" />
-    <param name="robot_description"
-          command="$(find xacro)/xacro --inorder '$(find uuv_world)/urdf/buoy2.xacro' "/> 
-    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
-          args="-urdf -param robot_description -model buoy_2"/>
-  </group>
-
-  <!-- Begin Octagon -->
-
-  <group ns="Octagon">
-    <param name="tf_prefix" value="robot3_tf" />
-    <param name="robot_description"
-          command="$(find xacro)/xacro --inorder '$(find uuv_world)/urdf/octagon.xacro' "/> 
-    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
-          args="-urdf -param robot_description -model octagon_1"/>
-  </group>
-  <!-- Begin Bin1-->
-
-  <group ns="Bin1">
-    <param name="tf_prefix" value="robot3_tf" />
-    <param name="robot_description"
-          command="$(find xacro)/xacro --inorder '$(find uuv_world)/urdf/bin1.xacro' "/> 
-    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
-          args="-urdf -param robot_description -model bin_1"/>
-  </group>
-
-  <!-- Begin Bin2-->
-
-  <group ns="Bin2">
-    <param name="tf_prefix" value="robot3_tf" />
-    <param name="robot_description"
-          command="$(find xacro)/xacro --inorder '$(find uuv_world)/urdf/bin2.xacro' "/> 
-    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
-          args="-urdf -param robot_description -model bin_2"/>
-  </group>
-  <!-- Begin Torpedo1-->
-  <group ns="Torpedo1">
-    <param name="tf_prefix" value="robot3_tf" />
-    <param name="robot_description"
-          command="$(find xacro)/xacro --inorder '$(find uuv_world)/urdf/torpedos1.xacro' "/> 
-    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
-          args="-urdf -param robot_description -model torpedos_1"/>
-  </group>
-
-  <!-- Begin Torpedo2-->
-
-  <group ns="Torpedo2">
-    <param name="tf_prefix" value="robot3_tf" />
-    <param name="robot_description"
-          command="$(find xacro)/xacro --inorder '$(find uuv_world)/urdf/torpedos2.xacro' "/> 
-    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
-          args="-urdf -param robot_description -model torpedos_2"/>
-  </group>
-  <!-- Publish state and tf for in relation to the world frame -->
-  <include file="$(find uuv_assistants)/launch/message_to_tf.launch">
-    	<arg name="namespace" value="$(arg namespace)"/>
-  </include>
-  <include file="$(find realsense_gazebo_plugin)/launch/depth_proc.launch">
-  </include>
-    <!-- check if you are simulating robot with gazebo -->
-    <arg  name="gazebo" default="false" />
-    <group unless="$(arg gazebo)">
-    </group>
-
-
-  <!-- Enable camera gazebo plugin-->
-  <include file="$(find realsense_gazebo_plugin)/launch/depth_proc.launch">
-  </include>
-    <!-- check if you are simulating robot with gazebo -->
-    <arg  name="gazebo" default="false" />
-    <group unless="$(arg gazebo)">
-    </group>
 
 </launch>
  

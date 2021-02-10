@@ -1,9 +1,6 @@
-
-
+<?xml version="1.0"?>
 <!-- https://answers.ros.org/question/257694/questions-to-sdf-urdf-xacro-material-textures-using-gazebo/ -->
 
-
-<?xml version="1.0"?>
 <package format="2">
   <name>shooter_description</name>
   <version>0.0.0</version>

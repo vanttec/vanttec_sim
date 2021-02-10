@@ -40,21 +40,22 @@
     <origin xyz="0.08992 0.00853 0.05671" rpy="0 0 0"/>
   </xacro:default_imu>
 
-  <!-- Mount a camera  -->
-  <xacro:default_camera namespace="${namespace}" parent_link="${namespace}/base_link" suffix="">
+  <!-- Realsense R200 -->
+  <!-- Import macro for realsense-RS200 camera-->
+  <xacro:include filename="$(find realsense_gazebo_plugin)/urdf/realsense-RS200.macro.xacro"/>
+  <!-- Create camera instance -->
+  <xacro:realsense-rs200 prefix="" parent="${namespace}/base_link">
     <origin xyz="0.19281 0.01961 0.06659" rpy="0 0 0"/>
-  </xacro:default_camera>
+  </xacro:realsense-rs200>
+
+  <!-- Mount a camera  -->
+  <!-- <xacro:default_camera namespace="${namespace}" parent_link="${namespace}/base_link" suffix="">
+    <origin xyz="0.19281 0.01961 0.06659" rpy="0 0 0"/>
+  </xacro:default_camera> -->
+
   <!-- Mount base torpedos  -->
-  <xacro:base_torpedos namespace="${namespace}" parent_link="${namespace}/base_link" suffix="">
+  <!-- <xacro:base_torpedos namespace="${namespace}" parent_link="${namespace}/base_link" suffix="">
     <origin xyz="0.1031 0.022 0.21" rpy="0 0 -1.5757"/>
-  </xacro:base_torpedos>
-  <!-- Mount torpedo1  -->
-  <!-- <xacro:torpedo1 namespace="${namespace}" parent_link="${namespace}/base_link" suffix="">
-    <origin xyz="0.27781 0.01961 -0.16659" rpy="0 0 0"/>
-  </xacro:torpedo1>-->
-  <!-- Mount torpedo2  -->
-  <!--<xacro:torpedo2 namespace="${namespace}" parent_link="${namespace}/base_link" suffix="">
-    <origin xyz="0.10781 0.01961 -0.16659" rpy="0 0 0"/>
-  </xacro:torpedo2>-->
+  </xacro:base_torpedos> -->
 
 </robot>
