@@ -24,7 +24,7 @@
 
   /robots/<mode>.xacro
   -->
-  <arg name="mode" default="vtecu3_default"/>
+  <arg name="mode" default="vtec_u3_default"/>
 
   <!-- Vehicle's namespace -->
   <arg name="namespace" default="vtec_u3"/>
@@ -34,7 +34,7 @@
 
   <group ns="$(arg namespace)">
     <param name="robot_description"
-           command="$(find xacro)/xacro.py '$(find vtec_u3_description)/robots/$(arg mode).xacro' debug:=$(arg debug) namespace:=$(arg namespace)" />
+           command="$(find xacro)/xacro --inorder '$(find vtec_u3_description)/robots/$(arg mode).xacro' debug:=$(arg debug) namespace:=$(arg namespace)" />
     
     <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
       <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
