@@ -141,7 +141,6 @@
     </link>
 
     <gazebo reference="${namespace}/imu${imu_suffix}_link">
-      <selfCollide>0</selfCollide>
       <turnGravityOff>1</turnGravityOff>
     </gazebo>
 
