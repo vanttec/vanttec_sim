@@ -1,6 +1,0 @@
-[submodule "velodyne_simulator"]
-	path = velodyne_simulator
-	url = https://github.com/lmark1/velodyne_simulator.git
-[submodule "realsense_gazebo_plugin"]
-	path = realsense_gazebo_plugin
-	url = https://github.com/SyrianSpock/realsense_gazebo_plugin.git
