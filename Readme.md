@@ -9,5 +9,5 @@ To run the USV simulator, in a terminal write the following commands:
  ```
 roslaunch uv_worlds lake.launch
 roslaunch vtec_s3_description upload.launch
-roslaunch usv_master master.launch
+roslaunch usv_master usv_master.launch
 ```
