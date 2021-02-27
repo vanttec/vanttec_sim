@@ -48,7 +48,6 @@
     </node>
 
       <!-- <include file="$(find vtec_u3_description)/launch/peripherals.launch" /> -->
-
   </group>
 
 </launch>

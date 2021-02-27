@@ -43,15 +43,12 @@
   <xacro:include filename="$(find velodyne_description)/urdf/VLP-16.urdf.xacro"/>
   <VLP-16 parent="${namespace}/base_link" name="velodyne" topic="/velodyne_points" hz="10" samples="440" gpu="0">
     <origin xyz="0.25 0 0.38" rpy="0 0 0" />
-  </VLP-16>
+  </VLP-16> 
 
   <!-- Realsense R200 -->
-  <!-- Import macro for realsense-RS200 camera-->
-  <xacro:include filename="$(find realsense_gazebo_plugin)/urdf/realsense-RS200.macro.xacro"/>
-  <!-- Create camera instance -->
-  <xacro:realsense-rs200 prefix="" parent="${namespace}/base_link">
-      <origin xyz="0.52 0 0.22" rpy="0 0 0" />   
-  </xacro:realsense-rs200>
+  <xacro:realsense_camera namespace="${namespace}" parent_link="${namespace}/base_link" suffix="">
+    <origin xyz="0.52 0 0.22" rpy="0 0 0"/>
+  </xacro:realsense_camera>
 
   <!-- Mount a camera  -->
   <!-- <xacro:default_camera namespace="${namespace}" parent_link="${namespace}/base_link" suffix="">
