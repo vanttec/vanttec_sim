@@ -47,7 +47,18 @@
       <param name="robot_description" value="/$(arg namespace)/robot_description" />
     </node>
 
-      <!-- <include file="$(find vtec_u3_description)/launch/peripherals.launch" /> -->
+      <!-- <include file="$(find vtec_u3_description)/launch/peripherals.launch" /> -->   
+  </group>
+
+  <!-- Enable camera gazebo plugin-->
+  <include file="$(find realsense_gazebo_plugin)/launch/depth_procfront.launch">
+  </include>
+
+ <!--  <include file="$(find realsense_gazebo_plugin)/launch/depth_procdown.launch">-->
+ <!--  </include>-->
+    <!-- check if you are simulating robot with gazebo -->
+  <arg  name="gazebo" default="false" />
+  <group unless="$(arg gazebo)">
   </group>
 
 </launch>
