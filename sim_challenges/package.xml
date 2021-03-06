@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>uuv_world</name>
+  <name>sim_challenges</name>
   <version>0.6.1</version>
-  <description>The uuv_world package</description>
+  <description>The sim_challenges package</description>
 
   <maintainer email="Musa.Marcusso@de.bosch.com">Musa Morena Marcusso Manhaes</maintainer>
 

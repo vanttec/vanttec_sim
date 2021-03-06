@@ -88,7 +88,7 @@
         </plugin>
         <!--<pose frame="">0 0 0.015 0 0 0</pose>-->
     </gazebo>
-
+ 
     <!-- Load parameters to model's main link-->
     <gazebo reference="${prefix}rs200_camera">
         <self_collide>0</self_collide>
