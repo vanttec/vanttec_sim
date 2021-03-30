@@ -8,7 +8,7 @@
   <arg name="z"     default="-2"/>
   <arg name="roll"  default="0"/>
   <arg name="pitch" default="0"/>
-  <arg name="yaw"   default="0"/>
+  <arg name="yaw"   default="1.570796"/>
 
   <arg name="use_geodetic" default="false"/>
   <arg name="latitude" default="0"/>
