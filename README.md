@@ -16,7 +16,7 @@ To run the UUV simulator, in a terminal write the following commands:
 ```
 roslaunch uv_worlds lake.launch
 roslaunch vtec_u3_description upload.launch
-rostopic pub /uuv_desired_velocity ...
+run uuv simulation file from vanttec_uuv package
 ```
 
 # Escenario tasks
