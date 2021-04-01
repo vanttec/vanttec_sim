@@ -2,7 +2,7 @@
 <robot name="torpedos_1" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
 <!-- Introducir meshes -->
-<xacro:property name="visual_mesh_file" value="file://$(find uuv_world)/models/meshes/Mytorpedo1.dae" />
+<xacro:property name="visual_mesh_file" value="file://$(find sim_challenges)/models/meshes/Mytorpedo1.dae" />
 
 <!-- <origin xyz="0.085 (0 -0.085) 0 0" rpy="0.0 0.0 1.57075"/> -->
 
@@ -30,8 +30,11 @@
         iyy="1.0" iyz="0.0"
         izz="1.0"/>
     </inertial>
-
 </link>
+<gazebo reference="torpedos1_base">
+  <selfCollide>0</selfCollide>
+  <turnGravityOff>1</turnGravityOff>
+</gazebo>
 
 
 </robot> 

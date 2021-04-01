@@ -2,7 +2,7 @@
 <robot name="buoy_2" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
 <!-- Introducir meshes -->
-<xacro:property name="visual_mesh_file" value="file://$(find uuv_world)/models/meshes/buoy2.dae" />
+<xacro:property name="visual_mesh_file" value="file://$(find sim_challenges)/models/meshes/buoy2.dae" />
 
 <!-- <origin xyz="0.085 (0 -0.085) 0 0" rpy="0.0 0.0 1.57075"/> -->
 
@@ -20,7 +20,7 @@
       <geometry>
         <mesh filename="${visual_mesh_file}" scale="1 1 1" />
       </geometry>
-    </collision>
+    </collision> 
 
     <inertial>
       <origin xyz="14.349550 -0.497678 -3.126359" rpy="0.0 0.0 1.57"/>
@@ -30,8 +30,11 @@
         iyy="1.0" iyz="0.0"
         izz="1.0"/>
     </inertial>
-
 </link>
+<gazebo reference="buoy2_base">
+  <selfCollide>0</selfCollide>
+  <turnGravityOff>1</turnGravityOff>
+</gazebo>
 
 
 </robot> 
