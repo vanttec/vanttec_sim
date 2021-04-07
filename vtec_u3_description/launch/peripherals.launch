@@ -1,0 +1,110 @@
+<launch>
+    <!-- Begin Torpedoes_1 -->
+  <group ns="Torpedoes_1">
+    <param name="tf_prefix" value="robot2_tf" />
+    <param name="robot_description"
+          command="$(find xacro)/xacro --inorder '$(find shooter_description)/urdf/torpedoes.xacro' "/> 
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
+          args="-urdf -param robot_description -model torpedoes_1"/>
+    <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher"/>
+  </group>
+
+  <!-- Begin Torpedoes_2 -->
+  <group ns="Torpedoes_2">
+    <param name="tf_prefix" value="robot3_tf" />
+    <param name="robot_description"
+          command="$(find xacro)/xacro --inorder '$(find shooter_description)/urdf/torpedoes_1.xacro' "/> 
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
+          args="-urdf -param robot_description -model torpedoes_2"/>
+    <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher"/>
+  </group>
+
+  <!-- Begin Gate -->
+  <group ns="Gate">
+    <param name="tf_prefix" value="robot3_tf" />
+    <param name="robot_description"
+          command="$(find xacro)/xacro --inorder '$(find sim_challenges)/urdf/gate.xacro' "/> 
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
+          args="-urdf -param robot_description -model gate_1"/>
+  </group>
+  
+  <!-- Begin Buoy1 -->
+
+  <group ns="Buoy1">
+    <param name="tf_prefix" value="robot3_tf" />
+    <param name="robot_description"
+          command="$(find xacro)/xacro --inorder '$(find sim_challenges)/urdf/buoy.xacro' "/> 
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
+          args="-urdf -param robot_description -model buoy_1"/>
+  </group>
+
+  <!-- Begin Buoy2-->
+
+  <group ns="Buoy2">
+    <param name="tf_prefix" value="robot3_tf" />
+    <param name="robot_description"
+          command="$(find xacro)/xacro --inorder '$(find sim_challenges)/urdf/buoy2.xacro' "/> 
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
+          args="-urdf -param robot_description -model buoy_2"/>
+  </group>
+
+  <!-- Begin Octagon -->
+
+  <group ns="Octagon">
+    <param name="tf_prefix" value="robot3_tf" />
+    <param name="robot_description"
+          command="$(find xacro)/xacro --inorder '$(find sim_challenges)/urdf/octagon.xacro' "/> 
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
+          args="-urdf -param robot_description -model octagon_1"/>
+  </group>
+  <!-- Begin Bin1-->
+
+  <group ns="Bin1">
+    <param name="tf_prefix" value="robot3_tf" />
+    <param name="robot_description"
+          command="$(find xacro)/xacro --inorder '$(find sim_challenges)/urdf/bin1.xacro' "/> 
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
+          args="-urdf -param robot_description -model bin_1"/>
+  </group>
+
+  <!-- Begin Bin2-->
+
+  <group ns="Bin2">
+    <param name="tf_prefix" value="robot3_tf" />
+    <param name="robot_description"
+          command="$(find xacro)/xacro --inorder '$(find sim_challenges)/urdf/bin2.xacro' "/> 
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
+          args="-urdf -param robot_description -model bin_2"/>
+  </group>
+  <!-- Begin Torpedo1-->
+  <group ns="Torpedo1">
+    <param name="tf_prefix" value="robot3_tf" />
+    <param name="robot_description"
+          command="$(find xacro)/xacro --inorder '$(find sim_challenges)/urdf/torpedos1.xacro' "/> 
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
+          args="-urdf -param robot_description -model torpedos_1"/>
+  </group>
+
+  <!-- Begin Torpedo2-->
+
+  <group ns="Torpedo2">
+    <param name="tf_prefix" value="robot3_tf" />
+    <param name="robot_description"
+          command="$(find xacro)/xacro --inorder '$(find sim_challenges)/urdf/torpedos2.xacro' "/> 
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
+          args="-urdf -param robot_description -model torpedos_2"/>
+  </group>
+  <!-- Publish state and tf for in relation to the world frame -->
+  <include file="$(find uuv_assistants)/launch/message_to_tf.launch">
+    	<arg name="namespace" value="$(arg namespace)"/>
+  </include>
+  
+  <!-- Enable camera gazebo plugin-->
+  <include file="$(find realsense_gazebo_plugin)/launch/depth_proc.launch">
+  </include>
+    <!-- check if you are simulating robot with gazebo -->
+    <arg  name="gazebo" default="false" />
+    <group unless="$(arg gazebo)">
+    </group>
+
+</launch>

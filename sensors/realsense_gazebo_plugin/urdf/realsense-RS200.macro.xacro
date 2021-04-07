@@ -88,13 +88,14 @@
         </plugin>
         <!--<pose frame="">0 0 0.015 0 0 0</pose>-->
     </gazebo>
-
+ 
     <!-- Load parameters to model's main link-->
     <gazebo reference="${prefix}rs200_camera">
         <self_collide>0</self_collide>
         <enable_wind>0</enable_wind>
         <kinematic>0</kinematic>
-        <gravity>0</gravity>
+        <turnGravityOff>1</turnGravityOff>
+        <!-- <gravity>0</gravity> -->
         <!--<mu>1</mu>-->
         <mu2>1</mu2>
         <fdir1>0 0 0</fdir1>

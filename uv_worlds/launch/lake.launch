@@ -14,7 +14,7 @@
         <arg name="verbose" value="true"/>
     </include>
 
-    <!-- <include file="$(find uv_worlds)/launch/publish_world_ned_frame.launch"/>
+    <include file="$(find uv_worlds)/launch/publish_world_ned_frame.launch"/>
     
     <node name="publish_world_models"
         pkg="uv_worlds"
@@ -32,5 +32,5 @@
         <include file="$(find uv_worlds)/launch/set_simulation_timer.launch">
             <arg name="timeout" value="$(arg timeout)"/>
         </include>
-    </group> -->
+    </group> 
 </launch>
