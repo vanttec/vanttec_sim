@@ -1,4 +1,4 @@
 [submodule "vanttec_usv"]
 	path = vanttec_usv
 	url = https://github.com/vanttec/vanttec_usv.git
-	branch = feature/usv_simulation
+	branch = feature/perception
