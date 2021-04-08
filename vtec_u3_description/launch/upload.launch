@@ -124,6 +124,15 @@
     <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
           args="-urdf -param robot_description -model torpedos_2"/>
   </group>
+  <!-- Begin Buoy1 -->
+
+  <group ns="Pathmarker">
+    <param name="tf_prefix" value="robot3_tf" />
+    <param name="robot_description"
+          command="$(find xacro)/xacro --inorder '$(find sim_challenges)/urdf/pathmarker.xacro' "/> 
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
+          args="-urdf -param robot_description -model path_marker"/>
+  </group>
   <!-- Enable camera gazebo plugin-->
   <include file="$(find realsense_gazebo_plugin)/launch/depth_procfront.launch">
   </include>
