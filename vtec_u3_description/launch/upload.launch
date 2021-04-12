@@ -8,7 +8,7 @@
   <arg name="z"     default="-2"/>
   <arg name="roll"  default="0"/>
   <arg name="pitch" default="0"/>
-  <arg name="yaw"   default="1.570796"/>
+  <arg name="yaw"   default="0"/>
 
   <arg name="use_geodetic" default="false"/>
   <arg name="latitude" default="0"/>
@@ -21,7 +21,6 @@
 
   <!-- Mode to open different robot configurations as set the in file
   nomenclature standard for the files in /robots
-
   /robots/<mode>.xacro
   -->
   <arg name="mode" default="vtec_u3_default"/>
@@ -124,6 +123,26 @@
     <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
           args="-urdf -param robot_description -model torpedos_2"/>
   </group>
+  <!-- Begin Buoy1 -->
+
+  <!-- Begin Path marker-->
+  <group ns="Pathmarker">
+    <param name="tf_prefix" value="robot3_tf" />
+    <param name="robot_description"
+          command="$(find xacro)/xacro --inorder '$(find sim_challenges)/urdf/pathmarker.xacro' "/> 
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
+          args="-urdf -param robot_description -model path_marker"/>
+  </group>
+
+  <!-- Begin Double Path Marker-->
+  <group ns="Pathmarker_double">
+    <param name="tf_prefix" value="robot3_tf" />
+    <param name="robot_description"
+          command="$(find xacro)/xacro --inorder '$(find sim_challenges)/urdf/pathmarker2.xacro' "/> 
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
+          args="-urdf -param robot_description -model path_marker2"/>
+  </group>
+
   <!-- Enable camera gazebo plugin-->
   <include file="$(find realsense_gazebo_plugin)/launch/depth_procfront.launch">
   </include>
