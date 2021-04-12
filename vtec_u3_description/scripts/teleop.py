@@ -23,9 +23,8 @@ Shoot Torpedoes
     w = enfrente
     s = atras 
 2) Angular:
-    i = r
-    o = pitch
-    p = yaw
+    i = yaw derecho
+    o = yaw izquierdo
 
 CTRL-C to quit
 """
@@ -89,11 +88,11 @@ def Shoot():
             twist.angular.y = z_arriba     
         #Raw
         elif key=='i':
-            yaw_d = -1
+            yaw_d = 1
             twist.angular.z = yaw_d
         #Yaw izquierda
         elif key=='o':
-            yaw_i = 1
+            yaw_i = -1
             twist.angular.z = yaw_i
         #This key is control+c for killing the terminal
         if (key == '\x03'):
