@@ -16,4 +16,15 @@
   <!-- Joint state publisher plugin -->
   <!-- <xacro:default_joint_state_publisher namespace="$(arg namespace)" update_rate="10"/> -->
 
+  <gazebo>
+  <plugin name="object_controller" filename="libgazebo_ros_planar_move.so">
+    <commandTopic>/teleop</commandTopic>
+    <odometryTopic>odom</odometryTopic>
+    <odometryFrame>odom</odometryFrame>
+    <odometryRate>20.0</odometryRate>
+    <robotBaseFrame>vtec_u3</robotBaseFrame>
+    <publishTF>false</publishTF>
+  </plugin>
+</gazebo>
+
 </robot>
