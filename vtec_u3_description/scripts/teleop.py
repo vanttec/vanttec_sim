@@ -32,10 +32,9 @@ def opencv_bridge(data, key):
     bridge = CvBridge()
     cv_image = bridge.imgmsg_to_cv2(data, "bgr8")
     cv2.imshow("Image window", cv_image)
-    if cv2.waitKey(1) & 0xFF == ord('p'):
-        cv2.imwrite('/home/ivan5d/Pictures/opencv.jpg', cv_image)
+    if cv2.waitKey(10) & (key == 'p'):
+        cv2.imwrite('/home/ivan5d/Pictures/path_marker2/opencv.bmp', cv_image)
     
-
 #--------------------------------------------
 #Publisher
 def callback(data):
