@@ -4,6 +4,8 @@ import rospy
 import keyboard 
 from geometry_msgs.msg import Twist
 from sensor_msgs.msg import Image
+from cv_bridge import CvBridge, CvBridgeError
+import cv2
 
 import sys, select, os
 if os.name == 'nt':
@@ -26,13 +28,20 @@ def getKey():
     termios.tcsetattr(sys.stdin, termios.TCSADRAIN, settings)
     return key
 
+def opencv_bridge(data, key):
+    bridge = CvBridge()
+    cv_image = bridge.imgmsg_to_cv2(data, "bgr8")
+    cv2.imshow("Image window", cv_image)
+    if cv2.waitKey(1) & 0xFF == ord('p'):
+        cv2.imwrite('/home/ivan5d/Pictures/opencv.jpg', cv_image)
+    
+
 #--------------------------------------------
 #Publisher
 def callback(data):
     v_lin = 0.8
     v_ang = 0.8
-    twist=Twist()
-    image = Image() 
+    twist=Twist() 
     msg = """
 
     ---------------------------
@@ -79,11 +88,13 @@ def callback(data):
         twist.angular.z = -1*v_ang
     print (msg)
     pub = rospy.Publisher('/teleop', Twist, queue_size=10)
-    rate = rospy.Rate(5)
+    rate = rospy.Rate(10)
     pub.publish(twist)
     rate.sleep()
 
-def Image_Subscriber():
+    opencv_bridge(data, key)    
+
+def image_subscriber():
      #/frontr200/camera/color/image_raw [sensor_msgs/Image]
     rospy.init_node('Teleop', anonymous=True)
     rospy.Subscriber("/frontr200/camera/color/image_raw", Image, callback) #Callback
@@ -93,6 +104,6 @@ if __name__ == '__main__':
     if os.name != 'nt':
         settings = termios.tcgetattr(sys.stdin)
     try:
-        Image_Subscriber()
+        image_subscriber()
     except rospy.ROSInterruptException:
         pass
