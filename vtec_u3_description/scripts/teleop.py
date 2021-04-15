@@ -11,11 +11,11 @@ if os.name == 'nt':
 else:
   import tty, termios
 
-target_linear_vel = 0.0
 status = 0
 
 msg = """
-Shoot Torpedoes
+
+Teleop vtec_u3 
 ---------------------------
 1) Lineal:
     a = izquierda
@@ -25,6 +25,8 @@ Shoot Torpedoes
 2) Angular:
     i = yaw derecho
     o = yaw izquierdo
+3) Picture: 
+    p = take picture
 
 CTRL-C to quit
 """
@@ -44,7 +46,7 @@ def getKey():
     return key
 
 #--------------------------------------------
-def Shoot():
+def Teleop():
     #Publish: one topic Twist message type 
     pub = rospy.Publisher('/teleop', Twist, queue_size=10)
 
@@ -53,8 +55,8 @@ def Shoot():
 
     #10 Hz
     rate = rospy.Rate(10) 
-
-    target_linear_vel = 0
+    v_lin = 0.8
+    v_ang = 0.8
     status = 0
 
     while not rospy.is_shutdown():
@@ -64,36 +66,28 @@ def Shoot():
         key = getKey()
         #enfrente
         if key=='a':
-            enfrente = 0.8
-            twist.linear.y = enfrente 
+            twist.linear.y = v_lin 
         #Right
         elif key=='d':
-            atras = -0.8
-            twist.linear.y = atras 
+            twist.linear.y = -1*v_lin 
         #izquierda
         elif key=='w':
-            enfrente = 0.8
-            twist.linear.x = enfrente
+            twist.linear.x = v_lin
         #atras
         elif key=='s':
-            atras = -0.8
-            twist.linear.x = atras 
+            twist.linear.x = -1*v_lin 
         #z abajo
         elif key=='l':
-            z_abajo = -1
-            twist.linear.z = z_abajo
+            twist.linear.z = -1*v_ang
         #z arriba
         elif key=='k':
-            z_arriba = 1
-            twist.angular.y = z_arriba     
+            twist.angular.y = v_ang     
         #Raw
         elif key=='i':
-            yaw_d = 1
-            twist.angular.z = yaw_d
+            twist.angular.z = v_ang
         #Yaw izquierda
         elif key=='o':
-            yaw_i = -1
-            twist.angular.z = yaw_i
+            twist.angular.z = -1*v_ang
         #This key is control+c for killing the terminal
         if (key == '\x03'):
             break
@@ -111,6 +105,6 @@ if __name__ == '__main__':
     if os.name != 'nt':
         settings = termios.tcgetattr(sys.stdin)
     try:
-        Shoot()
+        Teleop()
     except rospy.ROSInterruptException:
         pass
