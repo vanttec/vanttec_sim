@@ -12,23 +12,6 @@ else:
     import tty, termios
 
 status = 0
-msg = """
-
-Teleop vtec_u3 
----------------------------
-1) Lineal:
-    a = left
-    d = rights
-    w = forwards
-    s = backwards
-2) Angular:
-    i = right yaw 
-    o = left yaw
-3) Picture: 
-    p = take picture
-
-CTRL-C to quit
-"""
 
 #Diagrama general: camera ---> callback --[if]--> teleop 
 def getKey():
@@ -49,7 +32,26 @@ def callback(data):
     v_lin = 0.8
     v_ang = 0.8
     twist=Twist()
+    image = Image() 
+    msg = """
 
+    ---------------------------
+    Teleop vtec_u3 
+
+    1) Lineal:
+        a = left
+        d = rights
+        w = forwards
+        s = backwards
+    2) Angular:
+        i = right yaw 
+        o = left yaw
+    3) Picture: 
+        p = take picture
+
+    CTRL-C to quit
+
+    """
     key = getKey()
     #Forwards
     if key=='a':
@@ -75,30 +77,22 @@ def callback(data):
     #Left yaw 
     elif key=='o':
         twist.angular.z = -1*v_ang
-        
-    rospy.loginfo(key)
+    print (msg)
     pub = rospy.Publisher('/teleop', Twist, queue_size=10)
-    rate = rospy.Rate(10)
+    rate = rospy.Rate(5)
     pub.publish(twist)
     rate.sleep()
 
-def Image_Subscriber(msg, status):
-     #/frontr200/camera/color/image_raw [sensor_msgs/Image] 1 publisher
-
+def Image_Subscriber():
+     #/frontr200/camera/color/image_raw [sensor_msgs/Image]
     rospy.init_node('Teleop', anonymous=True)
     rospy.Subscriber("/frontr200/camera/color/image_raw", Image, callback) #Callback
     rospy.spin()
-
-    #For menu terminal status  
-    status += 1
-    if status == 20:
-        print (msg) 
-        status = 0
 
 if __name__ == '__main__':
     if os.name != 'nt':
         settings = termios.tcgetattr(sys.stdin)
     try:
-        Image_Subscriber(msg,status)
+        Image_Subscriber()
     except rospy.ROSInterruptException:
         pass
