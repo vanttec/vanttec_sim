@@ -13,9 +13,8 @@ if os.name == 'nt':
 else:
     import tty, termios
 
-status = 0
+counter = 0
 
-#Diagrama general: camera ---> callback --[if]--> teleop 
 def getKey():
     if os.name == 'nt':
         return msvcrt.getch()
@@ -33,8 +32,10 @@ def opencv_bridge(data, key):
     cv_image = bridge.imgmsg_to_cv2(data, "bgr8")
     cv2.imshow("Image window", cv_image)
     if cv2.waitKey(10) & (key == 'p'):
-        cv2.imwrite('/home/ivan5d/Pictures/path_marker2/opencv.bmp', cv_image)
-    
+        global counter
+        counter +=1
+        cv2.imwrite('/home/ivan5d/Pictures/path_marker2/foto_' +str(counter) + '.bmp', cv_image)
+
 #--------------------------------------------
 #Publisher
 def callback(data):
@@ -90,7 +91,6 @@ def callback(data):
     rate = rospy.Rate(10)
     pub.publish(twist)
     rate.sleep()
-
     opencv_bridge(data, key)    
 
 def image_subscriber():
