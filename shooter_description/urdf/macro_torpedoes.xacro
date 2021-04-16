@@ -9,7 +9,7 @@
 <xacro:macro name="macro_torpedoes" params="id *origin">
 <!-- <origin xyz="0.085 (0 -0.085) 0 0" rpy="0.0 0.0 1.57075"/> -->
 
-<link name="torpedoes_${id}">
+<link name="torpedoes_${id}"> 
     <visual>
         <xacro:insert_block name="origin"/>
         <geometry>
