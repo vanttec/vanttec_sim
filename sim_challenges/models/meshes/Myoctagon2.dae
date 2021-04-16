@@ -5,12 +5,39 @@
       <author>Blender User</author>
       <authoring_tool>Blender 2.91.0 commit date:2020-11-25, commit time:08:34, hash:0f45cab862b8</authoring_tool>
     </contributor>
-    <created>2021-04-06T14:59:08</created>
-    <modified>2021-04-06T14:59:08</modified>
+    <created>2021-04-09T17:19:42</created>
+    <modified>2021-04-09T17:19:42</modified>
     <unit name="meter" meter="1"/>
     <up_axis>Z_UP</up_axis>
   </asset>
   <library_effects>
+    <effect id="mybottle-effect">
+      <profile_COMMON>
+        <newparam sid="mybottle_jpg-surface">
+          <surface type="2D">
+            <init_from>mybottle_jpg</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="mybottle_jpg-sampler">
+          <sampler2D>
+            <source>mybottle_jpg-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <lambert>
+            <emission>
+              <color sid="emission">0 0 0 1</color>
+            </emission>
+            <diffuse>
+              <texture texture="mybottle_jpg-sampler" texcoord="UVMap"/>
+            </diffuse>
+            <index_of_refraction>
+              <float sid="ior">1.45</float>
+            </index_of_refraction>
+          </lambert>
+        </technique>
+      </profile_COMMON>
+    </effect>
     <effect id="hacha-effect">
       <profile_COMMON>
         <newparam sid="hacha_jpg-surface">
@@ -65,33 +92,6 @@
         </technique>
       </profile_COMMON>
     </effect>
-    <effect id="bottle2-effect">
-      <profile_COMMON>
-        <newparam sid="bottle2_jpg-surface">
-          <surface type="2D">
-            <init_from>bottle2_jpg</init_from>
-          </surface>
-        </newparam>
-        <newparam sid="bottle2_jpg-sampler">
-          <sampler2D>
-            <source>bottle2_jpg-surface</source>
-          </sampler2D>
-        </newparam>
-        <technique sid="common">
-          <lambert>
-            <emission>
-              <color sid="emission">0 0 0 1</color>
-            </emission>
-            <diffuse>
-              <texture texture="bottle2_jpg-sampler" texcoord="UVMap"/>
-            </diffuse>
-            <index_of_refraction>
-              <float sid="ior">1.45</float>
-            </index_of_refraction>
-          </lambert>
-        </technique>
-      </profile_COMMON>
-    </effect>
     <effect id="_91_191_191_001-effect">
       <profile_COMMON>
         <technique sid="common">
@@ -128,8 +128,8 @@
     </effect>
   </library_effects>
   <library_images>
-    <image id="bottle2_jpg" name="bottle2_jpg">
-      <init_from>bottle2.jpg</init_from>
+    <image id="mybottle_jpg" name="mybottle_jpg">
+      <init_from>mybottle.jpg</init_from>
     </image>
     <image id="dollar_jpg" name="dollar_jpg">
       <init_from>dollar.jpg</init_from>
@@ -139,14 +139,14 @@
     </image>
   </library_images>
   <library_materials>
+    <material id="mybottle-material" name="mybottle">
+      <instance_effect url="#mybottle-effect"/>
+    </material>
     <material id="hacha-material" name="hacha">
       <instance_effect url="#hacha-effect"/>
     </material>
     <material id="dollar-material" name="dollar">
       <instance_effect url="#dollar-effect"/>
-    </material>
-    <material id="bottle2-material" name="bottle2">
-      <instance_effect url="#bottle2-effect"/>
     </material>
     <material id="_91_191_191_001-material" name="191,191,191.001">
       <instance_effect url="#_91_191_191_001-effect"/>
@@ -156,6 +156,48 @@
     </material>
   </library_materials>
   <library_geometries>
+    <geometry id="mybottle-mesh" name="mybottle">
+      <mesh>
+        <source id="mybottle-mesh-positions">
+          <float_array id="mybottle-mesh-positions-array" count="12">-0.3251121 -0.5 0 0.3251121 -0.5 0 -0.3251121 0.5 0 0.3251121 0.5 0</float_array>
+          <technique_common>
+            <accessor source="#mybottle-mesh-positions-array" count="4" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="mybottle-mesh-normals">
+          <float_array id="mybottle-mesh-normals-array" count="3">0 0 1</float_array>
+          <technique_common>
+            <accessor source="#mybottle-mesh-normals-array" count="1" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="mybottle-mesh-map-0">
+          <float_array id="mybottle-mesh-map-0-array" count="12">1 0 0 1 0 0 1 0 1 1 0 1</float_array>
+          <technique_common>
+            <accessor source="#mybottle-mesh-map-0-array" count="6" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="mybottle-mesh-vertices">
+          <input semantic="POSITION" source="#mybottle-mesh-positions"/>
+        </vertices>
+        <triangles material="mybottle-material" count="2">
+          <input semantic="VERTEX" source="#mybottle-mesh-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#mybottle-mesh-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#mybottle-mesh-map-0" offset="2" set="0"/>
+          <p>1 0 0 2 0 1 0 0 2 1 0 3 3 0 4 2 0 5</p>
+        </triangles>
+      </mesh>
+    </geometry>
     <geometry id="hacha-mesh" name="hacha">
       <mesh>
         <source id="hacha-mesh-positions">
@@ -240,48 +282,6 @@
         </triangles>
       </mesh>
     </geometry>
-    <geometry id="bottle2-mesh" name="bottle2">
-      <mesh>
-        <source id="bottle2-mesh-positions">
-          <float_array id="bottle2-mesh-positions-array" count="12">-0.3220339 -0.5 0 0.3220339 -0.5 0 -0.3220339 0.5 0 0.3220339 0.5 0</float_array>
-          <technique_common>
-            <accessor source="#bottle2-mesh-positions-array" count="4" stride="3">
-              <param name="X" type="float"/>
-              <param name="Y" type="float"/>
-              <param name="Z" type="float"/>
-            </accessor>
-          </technique_common>
-        </source>
-        <source id="bottle2-mesh-normals">
-          <float_array id="bottle2-mesh-normals-array" count="3">0 0 1</float_array>
-          <technique_common>
-            <accessor source="#bottle2-mesh-normals-array" count="1" stride="3">
-              <param name="X" type="float"/>
-              <param name="Y" type="float"/>
-              <param name="Z" type="float"/>
-            </accessor>
-          </technique_common>
-        </source>
-        <source id="bottle2-mesh-map-0">
-          <float_array id="bottle2-mesh-map-0-array" count="12">1 0 0 1 0 0 1 0 1 1 0 1</float_array>
-          <technique_common>
-            <accessor source="#bottle2-mesh-map-0-array" count="6" stride="2">
-              <param name="S" type="float"/>
-              <param name="T" type="float"/>
-            </accessor>
-          </technique_common>
-        </source>
-        <vertices id="bottle2-mesh-vertices">
-          <input semantic="POSITION" source="#bottle2-mesh-positions"/>
-        </vertices>
-        <triangles material="bottle2-material" count="2">
-          <input semantic="VERTEX" source="#bottle2-mesh-vertices" offset="0"/>
-          <input semantic="NORMAL" source="#bottle2-mesh-normals" offset="1"/>
-          <input semantic="TEXCOORD" source="#bottle2-mesh-map-0" offset="2" set="0"/>
-          <p>1 0 0 2 0 1 0 0 2 1 0 3 3 0 4 2 0 5</p>
-        </triangles>
-      </mesh>
-    </geometry>
     <geometry id="Myoctagon2_001-mesh" name="Myoctagon2.001">
       <mesh>
         <source id="Myoctagon2_001-mesh-positions">
@@ -333,6 +333,18 @@
   </library_geometries>
   <library_visual_scenes>
     <visual_scene id="Scene" name="Scene">
+      <node id="mybottle" name="mybottle" type="NODE">
+        <matrix sid="transform">0.6 0 0 2.549496 0 -1.74846e-8 -1 0.7862666 0 0.4 -4.37114e-8 1.53435 0 0 0 1</matrix>
+        <instance_geometry url="#mybottle-mesh" name="mybottle">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="mybottle-material" target="#mybottle-material">
+                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+      </node>
       <node id="hacha" name="hacha" type="NODE">
         <matrix sid="transform">-0.4 1.52855e-15 3.49691e-8 0.6631435 3.49691e-8 1.74846e-8 0.4 0.7867118 0 0.4 -1.74846e-8 1.542031 0 0 0 1</matrix>
         <instance_geometry url="#hacha-mesh" name="hacha">
@@ -351,18 +363,6 @@
           <bind_material>
             <technique_common>
               <instance_material symbol="dollar-material" target="#dollar-material">
-                <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
-              </instance_material>
-            </technique_common>
-          </bind_material>
-        </instance_geometry>
-      </node>
-      <node id="bottle2" name="bottle2" type="NODE">
-        <matrix sid="transform">0.5 0 0 2.546931 0 4.17371e-9 -0.5 0.7817208 0 0.35 5.96244e-9 1.547071 0 0 0 1</matrix>
-        <instance_geometry url="#bottle2-mesh" name="bottle2">
-          <bind_material>
-            <technique_common>
-              <instance_material symbol="bottle2-material" target="#bottle2-material">
                 <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
               </instance_material>
             </technique_common>
