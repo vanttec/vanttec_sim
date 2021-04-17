@@ -6,7 +6,11 @@
 
 <xacro:macro_torpedoes id="2">
   <!--<origin xyz="-0.085 0 0" rpy="0.0 0.0 1.5757"/>-->
+<<<<<<< HEAD
   <origin xyz="0.10781 0.01961 -2.16659" rpy="0.0 0.0 1.5757"/>
+=======
+  <origin xyz="-0.085 0 0" rpy="0.0 0.0 1.5757"/>
+>>>>>>> feature/vtec_u3_torpedoes
 </xacro:macro_torpedoes>
 
 <gazebo>
