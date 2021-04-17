@@ -34,7 +34,7 @@ def opencv_bridge(data, key):
     if cv2.waitKey(10) & (key == 'p'):
         global counter
         counter +=1
-        cv2.imwrite('/home/ivan5d/Pictures/path_marker2/foto_' +str(counter) + '.bmp', cv_image)
+        cv2.imwrite('/home/ivan5d/Pictures/VantTec/dataset/gate/gate_' +str(counter) + '.png', cv_image)
 
 #--------------------------------------------
 #Publisher

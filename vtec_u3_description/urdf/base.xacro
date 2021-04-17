@@ -46,21 +46,22 @@
                    iyy="0.37089716" iyz="-0.0036791"
                    izz="0.64879823" /> -->
           <!-- For COM nearly in geometric center -->
-            <inertia ixx="0.83639798529" ixy="-0.00503680373" ixz="0.0560001532"
+            <!-- inertia ixx="0.83639798529" ixy="-0.00503680373" ixz="0.0560001532"
                       iyy="0.46118483068" iyz="-0.01377965358"
-                      izz="1.02986207702" />
+                      izz="1.02986207702" /-->
         </inertial>
 
         <visual>
           <origin xyz="${geocenter}" rpy="0 0 0"/>
           <geometry>
-            <mesh filename="${visual_mesh_file}" scale="0.001 0.001 0.001" />
+            <box size= "0.6 0.6 0.6"/>
+            <!-- mesh filename="${visual_mesh_file}" scale="0.001 0.001 0.001" /-->
           </geometry>
         </visual>
 
         <!-- <collision>
           <origin xyz="0 0 0" rpy="0 0 0"/>
-          <geometry>
+          <geometry> 
             <mesh filename="${collision_mesh_file}" scale="0.001 0.001 0.001" />
           </geometry>
         </collision> -->
