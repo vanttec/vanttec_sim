@@ -113,11 +113,7 @@ catkin_package(
 ## Your package locations should be listed before other locations
 include_directories(
 # include
-<<<<<<< HEAD
 #  ${catkin_INCLUDE_DIRS}
-=======
-  ${catkin_INCLUDE_DIRS}
->>>>>>> feature/vtec_u3_torpedoes
 )
 
 ## Declare a C++ library
@@ -159,17 +155,6 @@ include_directories(
 
 ## Mark executable scripts (Python etc.) for installation
 ## in contrast to setup.py, you can choose the destination
-<<<<<<< HEAD
-#catkin_install_python(PROGRAMS
-#  shooter_gazebo/scripts/shoot.py 
-#   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
-# )
-=======
-catkin_install_python(PROGRAMS
-   shooter_gazebo/scripts/shoot.py 
-   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
- )
->>>>>>> feature/vtec_u3_torpedoes
 
 ## Mark executables for installation
 ## See http://docs.ros.org/melodic/api/catkin/html/howto/format1/building_executables.html
