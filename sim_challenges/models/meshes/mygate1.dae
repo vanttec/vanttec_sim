@@ -5,8 +5,8 @@
       <author>Blender User</author>
       <authoring_tool>Blender 2.91.0 commit date:2020-11-25, commit time:08:34, hash:0f45cab862b8</authoring_tool>
     </contributor>
-    <created>2021-04-16T21:21:09</created>
-    <modified>2021-04-16T21:21:09</modified>
+    <created>2021-04-24T01:12:49</created>
+    <modified>2021-04-24T01:12:49</modified>
     <unit name="meter" meter="1"/>
     <up_axis>Z_UP</up_axis>
   </asset>
@@ -65,15 +65,25 @@
         </technique>
       </profile_COMMON>
     </effect>
-    <effect id="_91_191_191_002-effect">
+    <effect id="_91_191__002-effect">
       <profile_COMMON>
+        <newparam sid="_91_191_191_002_Base_Color-surface">
+          <surface type="2D">
+            <init_from>_91_191_191_002_Base_Color</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="_91_191_191_002_Base_Color-sampler">
+          <sampler2D>
+            <source>_91_191_191_002_Base_Color-surface</source>
+          </sampler2D>
+        </newparam>
         <technique sid="common">
           <lambert>
             <emission>
               <color sid="emission">0 0 0 1</color>
             </emission>
             <diffuse>
-              <color sid="diffuse">0.74902 0.74902 0.74902 1</color>
+              <texture texture="_91_191_191_002_Base_Color-sampler" texcoord="UVMap"/>
             </diffuse>
             <index_of_refraction>
               <float sid="ior">1.45</float>
@@ -118,6 +128,9 @@
     </effect>
   </library_effects>
   <library_images>
+    <image id="_91_191_191_002_Base_Color" name="_91_191_191_002_Base_Color">
+      <init_from>191,191,191.002%20Base%20Color.png</init_from>
+    </image>
     <image id="bootleggergate_jpg" name="bootleggergate_jpg">
       <init_from>bootleggergate.jpg</init_from>
     </image>
@@ -132,8 +145,8 @@
     <material id="gmangate-material" name="gmangate">
       <instance_effect url="#gmangate-effect"/>
     </material>
-    <material id="_91_191_191_002-material" name="191,191,191.002">
-      <instance_effect url="#_91_191_191_002-effect"/>
+    <material id="_91_191__002-material" name="191,191,.002">
+      <instance_effect url="#_91_191__002-effect"/>
     </material>
     <material id="_54_143_40-material" name="254,143,40">
       <instance_effect url="#_54_143_40-effect"/>
@@ -261,7 +274,7 @@
         <vertices id="Mygate-mesh-vertices">
           <input semantic="POSITION" source="#Mygate-mesh-positions"/>
         </vertices>
-        <triangles material="_91_191_191_002-material" count="848">
+        <triangles material="_91_191__002-material" count="848">
           <input semantic="VERTEX" source="#Mygate-mesh-vertices" offset="0"/>
           <input semantic="NORMAL" source="#Mygate-mesh-normals" offset="1"/>
           <input semantic="TEXCOORD" source="#Mygate-mesh-map-0" offset="2" set="0"/>
@@ -313,7 +326,7 @@
         <instance_geometry url="#Mygate-mesh" name="Mygate">
           <bind_material>
             <technique_common>
-              <instance_material symbol="_91_191_191_002-material" target="#_91_191_191_002-material">
+              <instance_material symbol="_91_191__002-material" target="#_91_191__002-material">
                 <bind_vertex_input semantic="UVMap" input_semantic="TEXCOORD" input_set="0"/>
               </instance_material>
               <instance_material symbol="_54_143_40-material" target="#_54_143_40-material">

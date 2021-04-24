@@ -36,7 +36,6 @@
     <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
           args="-urdf -param robot_description -model octagon_1"/>
   </group>
-  <?ignore
   <!-- Begin Bin1-->
 
   <group ns="Bin1">
@@ -46,7 +45,7 @@
     <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
           args="-urdf -param robot_description -model bin_1"/>
   </group>
-
+  <?ignore
   <!-- Begin Bin2-->
 
   <group ns="Bin2">
@@ -113,6 +112,7 @@
     <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
           args="-urdf -param robot_description -model path_marker4"/>
   </group>
+  <?ignore
   <!-- Begin Pathmarker5 -->
 
   <group ns="Pathmarker5">
@@ -149,7 +149,7 @@
     <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
           args="-urdf -param robot_description -model path_marker8"/>
   </group>
-  <!-- Begin Pathmarker10 -->
+  <!-- Begin Pathmarker9 -->
 
   <group ns="Pathmarker9">
     <param name="tf_prefix" value="robot3_tf" />
@@ -167,7 +167,7 @@
     <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
           args="-urdf -param robot_description -model path_marker10"/>
   </group>
-
+  ?>
   <!-- Enable camera gazebo plugin-->
   <include file="$(find realsense_gazebo_plugin)/launch/depth_procfront.launch">
   </include>
