@@ -52,98 +52,95 @@
   <!-- Begin Gate -->
   <group ns="Gate">
     <param name="robot_description"
-          command="$(find xacro)/xacro --inorder '$(find sim_challenges)/urdf/gate.xacro' "/> 
+      command="$(find xacro)/xacro --inorder '$(find sim_challenges)/urdf/gate.xacro' "/>  
     <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
-          args="-urdf -param robot_description -model gate_1"/>
+          args="-urdf -param robot_description -model gate_1"/> 
   </group>
   
-  <!-- Begin Buoy1 -->
-
-  <group ns="Buoy1">
-    <param name="tf_prefix" value="robot3_tf" />
-    <param name="robot_description"
-          command="$(find xacro)/xacro --inorder '$(find sim_challenges)/urdf/buoy.xacro' "/> 
-    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
-          args="-urdf -param robot_description -model buoy_1"/>
-  </group>
+  <!-- Begin Buoy1 (GUN) -->
+  <!-- <group ns="Buoy1"> -->
+    <!-- <param name="tf_prefix" value="robot3_tf" /> -->
+    <!-- <param name="robot_description" -->
+          <!-- command="$(find xacro)/xacro - -inorder '$(find sim_challenges)/urdf/buoy.xacro' "/>  -->
+    <!-- <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" -->
+          <!-- args="-urdf -param robot_description -model buoy_1"/> -->
+  <!-- </group> -->
 
   <!-- Begin Buoy2-->
 
-  <group ns="Buoy2">
-    <param name="tf_prefix" value="robot3_tf" />
-    <param name="robot_description"
-          command="$(find xacro)/xacro --inorder '$(find sim_challenges)/urdf/buoy2.xacro' "/> 
-    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
-          args="-urdf -param robot_description -model buoy_2"/>
-  </group>
+  <!-- <group ns="Buoy2"> -->
+  <!-- <param name="tf_prefix" value="robot3_tf" />  -->
+      <!-- <param name="robot_description"  -->
+          <!-- command="$(find xacro)/xacro - -inorder '$(find sim_challenges)/urdf/buoy2.xacro' "/>   -->
+      <!-- <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"  -->
+          <!-- args="-urdf -param robot_description -model buoy_2"/>  -->
+  <!-- </group> -->
 
   <!-- Begin Octagon -->
 
-  <group ns="Octagon">
-    <param name="tf_prefix" value="robot3_tf" />
-    <param name="robot_description"
-          command="$(find xacro)/xacro --inorder '$(find sim_challenges)/urdf/octagon.xacro' "/> 
-    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
-          args="-urdf -param robot_description -model octagon_1"/>
-  </group>
+  <!-- <group ns="Octagon"> -->
+    <!-- <param name="tf_prefix" value="robot3_tf" /> -->
+    <!-- <param name="robot_description" -->
+          <!-- command="$(find xacro)/xacro - -inorder '$(find sim_challenges)/urdf/octagon.xacro' "/>  -->
+    <!-- <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" -->
+          <!-- args="-urdf -param robot_description -model octagon_1"/> -->
+  <!-- </group> -->
 
   <!-- Begin Bin1-->
 
-  <group ns="Bin1">
-    <param name="tf_prefix" value="robot3_tf" />
-    <param name="robot_description"
-          command="$(find xacro)/xacro --inorder '$(find sim_challenges)/urdf/bin1.xacro' "/> 
-    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
-          args="-urdf -param robot_description -model bin_1"/>
-  </group>
+  <!-- <group ns="Bin1"> -->
+    <!-- <param name="tf_prefix" value="robot3_tf" /> -->
+    <!-- <param name="robot_description" -->
+          <!-- command="$(find xacro)/xacro - -inorder '$(find sim_challenges)/urdf/bin1.xacro' "/>  -->
+    <!-- <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" -->
+          <!-- args="-urdf -param robot_description -model bin_1"/> -->
+  <!-- </group> -->
 
   <!-- Begin Bin2-->
 
-  <group ns="Bin2">
-    <param name="tf_prefix" value="robot3_tf" />
-    <param name="robot_description"
-          command="$(find xacro)/xacro --inorder '$(find sim_challenges)/urdf/bin2.xacro' "/> 
-    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
-          args="-urdf -param robot_description -model bin_2"/>
-  </group>
+  <!-- <group ns="Bin2"> -->
+    <!-- <param name="tf_prefix" value="robot3_tf" /> -->
+    <!-- <param name="robot_description" -->
+          <!-- command="$(find xacro)/xacro - -inorder '$(find sim_challenges)/urdf/bin2.xacro' "/>  -->
+    <!-- <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" -->
+          <!-- args="-urdf -param robot_description -model bin_2"/> -->
+  <!-- </group> -->
 
-  <!-- Begin Torpedo1-->
-  <group ns="Torpedo1">
-    <param name="tf_prefix" value="robot3_tf" />
-    <param name="robot_description"
-          command="$(find xacro)/xacro --inorder '$(find sim_challenges)/urdf/torpedos1.xacro' "/> 
-    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
-          args="-urdf -param robot_description -model torpedos_1"/>
-  </group>
+  <!-- Begin Torpedo1 -->
+  <!-- <group ns="Torpedo1"> -->
+    <!-- <param name="tf_prefix" value="robot3_tf" /> -->
+    <!-- <param name="robot_description" -->
+          <!-- command="$(find xacro)/xacro - -inorder '$(find sim_challenges)/urdf/torpedos1.xacro' "/>  -->
+    <!-- <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" -->
+          <!-- args="-urdf -param robot_description -model torpedos_1"/> -->
+  <!-- </group> -->
 
   <!-- Begin Torpedo2-->
-
-  <group ns="Torpedo2">
-    <param name="tf_prefix" value="robot3_tf" />
-    <param name="robot_description"
-          command="$(find xacro)/xacro --inorder '$(find sim_challenges)/urdf/torpedos2.xacro' "/> 
-    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
-          args="-urdf -param robot_description -model torpedos_2"/>
-  </group>
-  <!-- Begin Buoy1 -->
+  <!-- <group ns="Torpedo2"> -->
+    <!-- <param name="tf_prefix" value="robot3_tf" /> -->
+    <!-- <param name="robot_description" -->
+          <!-- command="$(find xacro)/xacro - -inorder '$(find sim_challenges)/urdf/torpedos2.xacro' "/>  -->
+    <!-- <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" -->
+          <!-- args="-urdf -param robot_description -model torpedos_2"/> -->
+  <!-- </group>   -->
 
   <!-- Begin Path marker-->
-  <group ns="Pathmarker">
+  <!-- <group ns="Pathmarker">
     <param name="tf_prefix" value="robot3_tf" />
     <param name="robot_description"
-          command="$(find xacro)/xacro --inorder '$(find sim_challenges)/urdf/pathmarker.xacro' "/> 
+          command="$(find xacro)/xacro - -inorder '$(find sim_challenges)/urdf/pathmarker.xacro' "/> 
     <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
           args="-urdf -param robot_description -model path_marker"/>
-  </group>
+  </group> -->
 
-  <!-- Begin Double Path Marker-->
-  <group ns="Pathmarker_double">
+  <!-- Begin Double Path Marker -->
+  <!-- <group ns="Pathmarker_double">
     <param name="tf_prefix" value="robot3_tf" />
     <param name="robot_description"
-          command="$(find xacro)/xacro --inorder '$(find sim_challenges)/urdf/pathmarker2.xacro' "/> 
+          command="$(find xacro)/xacro - -inorder '$(find sim_challenges)/urdf/pathmarker2.xacro' "/> 
     <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
           args="-urdf -param robot_description -model path_marker2"/>
-  </group>
+  </group> -->
 
   <!-- Enable camera gazebo plugin-->
   <include file="$(find realsense_gazebo_plugin)/launch/depth_procfront.launch">
