@@ -59,13 +59,13 @@
           </geometry>
         </visual>
 
-        <collision>
+        <!-- <collision>
           <origin xyz="0.05 0 0.19" rpy="0 0 0"/>
           <geometry>
             <box size="${x_size} ${y_size} ${z_size}"/>
-            <!-- <mesh filename="${collision_mesh_file}" scale="0.001 0.001 0.001" /> --> <!-- To improve performance, we replaced it by a box -->
+            <mesh filename="${collision_mesh_file}" scale="0.001 0.001 0.001" />  To improve performance, we replaced it by a box 
           </geometry>
-        </collision>
+        </collision> -->
       </link>
 
     <gazebo reference="${namespace}/base_link">
