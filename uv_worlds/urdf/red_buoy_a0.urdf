@@ -1,0 +1,35 @@
+<?xml version='1.0'?>
+<robot name ="RedbuoyA0">
+
+  
+      <link name="buoya2_link">    
+
+      <inertial>
+          <mass value="100" />
+          <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
+        </inertial>
+
+     <visual>
+      <origin xyz= "0 0 0"/>
+         <geometry>
+           <mesh filename="../mesh/Sphere.stl" scale="0.0021 0.0021 0.0021"/>
+        </geometry>
+      </visual> 
+
+      <collision>
+        <origin xyz="0 0 0"/>
+           <geometry>
+           <mesh filename="../mesh/Sphere.stl" scale="0.0021 0.0021 0.0021"/>
+        </geometry>
+      </collision>
+
+        </link>
+
+
+     <gazebo reference="buoya2_link">
+        <material>Gazebo/Red</material>
+        <turnGravityOff>true</turnGravityOff>
+    </gazebo>
+
+        
+    </robot>

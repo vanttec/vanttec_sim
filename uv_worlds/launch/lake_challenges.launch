@@ -5,7 +5,7 @@
     <arg name="timeout" default="0.0"/>
     <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
-        <arg name="world_name" value="$(find uv_worlds)/worlds/lake_challenges.world"/>
+        <arg name="world_name" value="$(find uv_worlds)/worlds/lake.world"/>
         <arg name="paused" value="$(arg paused)"/>
         <arg name="use_sim_time" value="true"/>
         <arg name="gui" value="$(arg gui)"/>
@@ -13,6 +13,7 @@
         <arg name="debug" value="false"/>
         <arg name="verbose" value="true"/>
     </include>
+    <include file="$(find uv_worlds)/launch/challenges.launch" />
 
     <!-- <include file="$(find uv_worlds)/launch/publish_world_ned_frame.launch"/>
     
@@ -33,7 +34,6 @@
             <arg name="timeout" value="$(arg timeout)"/>
         </include>
     </group> -->
-  
-
 
 </launch>
+

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+  <include file="$(find uv_worlds)/launch/spawn_dock.launch"/>
+
+ <include file="$(find uv_worlds)/launch/spawn_mand_nav.launch"/>
+
+ <include file="$(find uv_worlds)/launch/spawn_obs_channel.launch"/>
+
+ <include file="$(find uv_worlds)/launch/spawn_obs_field.launch"/>
+
+ <include file="$(find uv_worlds)/launch/spawn_speed_challenge.launch"/>
+   
+    </launch>

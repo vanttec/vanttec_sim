@@ -1,0 +1,173 @@
+<?xml version='1.0'?>
+<robot name ="dock">
+    <link name="dock1_link">    
+
+      <inertial>
+        <mass value="100" />
+        <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
+      </inertial>
+
+      <visual>
+      <origin xyz= "1.524 0 0.190"/>
+        <geometry>
+          <box size="3.048 1.016 0.381" rpy="0 0 0"/>
+        </geometry>
+      </visual> 
+
+      <collision>
+        <origin xyz="1.524 0 0.190"/>
+        <geometry>
+          <box size="3.048 1.016 0.381" rpy="0 0 0"/>
+        </geometry>
+      </collision>
+
+      </link>
+
+        <gazebo reference="dock1_link">
+        <material>Gazebo/Wood</material>
+        <turnGravityOff>true</turnGravityOff>
+    </gazebo>
+  
+      <link name="dock2_link">    
+
+      <inertial>
+        <mass value="100" />
+        <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
+      </inertial>
+
+      <visual>
+      <origin xyz= "-1.524 0 0.190"/>
+        <geometry>
+          <box size="3.048 1.016 0.381" rpy="0 0 0"/>
+        </geometry>
+      </visual> 
+
+      <collision>
+        <origin xyz="-1.524 0 0.190"/>
+        <geometry>
+          <box size="3.048 1.016 0.381" rpy="0 0 0"/>
+        </geometry>
+      </collision>
+
+
+      </link>
+     
+
+      <joint name="dock1_to_dock2" type="fixed">
+      <parent link="dock1_link"/>
+       <child link="dock2_link"/>
+     </joint>
+
+       <gazebo reference="dock2_link">
+        <material>Gazebo/Wood</material>
+        <turnGravityOff>true</turnGravityOff>
+    </gazebo>
+
+
+    <link name="image0_link">    
+
+      <inertial>
+        <mass value="100" />
+        <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
+      </inertial>
+
+      <visual>
+      <origin xyz= "0 -0.458 1.0266"/>
+        <geometry>
+          <box size="0.9144 0.1 1.2912" rpy="0 0 0"/>
+        </geometry>
+      </visual> 
+
+      <collision>
+        <origin xyz="0 -0.458 1.0266"/>
+        <geometry>
+          <box size="0.9144 0.1 1.2912" rpy="0 0 0"/>
+        </geometry>
+      </collision>
+
+    </link>
+
+      <joint name="dock1_to_image0" type="fixed">
+      <parent link="dock1_link"/>
+       <child link="image0_link"/>
+     </joint>
+
+    <gazebo reference="image0_link">
+        <material>Gazebo/Green</material>
+        <turnGravityOff>true</turnGravityOff>
+    </gazebo>
+
+    <link name="image1_link">    
+
+      <inertial>
+        <mass value="100" />
+        <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
+      </inertial>
+
+      <visual>
+      <origin xyz= "-1.6764 -0.458 1.0266"/>
+        <geometry>
+          <box size="0.9144 0.1 1.2912" rpy="0 0 0"/>
+        </geometry>
+      </visual> 
+
+      <collision>
+        <origin xyz="-1.6764 -0.458 1.0266"/>
+        <geometry>
+          <box size="0.9144 0.1 1.2912" rpy="0 0 0"/>
+        </geometry>
+      </collision>
+
+    </link>
+
+     <gazebo reference="image1_link">
+        <material>Gazebo/Red</material>
+        <turnGravityOff>true</turnGravityOff>
+    </gazebo>
+
+    <joint name="dock1_to_image1" type="fixed">
+      <parent link="dock1_link"/>
+       <child link="image1_link"/>
+     </joint>
+
+    <link name="image2_link">    
+
+      <inertial>
+        <mass value="100" />
+        <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
+      </inertial>
+
+      <visual>
+      <origin xyz= "1.6764 -0.458 1.0266"/>
+        <geometry>
+          <box size="0.9144 0.1 1.2912" rpy="0 0 0"/>
+        </geometry>
+      </visual> 
+
+      <collision>
+        <origin xyz="1.6764 -0.458 1.0266"/>
+        <geometry>
+          <box size="0.9144 0.1 1.2912" rpy="0 0 0"/>
+        </geometry>
+      </collision>
+
+      
+
+    </link>
+
+ <joint name="dock1_to_image2" type="fixed">
+      <parent link="dock1_link"/>
+       <child link="image2_link"/>
+     </joint>
+
+     <gazebo reference="image2_link">
+        <material>Gazebo/Blue</material>
+        <turnGravityOff>true</turnGravityOff>
+    </gazebo>
+  
+
+      
+
+
+        
+    </robot>

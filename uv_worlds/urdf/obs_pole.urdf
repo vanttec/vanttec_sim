@@ -1,0 +1,104 @@
+<?xml version='1.0'?>
+<robot name ="pole">
+    <link name="basepole_link">    
+
+      <inertial>
+        <mass value="100" />
+        <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
+      </inertial>
+
+      <visual>
+      <origin xyz= "0 0 0"/>
+        <geometry>
+          <cylinder length="0.15" radius="0.30"/>
+        </geometry>
+      </visual> 
+
+      <collision>
+        <origin xyz="0 0 0"/>
+        <geometry>
+             <cylinder length="0.15" radius="0.30"/>
+        </geometry>
+      </collision>
+
+      </link>
+
+        <gazebo reference="basepole_link">
+        <material>Gazebo/Wood</material>
+        <turnGravityOff>true</turnGravityOff>
+    </gazebo>
+  
+      <link name="firstpole_link">    
+   
+    <inertial>
+        <mass value="100" />
+        <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
+    </inertial>
+
+      <visual>
+        <origin xyz= "0 0 0.425"/>
+        <geometry>
+          <cylinder length="0.70" radius="0.115"/>
+        </geometry>
+      </visual> 
+
+      <collision>
+      <origin xyz= "0 0 0.425"/>
+        <geometry>
+          <cylinder length="0.70" radius="0.115"/>
+        </geometry>
+      </collision>
+
+
+      </link>
+     
+
+      <joint name="basepole_to_firstpole" type="fixed">
+      <parent link="basepole_link"/>
+       <child link="firstpole_link"/>
+     </joint>
+
+       <gazebo reference="firstpole_link">
+        <material>Gazebo/Blue</material>
+        <turnGravityOff>true</turnGravityOff>
+    </gazebo>
+
+
+    <link name="secondpole_link">    
+
+    <inertial>
+        <mass value="100" />
+        <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0" />
+    </inertial>
+
+      <visual>
+        <origin xyz= "0 0 1.125"/>
+        <geometry>
+          <cylinder length="0.70" radius="0.115"/>
+        </geometry>
+      </visual> 
+
+      <collision>
+      <origin xyz= "0 0 1.125"/>
+        <geometry>
+          <cylinder length="0.70" radius="0.115"/>
+        </geometry>
+      </collision>
+
+    </link>
+
+    <gazebo reference="secondpole_link">
+        <material>Gazebo/Orange</material>
+        <turnGravityOff>true</turnGravityOff>
+    </gazebo>
+
+
+ <joint name="basepole_to_secondpole" type="fixed">
+      <parent link="basepole_link"/>
+       <child link="secondpole_link"/>
+     </joint>
+      
+
+
+        
+    </robot>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+    <arg name="robot_name" default="Green_A0buoy" />
+    <arg name="x" default="0.0" />
+    <arg name="y" default="0.0" />
+    <arg name="z" default="0.0" />
+    <arg name="roll" default="0" />
+    <arg name="pitch" default="0" />
+    <arg name="yaw" default="0" />
+    <arg name="color" default="green" />
+
+
+    
+      <!-- send table urdf to param server -->
+      <param name="Green_a0_buoy_Descr" command="cat '$(find uv_worlds)/urdf/green_buoy_a0.urdf'"/>
+    
+      <!-- push table_description to factory and spawn robot in gazebo -->
+      <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"  respawn="false" output="screen" 
+        args=" -x $(arg x)
+               -y $(arg y)
+               -z $(arg z)
+               -R $(arg roll)
+               -P $(arg pitch)
+               -Y $(arg yaw)
+               -param Green_a0_buoy_Descr
+               -urdf
+               -model $(arg robot_name)"/>
+        
+    </launch>
