@@ -10,7 +10,7 @@
         <include file="$(find uv_worlds)/launch/test_spawn_reda2.launch">
                 <arg name="robot_name" value="Red_A2_0" />
                 <arg name="x" value="$(eval 24.336 + arg('xcoord'))" />
-                <arg name="y" value="$(eval 1.066 + arg('ycoord'))" />
+                <arg name="y" value="$(eval 2 + arg('ycoord'))" />
                <arg name="z" value="0.08" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
@@ -22,7 +22,7 @@
         <include file="$(find uv_worlds)/launch/test_spawn_greena2.launch">
                 <arg name="robot_name" value="Green_A2_0" />
                 <arg name="x" value="$(eval 24.336 + arg('xcoord'))" />
-                <arg name="y" value="$(eval -1.066 + arg('ycoord'))" />
+                <arg name="y" value="$(eval -2 + arg('ycoord'))" />
                <arg name="z" value="0.08" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />

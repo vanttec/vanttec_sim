@@ -8,7 +8,7 @@
         <include file="$(find uv_worlds)/launch/test_spawn_mandpole_green.launch">
                 <arg name="robot_name" value="manPole0" />
                 <arg name="x" value="$(eval 3.48 + arg('xcoord'))" />
-                <arg name="y" value="$(eval 1.21 + arg('ycoord'))" />
+                <arg name="y" value="$(eval 1.70 + arg('ycoord'))" />
                 <arg name="z" value="0.0" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
@@ -21,7 +21,7 @@
         <include file="$(find uv_worlds)/launch/test_spawn_mandpole_red.launch">
                 <arg name="robot_name" value="manPole1" />
                 <arg name="x" value="$(eval 3.48 + arg('xcoord'))" />
-                <arg name="y" value="$(eval -1.21 + arg('ycoord'))" />
+                <arg name="y" value="$(eval -1.70 + arg('ycoord'))" />
                 <arg name="z" value="0.0" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
@@ -34,7 +34,7 @@
         <include file="$(find uv_worlds)/launch/test_spawn_mandpole_green.launch">
                 <arg name="robot_name" value="manPole2" />
                 <arg name="x" value="$(eval 25.908 + arg('xcoord'))" />
-                <arg name="y" value="$(eval 1.21 + arg('ycoord'))" />
+                <arg name="y" value="$(eval 1.70 + arg('ycoord'))" />
                 <arg name="z" value="0.0" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
@@ -48,7 +48,7 @@
         <include file="$(find uv_worlds)/launch/test_spawn_mandpole_red.launch">
                 <arg name="robot_name" value="manPole3" />
                 <arg name="x" value="$(eval 25.908 + arg('xcoord'))" />
-                <arg name="y" value="$(eval -1.21 + arg('ycoord'))" />
+                <arg name="y" value="$(eval -1.70 + arg('ycoord'))" />
                 <arg name="z" value="0.0" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />

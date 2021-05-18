@@ -10,7 +10,7 @@
         <include file="$(find uv_worlds)/launch/test_spawn_reda0.launch">
                 <arg name="robot_name" value="Red_A0_0" />
                 <arg name="x" value="$(eval 30.48 - 27 + arg('xcoord'))" />
-                <arg name="y" value="$(eval 34.13 - 33.528 + arg('ycoord'))" />
+                <arg name="y" value="$(eval 34.13 + - 33.528 + arg('ycoord'))" />
                 <arg name="z" value="0.0525" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
@@ -22,7 +22,7 @@
         <include file="$(find uv_worlds)/launch/test_spawn_greena0.launch">
                 <arg name="robot_name" value="green_A0_0" />
                 <arg name="x" value="$(eval 30.48 - 27 + arg('xcoord'))" />
-                <arg name="y" value="$(eval 36.57 - 33.528 + arg('ycoord'))" />
+                <arg name="y" value="$(eval 36.57 + 0.66 - 33.528 + arg('ycoord'))" />
                 <arg name="z" value="0.0525" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
@@ -47,7 +47,7 @@
         <include file="$(find uv_worlds)/launch/test_spawn_greena0.launch">
                 <arg name="robot_name" value="green_A0_1" />
                 <arg name="x" value="$(eval 33.52 - 27 + arg('xcoord'))" />
-                <arg name="y" value="$(eval 35.66 - 33.528 + arg('ycoord'))" />
+                <arg name="y" value="$(eval 35.66 + 0.66 - 33.528 + arg('ycoord'))" />
                 <arg name="z" value="0.0525" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
@@ -72,7 +72,7 @@
          <include file="$(find uv_worlds)/launch/test_spawn_greena0.launch">
                 <arg name="robot_name" value="green_A0_2" />
                 <arg name="x" value="$(eval 36.57 - 27 + arg('xcoord'))" />
-                <arg name="y" value="$(eval 35.05 - 33.528 + arg('ycoord'))" />
+                <arg name="y" value="$(eval 35.05 + 0.66 - 33.528 + arg('ycoord'))" />
                 <arg name="z" value="0.0525" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
@@ -97,7 +97,7 @@
         <include file="$(find uv_worlds)/launch/test_spawn_greena0.launch">
                 <arg name="robot_name" value="green_A0_3" />
                 <arg name="x" value="$(eval 39.62 - 27 + arg('xcoord'))" />
-                <arg name="y" value="$(eval 35.35 - 33.528 + arg('ycoord'))" />
+                <arg name="y" value="$(eval 35.35 + 0.66 - 33.528 + arg('ycoord'))" />
                 <arg name="z" value="0.0525" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
@@ -122,7 +122,7 @@
         <include file="$(find uv_worlds)/launch/test_spawn_greena0.launch">
                 <arg name="robot_name" value="green_A0_4" />
                 <arg name="x" value="$(eval 42.67 - 27 + arg('xcoord'))" />
-                <arg name="y" value="$(eval 36.27 - 33.528 + arg('ycoord'))" />
+                <arg name="y" value="$(eval 36.27 + 0.66 - 33.528 + arg('ycoord'))" />
                 <arg name="z" value="0.0525" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
@@ -147,7 +147,7 @@
          <include file="$(find uv_worlds)/launch/test_spawn_greena0.launch">
                 <arg name="robot_name" value="green_A0_5" />
                 <arg name="x" value="$(eval 45.72 - 27 + arg('xcoord'))" />
-                <arg name="y" value="$(eval 37.49 - 33.528 + arg('ycoord'))" />
+                <arg name="y" value="$(eval 37.49 + 0.66 - 33.528 + arg('ycoord'))" />
                 <arg name="z" value="0.0525" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
@@ -172,7 +172,7 @@
         <include file="$(find uv_worlds)/launch/test_spawn_greena0.launch">
                 <arg name="robot_name" value="green_A0_6" />
                 <arg name="x" value="$(eval 48.76 - 27 + arg('xcoord'))" />
-                <arg name="y" value="$(eval 38.71 - 33.528 + arg('ycoord'))" />
+                <arg name="y" value="$(eval 38.71 + 0.66 - 33.528 + arg('ycoord'))" />
                 <arg name="z" value="0.0525" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
@@ -197,7 +197,7 @@
          <include file="$(find uv_worlds)/launch/test_spawn_greena0.launch">
                 <arg name="robot_name" value="green_A0_7" />
                 <arg name="x" value="$(eval 51.81 - 27 + arg('xcoord'))" />
-                <arg name="y" value="$(eval 38.1 - 33.528 + arg('ycoord'))" />
+                <arg name="y" value="$(eval 38.1 + 0.66 - 33.528 + arg('ycoord'))" />
                 <arg name="z" value="0.0525" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
@@ -210,7 +210,7 @@
         <include file="$(find uv_worlds)/launch/test_spawn_reda0.launch">
                 <arg name="robot_name" value="Red_A0_8" />
                 <arg name="x" value="$(eval 54.86 - 27 + arg('xcoord'))" />
-                <arg name="y" value="$(eval 35.35 - 33.528 + arg('ycoord'))" />
+                <arg name="y" value="$(eval 35.35 + 0.66 - 33.528 + arg('ycoord'))" />
                 <arg name="z" value="0.0525" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
@@ -235,7 +235,7 @@
         <include file="$(find uv_worlds)/launch/test_spawn_reda0.launch">
                 <arg name="robot_name" value="Red_A0_9" />
                 <arg name="x" value="$(eval 57.91 - 27 + arg('xcoord'))" />
-                <arg name="y" value="$(eval 34.13 - 33.528 + arg('ycoord'))" />
+                <arg name="y" value="$(eval 34.13 + 0.66 - 33.528 + arg('ycoord'))" />
                 <arg name="z" value="0.0525" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
