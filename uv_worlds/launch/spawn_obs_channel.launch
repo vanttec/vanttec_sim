@@ -11,7 +11,7 @@
                 <arg name="robot_name" value="Red_A0_0" />
                 <arg name="x" value="$(eval 30.48 - 27 + arg('xcoord'))" />
                 <arg name="y" value="$(eval 34.13 - 33.528 + arg('ycoord'))" />
-                <arg name="z" value="0.0" />
+                <arg name="z" value="0.0525" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
                 <arg name="yaw" value="0" />
@@ -23,7 +23,7 @@
                 <arg name="robot_name" value="green_A0_0" />
                 <arg name="x" value="$(eval 30.48 - 27 + arg('xcoord'))" />
                 <arg name="y" value="$(eval 36.57 - 33.528 + arg('ycoord'))" />
-                <arg name="z" value="0.0" />
+                <arg name="z" value="0.0525" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
                 <arg name="yaw" value="0" />
@@ -36,7 +36,7 @@
                 <arg name="robot_name" value="Red_A0_1" />
                 <arg name="x" value="$(eval 33.52 - 27 + arg('xcoord'))" />
                 <arg name="y" value="$(eval 33.22 - 33.528 + arg('ycoord'))" />
-                <arg name="z" value="0.0" />
+                <arg name="z" value="0.0525" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
                 <arg name="yaw" value="0" />
@@ -48,7 +48,7 @@
                 <arg name="robot_name" value="green_A0_1" />
                 <arg name="x" value="$(eval 33.52 - 27 + arg('xcoord'))" />
                 <arg name="y" value="$(eval 35.66 - 33.528 + arg('ycoord'))" />
-                <arg name="z" value="0.0" />
+                <arg name="z" value="0.0525" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
                 <arg name="yaw" value="0" />
@@ -61,7 +61,7 @@
                 <arg name="robot_name" value="Red_A0_2" />
                 <arg name="x" value="$(eval 36.57 - 27 + arg('xcoord'))" />
                 <arg name="y" value="$(eval 32.61 - 33.528 + arg('ycoord'))" />
-                <arg name="z" value="0.0" />
+                <arg name="z" value="0.0525" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
                 <arg name="yaw" value="0" />
@@ -73,7 +73,7 @@
                 <arg name="robot_name" value="green_A0_2" />
                 <arg name="x" value="$(eval 36.57 - 27 + arg('xcoord'))" />
                 <arg name="y" value="$(eval 35.05 - 33.528 + arg('ycoord'))" />
-                <arg name="z" value="0.0" />
+                <arg name="z" value="0.0525" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
                 <arg name="yaw" value="0" />
@@ -86,7 +86,7 @@
                 <arg name="robot_name" value="Red_A0_3" />
                 <arg name="x" value="$(eval 39.62 - 27 + arg('xcoord'))" />
                 <arg name="y" value="$(eval 32.91 - 33.528 + arg('ycoord'))" />
-                <arg name="z" value="0.0" />
+                <arg name="z" value="0.0525" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
                 <arg name="yaw" value="0" />
@@ -98,7 +98,7 @@
                 <arg name="robot_name" value="green_A0_3" />
                 <arg name="x" value="$(eval 39.62 - 27 + arg('xcoord'))" />
                 <arg name="y" value="$(eval 35.35 - 33.528 + arg('ycoord'))" />
-                <arg name="z" value="0.0" />
+                <arg name="z" value="0.0525" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
                 <arg name="yaw" value="0" />
@@ -111,7 +111,7 @@
                 <arg name="robot_name" value="Red_A0_4" />
                 <arg name="x" value="$(eval 42.67 - 27 + arg('xcoord'))" />
                 <arg name="y" value="$(eval 33.83 - 33.528 + arg('ycoord'))" />
-                <arg name="z" value="0.0" />
+                <arg name="z" value="0.0525" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
                 <arg name="yaw" value="0" />
@@ -123,7 +123,7 @@
                 <arg name="robot_name" value="green_A0_4" />
                 <arg name="x" value="$(eval 42.67 - 27 + arg('xcoord'))" />
                 <arg name="y" value="$(eval 36.27 - 33.528 + arg('ycoord'))" />
-                <arg name="z" value="0.0" />
+                <arg name="z" value="0.0525" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
                 <arg name="yaw" value="0" />
@@ -136,7 +136,7 @@
                 <arg name="robot_name" value="Red_A0_5" />
                 <arg name="x" value="$(eval 45.72 - 27 + arg('xcoord'))" />
                 <arg name="y" value="$(eval 35.05 - 33.528 + arg('ycoord'))" />
-                <arg name="z" value="0.0" />
+                <arg name="z" value="0.0525" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
                 <arg name="yaw" value="0" />
@@ -148,7 +148,7 @@
                 <arg name="robot_name" value="green_A0_5" />
                 <arg name="x" value="$(eval 45.72 - 27 + arg('xcoord'))" />
                 <arg name="y" value="$(eval 37.49 - 33.528 + arg('ycoord'))" />
-                <arg name="z" value="0.0" />
+                <arg name="z" value="0.0525" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
                 <arg name="yaw" value="0" />
@@ -161,7 +161,7 @@
                 <arg name="robot_name" value="Red_A0_6" />
                 <arg name="x" value="$(eval 48.76 - 27 + arg('xcoord'))" />
                 <arg name="y" value="$(eval 36.27 - 33.528 + arg('ycoord'))" />
-                <arg name="z" value="0.0" />
+                <arg name="z" value="0.0525" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
                 <arg name="yaw" value="0" />
@@ -173,7 +173,7 @@
                 <arg name="robot_name" value="green_A0_6" />
                 <arg name="x" value="$(eval 48.76 - 27 + arg('xcoord'))" />
                 <arg name="y" value="$(eval 38.71 - 33.528 + arg('ycoord'))" />
-                <arg name="z" value="0.0" />
+                <arg name="z" value="0.0525" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
                 <arg name="yaw" value="0" />
@@ -186,7 +186,7 @@
                 <arg name="robot_name" value="Red_A0_7" />
                 <arg name="x" value="$(eval 51.81 - 27 + arg('xcoord'))" />
                 <arg name="y" value="$(eval 35.66 - 33.528 + arg('ycoord'))" />
-                <arg name="z" value="0.0" />
+                <arg name="z" value="0.0525" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
                 <arg name="yaw" value="0" />
@@ -198,7 +198,7 @@
                 <arg name="robot_name" value="green_A0_7" />
                 <arg name="x" value="$(eval 51.81 - 27 + arg('xcoord'))" />
                 <arg name="y" value="$(eval 38.1 - 33.528 + arg('ycoord'))" />
-                <arg name="z" value="0.0" />
+                <arg name="z" value="0.0525" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
                 <arg name="yaw" value="0" />
@@ -211,7 +211,7 @@
                 <arg name="robot_name" value="Red_A0_8" />
                 <arg name="x" value="$(eval 54.86 - 27 + arg('xcoord'))" />
                 <arg name="y" value="$(eval 35.35 - 33.528 + arg('ycoord'))" />
-                <arg name="z" value="0.0" />
+                <arg name="z" value="0.0525" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
                 <arg name="yaw" value="0" />
@@ -223,7 +223,7 @@
                 <arg name="robot_name" value="green_A0_8" />
                 <arg name="x" value="$(eval 54.86 - 27 + arg('xcoord'))" />
                 <arg name="y" value="$(eval 37.8 - 33.528 + arg('ycoord'))" />
-                <arg name="z" value="0.0" />
+                <arg name="z" value="0.0525" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
                 <arg name="yaw" value="0" />
@@ -236,7 +236,7 @@
                 <arg name="robot_name" value="Red_A0_9" />
                 <arg name="x" value="$(eval 57.91 - 27 + arg('xcoord'))" />
                 <arg name="y" value="$(eval 34.13 - 33.528 + arg('ycoord'))" />
-                <arg name="z" value="0.0" />
+                <arg name="z" value="0.0525" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
                 <arg name="yaw" value="0" />
@@ -248,7 +248,7 @@
                 <arg name="robot_name" value="green_A0_9" />
                 <arg name="x" value="$(eval 57.91 - 27 + arg('xcoord'))" />
                 <arg name="y" value="$(eval 36.57 - 33.528 + arg('ycoord'))" />
-                <arg name="z" value="0.0" />
+                <arg name="z" value="0.0525" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
                 <arg name="yaw" value="0" />
@@ -261,7 +261,7 @@
                 <arg name="robot_name" value="yellow_A0_0" />
                 <arg name="x" value="$(eval 35.05 - 27 + arg('xcoord'))" />
                 <arg name="y" value="$(eval 34.13 - 33.528 + arg('ycoord'))" />
-                <arg name="z" value="0.0" />
+                <arg name="z" value="0.08" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
                 <arg name="yaw" value="0" />
@@ -274,7 +274,7 @@
                 <arg name="robot_name" value="yellow_A0_1" />
                 <arg name="x" value="$(eval 40.23 - 27 + arg('xcoord'))" />
                 <arg name="y" value="$(eval 34.14 - 33.528 + arg('ycoord'))" />
-                <arg name="z" value="0.0" />
+                <arg name="z" value="0.08" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
                 <arg name="yaw" value="0" />
@@ -287,7 +287,7 @@
                 <arg name="robot_name" value="yellow_A0_2" />
                 <arg name="x" value="$(eval 47.24 - 27 + arg('xcoord'))" />
                 <arg name="y" value="$(eval 36.57 - 33.528 + arg('ycoord'))" />
-                <arg name="z" value="0.0" />
+                <arg name="z" value="0.08" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
                 <arg name="yaw" value="0" />
@@ -300,7 +300,7 @@
                 <arg name="robot_name" value="yellow_A0_3" />
                 <arg name="x" value="$(eval 55.47 - 27 + arg('xcoord'))" />
                 <arg name="y" value="$(eval 36.57 - 33.528 + arg('ycoord'))" />
-                <arg name="z" value="0.0" />
+                <arg name="z" value="0.08" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
                 <arg name="yaw" value="0" />
