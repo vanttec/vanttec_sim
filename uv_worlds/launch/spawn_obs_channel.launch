@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch>
 
-<arg name="xcoord" default=" 30"/>
-<arg name="ycoord" default="5"/>
-
-
+<arg name="x_coord" default="37"/>
+<arg name="y_coord" default="5"/>
+<arg name="gate_2_gate" default="7"/>
+<arg name="gate_width" default="3"/>
 
     <group ns="gateRed0">
         <include file="$(find uv_worlds)/launch/test_spawn_reda0.launch">
                 <arg name="robot_name" value="Red_A0_0" />
-                <arg name="x" value="$(eval 30.48 - 27 + arg('xcoord'))" />
-                <arg name="y" value="$(eval 34.13 + - 33.528 + arg('ycoord'))" />
+                <arg name="x" value="$(eval arg('x_coord') + arg('gate_2_gate') * 0)" />
+                <arg name="y" value="$(eval 34.13 + - 33.528 + arg('y_coord'))" />
                 <arg name="z" value="0.0525" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
@@ -21,8 +21,8 @@
      <group ns="gateGreen0">
         <include file="$(find uv_worlds)/launch/test_spawn_greena0.launch">
                 <arg name="robot_name" value="green_A0_0" />
-                <arg name="x" value="$(eval 30.48 - 27 + arg('xcoord'))" />
-                <arg name="y" value="$(eval 36.57 + 0.66 - 33.528 + arg('ycoord'))" />
+                <arg name="x" value="$(eval arg('x_coord') + arg('gate_2_gate') * 0)" />
+                <arg name="y" value="$(eval 36.57 + 0.66 - 33.528 + arg('y_coord'))" />
                 <arg name="z" value="0.0525" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
@@ -34,8 +34,8 @@
     <group ns="gateRed1">
         <include file="$(find uv_worlds)/launch/test_spawn_reda0.launch">
                 <arg name="robot_name" value="Red_A0_1" />
-                <arg name="x" value="$(eval 33.52 - 27 + arg('xcoord'))" />
-                <arg name="y" value="$(eval 33.22 - 33.528 + arg('ycoord'))" />
+                <arg name="x" value="$(eval arg('x_coord') + arg('gate_2_gate') * 1)" />
+                <arg name="y" value="$(eval 33.22 - 33.528 + arg('y_coord'))" />
                 <arg name="z" value="0.0525" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
@@ -46,8 +46,8 @@
      <group ns="gateGreen1">
         <include file="$(find uv_worlds)/launch/test_spawn_greena0.launch">
                 <arg name="robot_name" value="green_A0_1" />
-                <arg name="x" value="$(eval 33.52 - 27 + arg('xcoord'))" />
-                <arg name="y" value="$(eval 35.66 + 0.66 - 33.528 + arg('ycoord'))" />
+                <arg name="x" value="$(eval arg('x_coord') + arg('gate_2_gate') * 1)" />
+                <arg name="y" value="$(eval 35.66 + 0.66 - 33.528 + arg('y_coord'))" />
                 <arg name="z" value="0.0525" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
@@ -59,8 +59,8 @@
     <group ns="gateRed2">
         <include file="$(find uv_worlds)/launch/test_spawn_reda0.launch">
                 <arg name="robot_name" value="Red_A0_2" />
-                <arg name="x" value="$(eval 36.57 - 27 + arg('xcoord'))" />
-                <arg name="y" value="$(eval 32.61 - 33.528 + arg('ycoord'))" />
+                <arg name="x" value="$(eval arg('x_coord') + arg('gate_2_gate') * 2)" />
+                <arg name="y" value="$(eval 32.61 - 33.528 + arg('y_coord'))" />
                 <arg name="z" value="0.0525" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
@@ -71,8 +71,8 @@
      <group ns="gateGreen2">
          <include file="$(find uv_worlds)/launch/test_spawn_greena0.launch">
                 <arg name="robot_name" value="green_A0_2" />
-                <arg name="x" value="$(eval 36.57 - 27 + arg('xcoord'))" />
-                <arg name="y" value="$(eval 35.05 + 0.66 - 33.528 + arg('ycoord'))" />
+                <arg name="x" value="$(eval arg('x_coord') + arg('gate_2_gate') * 2)" />
+                <arg name="y" value="$(eval 35.05 + 0.66 - 33.528 + arg('y_coord'))" />
                 <arg name="z" value="0.0525" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
@@ -84,8 +84,8 @@
     <group ns="gateRed3">
         <include file="$(find uv_worlds)/launch/test_spawn_reda0.launch">
                 <arg name="robot_name" value="Red_A0_3" />
-                <arg name="x" value="$(eval 39.62 - 27 + arg('xcoord'))" />
-                <arg name="y" value="$(eval 32.91 - 33.528 + arg('ycoord'))" />
+                <arg name="x" value="$(eval arg('x_coord') + arg('gate_2_gate') * 3)" />
+                <arg name="y" value="$(eval 32.91 - 33.528 + arg('y_coord'))" />
                 <arg name="z" value="0.0525" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
@@ -96,8 +96,8 @@
      <group ns="gateGreen3">
         <include file="$(find uv_worlds)/launch/test_spawn_greena0.launch">
                 <arg name="robot_name" value="green_A0_3" />
-                <arg name="x" value="$(eval 39.62 - 27 + arg('xcoord'))" />
-                <arg name="y" value="$(eval 35.35 + 0.66 - 33.528 + arg('ycoord'))" />
+                <arg name="x" value="$(eval arg('x_coord') + arg('gate_2_gate') * 3)" />
+                <arg name="y" value="$(eval 35.35 + 0.66 - 33.528 + arg('y_coord'))" />
                 <arg name="z" value="0.0525" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
@@ -109,8 +109,8 @@
     <group ns="gateRed4">
         <include file="$(find uv_worlds)/launch/test_spawn_reda0.launch">
                 <arg name="robot_name" value="Red_A0_4" />
-                <arg name="x" value="$(eval 42.67 - 27 + arg('xcoord'))" />
-                <arg name="y" value="$(eval 33.83 - 33.528 + arg('ycoord'))" />
+                <arg name="x" value="$(eval arg('x_coord') + arg('gate_2_gate') * 4)" />
+                <arg name="y" value="$(eval 33.83 - 33.528 + arg('y_coord'))" />
                 <arg name="z" value="0.0525" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
@@ -121,8 +121,8 @@
      <group ns="gateGreen4">
         <include file="$(find uv_worlds)/launch/test_spawn_greena0.launch">
                 <arg name="robot_name" value="green_A0_4" />
-                <arg name="x" value="$(eval 42.67 - 27 + arg('xcoord'))" />
-                <arg name="y" value="$(eval 36.27 + 0.66 - 33.528 + arg('ycoord'))" />
+                <arg name="x" value="$(eval arg('x_coord') + arg('gate_2_gate') * 4)" />
+                <arg name="y" value="$(eval 36.27 + 0.66 - 33.528 + arg('y_coord'))" />
                 <arg name="z" value="0.0525" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
@@ -134,8 +134,8 @@
     <group ns="gateRed5">
         <include file="$(find uv_worlds)/launch/test_spawn_reda0.launch">
                 <arg name="robot_name" value="Red_A0_5" />
-                <arg name="x" value="$(eval 45.72 - 27 + arg('xcoord'))" />
-                <arg name="y" value="$(eval 35.05 - 33.528 + arg('ycoord'))" />
+                <arg name="x" value="$(eval arg('x_coord') + arg('gate_2_gate') * 5)" />
+                <arg name="y" value="$(eval 35.05 - 33.528 + arg('y_coord'))" />
                 <arg name="z" value="0.0525" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
@@ -146,8 +146,8 @@
      <group ns="gateGreen5">
          <include file="$(find uv_worlds)/launch/test_spawn_greena0.launch">
                 <arg name="robot_name" value="green_A0_5" />
-                <arg name="x" value="$(eval 45.72 - 27 + arg('xcoord'))" />
-                <arg name="y" value="$(eval 37.49 + 0.66 - 33.528 + arg('ycoord'))" />
+                <arg name="x" value="$(eval arg('x_coord') + arg('gate_2_gate') * 5)" />
+                <arg name="y" value="$(eval 37.49 + 0.66 - 33.528 + arg('y_coord'))" />
                 <arg name="z" value="0.0525" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
@@ -159,8 +159,8 @@
     <group ns="gateRed6">
         <include file="$(find uv_worlds)/launch/test_spawn_reda0.launch">
                 <arg name="robot_name" value="Red_A0_6" />
-                <arg name="x" value="$(eval 48.76 - 27 + arg('xcoord'))" />
-                <arg name="y" value="$(eval 36.27 - 33.528 + arg('ycoord'))" />
+                <arg name="x" value="$(eval arg('x_coord') + arg('gate_2_gate') * 6)" />
+                <arg name="y" value="$(eval 36.27 - 33.528 + arg('y_coord'))" />
                 <arg name="z" value="0.0525" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
@@ -171,8 +171,8 @@
      <group ns="gateGreen6">
         <include file="$(find uv_worlds)/launch/test_spawn_greena0.launch">
                 <arg name="robot_name" value="green_A0_6" />
-                <arg name="x" value="$(eval 48.76 - 27 + arg('xcoord'))" />
-                <arg name="y" value="$(eval 38.71 + 0.66 - 33.528 + arg('ycoord'))" />
+                <arg name="x" value="$(eval arg('x_coord') + arg('gate_2_gate') * 6)" />
+                <arg name="y" value="$(eval 38.71 + 0.66 - 33.528 + arg('y_coord'))" />
                 <arg name="z" value="0.0525" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
@@ -184,8 +184,8 @@
     <group ns="gateRed7">
         <include file="$(find uv_worlds)/launch/test_spawn_reda0.launch">
                 <arg name="robot_name" value="Red_A0_7" />
-                <arg name="x" value="$(eval 51.81 - 27 + arg('xcoord'))" />
-                <arg name="y" value="$(eval 35.66 - 33.528 + arg('ycoord'))" />
+                <arg name="x" value="$(eval arg('x_coord') + arg('gate_2_gate') * 7)" />
+                <arg name="y" value="$(eval 35.66 - 33.528 + arg('y_coord'))" />
                 <arg name="z" value="0.0525" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
@@ -196,8 +196,8 @@
      <group ns="gateGreen7">
          <include file="$(find uv_worlds)/launch/test_spawn_greena0.launch">
                 <arg name="robot_name" value="green_A0_7" />
-                <arg name="x" value="$(eval 51.81 - 27 + arg('xcoord'))" />
-                <arg name="y" value="$(eval 38.1 + 0.66 - 33.528 + arg('ycoord'))" />
+                <arg name="x" value="$(eval arg('x_coord') + arg('gate_2_gate') * 7)" />
+                <arg name="y" value="$(eval 38.1 + 0.66 - 33.528 + arg('y_coord'))" />
                 <arg name="z" value="0.0525" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
@@ -209,8 +209,8 @@
     <group ns="gateRed8">
         <include file="$(find uv_worlds)/launch/test_spawn_reda0.launch">
                 <arg name="robot_name" value="Red_A0_8" />
-                <arg name="x" value="$(eval 54.86 - 27 + arg('xcoord'))" />
-                <arg name="y" value="$(eval 35.35 - 33.528 + arg('ycoord'))" />
+                <arg name="x" value="$(eval arg('x_coord') + arg('gate_2_gate') * 8)" />
+                <arg name="y" value="$(eval 35.35 - 33.528 + arg('y_coord'))" />
                 <arg name="z" value="0.0525" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
@@ -221,8 +221,8 @@
      <group ns="gateGreen8">
         <include file="$(find uv_worlds)/launch/test_spawn_greena0.launch">
                 <arg name="robot_name" value="green_A0_8" />
-                <arg name="x" value="$(eval 54.86 - 27 + arg('xcoord'))" />
-                <arg name="y" value="$(eval 37.8 + 0.66 - 33.528 + arg('ycoord'))" />
+                <arg name="x" value="$(eval arg('x_coord') + arg('gate_2_gate') * 8)" />
+                <arg name="y" value="$(eval 37.8 + 0.66 - 33.528 + arg('y_coord'))" />
                 <arg name="z" value="0.0525" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
@@ -234,8 +234,8 @@
     <group ns="gateRed9">
         <include file="$(find uv_worlds)/launch/test_spawn_reda0.launch">
                 <arg name="robot_name" value="Red_A0_9" />
-                <arg name="x" value="$(eval 57.91 - 27 + arg('xcoord'))" />
-                <arg name="y" value="$(eval 34.13 - 33.528 + arg('ycoord'))" />
+                <arg name="x" value="$(eval arg('x_coord') + arg('gate_2_gate') * 9)" />
+                <arg name="y" value="$(eval 34.13 - 33.528 + arg('y_coord'))" />
                 <arg name="z" value="0.0525" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
@@ -246,8 +246,8 @@
      <group ns="gateGreen9">
         <include file="$(find uv_worlds)/launch/test_spawn_greena0.launch">
                 <arg name="robot_name" value="green_A0_9" />
-                <arg name="x" value="$(eval 57.91 - 27 + arg('xcoord'))" />
-                <arg name="y" value="$(eval 36.57 + 0.66 - 33.528 + arg('ycoord'))" />
+                <arg name="x" value="$(eval arg('x_coord') + arg('gate_2_gate') * 9)" />
+                <arg name="y" value="$(eval 36.57 + 0.66 - 33.528 + arg('y_coord'))" />
                 <arg name="z" value="0.0525" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
@@ -259,8 +259,8 @@
      <group ns="gateYellow0">
         <include file="$(find uv_worlds)/launch/test_spawn_yellowa2.launch">
                 <arg name="robot_name" value="yellow_A0_0" />
-                <arg name="x" value="$(eval 35.05 - 27 + arg('xcoord'))" />
-                <arg name="y" value="$(eval 34.13 - 33.528 + arg('ycoord'))" />
+                <arg name="x" value="$(eval arg('x_coord') + arg('gate_2_gate') * 1 + 2)" />
+                <arg name="y" value="$(eval 34.13 - 33.528 + arg('y_coord'))" />
                 <arg name="z" value="0.08" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
@@ -272,8 +272,8 @@
      <group ns="gateYellow1">
         <include file="$(find uv_worlds)/launch/test_spawn_yellowa2.launch">
                 <arg name="robot_name" value="yellow_A0_1" />
-                <arg name="x" value="$(eval 40.23 - 27 + arg('xcoord'))" />
-                <arg name="y" value="$(eval 34.14 - 33.528 + arg('ycoord'))" />
+                <arg name="x" value="$(eval arg('x_coord') + arg('gate_2_gate') * 3 + 1)" />
+                <arg name="y" value="$(eval 34.14 - 33.528 + arg('y_coord'))" />
                 <arg name="z" value="0.08" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
@@ -285,8 +285,8 @@
      <group ns="gateYellow2">
         <include file="$(find uv_worlds)/launch/test_spawn_yellowa2.launch">
                 <arg name="robot_name" value="yellow_A0_2" />
-                <arg name="x" value="$(eval 47.24 - 27 + arg('xcoord'))" />
-                <arg name="y" value="$(eval 36.57 - 33.528 + arg('ycoord'))" />
+                <arg name="x" value="$(eval arg('x_coord') + arg('gate_2_gate') * 5 + 2)" />
+                <arg name="y" value="$(eval 36.57 - 33.528 + arg('y_coord'))" />
                 <arg name="z" value="0.08" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
@@ -298,8 +298,8 @@
     <group ns="gateYellow3">
         <include file="$(find uv_worlds)/launch/test_spawn_yellowa2.launch">
                 <arg name="robot_name" value="yellow_A0_3" />
-                <arg name="x" value="$(eval 55.47 - 27 + arg('xcoord'))" />
-                <arg name="y" value="$(eval 36.57 - 33.528 + arg('ycoord'))" />
+                <arg name="x" value="$(eval arg('x_coord') + arg('gate_2_gate') * 8 + 1.5)" />
+                <arg name="y" value="$(eval 36.57 - 33.528 + arg('y_coord'))" />
                 <arg name="z" value="0.08" />
                 <arg name="roll" value="0" />
                 <arg name="pitch" value="0" />
