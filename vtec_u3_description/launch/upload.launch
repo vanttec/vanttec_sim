@@ -50,12 +50,20 @@
   </group> 
 
   <!-- Begin Gate -->
-  <group ns="Gate">
+  <group ns="Octagon">
     <param name="robot_description"
-      command="$(find xacro)/xacro --inorder '$(find sim_challenges)/urdf/gate.xacro' "/>  
+      command="$(find xacro)/xacro --inorder '$(find sim_challenges)/urdf/octagon.xacro' "/>  
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+          args="-urdf -param robot_description -model octagon_1"/> 
+  </group>
+
+    <!-- Begin Gate -->
+  <!-- <group ns="Gate">
+    <param name="robot_description"
+      command="$(find xacro)/xacro - -inorder '$(find sim_challenges)/urdf/gate.xacro' "/>  
     <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
           args="-urdf -param robot_description -model gate_1"/> 
-  </group>
+  </group> -->
   
   <!-- Begin Buoy1 (GUN) -->
   <!-- <group ns="Buoy1"> -->
