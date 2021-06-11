@@ -33,6 +33,8 @@
         "*.dae": "3dformat",
         "*.ipp": "cpp",
         "condition_variable": "cpp",
-        "thread": "cpp"
+        "thread": "cpp",
+        "cmath": "cpp",
+        "complex": "cpp"
     }
 }

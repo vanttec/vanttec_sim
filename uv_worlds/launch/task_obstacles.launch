@@ -85,15 +85,6 @@
     <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
           args="-urdf -param robot_description -model path_marker"/>
   </group>
-  <!-- Begin Pathmarker2 -->
-
-  <group ns="Pathmarker2">
-    <param name="tf_prefix" value="robot3_tf" />
-    <param name="robot_description" 
-          command="$(find xacro)/xacro --inorder '$(find sim_challenges)/urdf/pathmarkers/pathmarker2.xacro' "/> 
-    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
-          args="-urdf -param robot_description -model path_marker2"/>
-  </group>
   <!-- Begin Pathmarker3 -->
 
   <group ns="Pathmarker3">
@@ -102,15 +93,6 @@
           command="$(find xacro)/xacro --inorder '$(find sim_challenges)/urdf/pathmarkers/pathmarker3.xacro' "/> 
     <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
           args="-urdf -param robot_description -model path_marker3"/>
-  </group>
-  <!-- Begin Pathmarker4 -->
-
-  <group ns="Pathmarker4">
-    <param name="tf_prefix" value="robot3_tf" />
-    <param name="robot_description" 
-          command="$(find xacro)/xacro --inorder '$(find sim_challenges)/urdf/pathmarkers/pathmarker4.xacro' "/> 
-    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
-          args="-urdf -param robot_description -model path_marker4"/>
   </group>
   <?ignore
   <!-- Begin Pathmarker5 -->
