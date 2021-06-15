@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(gate_detector)
+project(uuv_perception)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -110,7 +110,7 @@ add_definitions(${PCL_DEFINITIONS})
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
  INCLUDE_DIRS include
- LIBRARIES gate_detector
+ LIBRARIES uuv_perception 
  CATKIN_DEPENDS geometry_msgs pcl_ros roscpp sensor_msgs std_msgs
  DEPENDS system_lib
 )
