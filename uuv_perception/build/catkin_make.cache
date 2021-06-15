@@ -1,0 +1,2 @@
+gate_detector
+-DCATKIN_DEVEL_PREFIX=/home/glazz/code/vanttec_uv_sim/uuv_perception/devel -DCMAKE_INSTALL_PREFIX=/home/glazz/code/vanttec_uv_sim/uuv_perception/install -G Unix Makefiles
