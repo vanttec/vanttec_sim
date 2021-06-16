@@ -14,6 +14,6 @@ catkin_make
  source devel/setup.sh
 ```
 ```sh
- rosrun cloudproc cloudproc_node
+ rosrun uuv_perception gate_detector_node
 ```
 ___
