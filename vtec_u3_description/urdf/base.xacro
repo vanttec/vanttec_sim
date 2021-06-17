@@ -85,6 +85,9 @@
     <!-- Include the sensor modules -->
     <xacro:include filename="$(find vtec_u3_description)/urdf/sensors.xacro"/> 
 
+    <!-- Include the arm module -->
+    <xacro:include filename="$(find vtec_u3_description)/urdf/arm.xacro"/> 
+
   </xacro:macro>
 
 </robot>
