@@ -88,6 +88,9 @@
     <!-- Include the arm module -->
     <xacro:include filename="$(find vtec_u3_description)/urdf/arm.xacro"/> 
 
+    <!-- Include shooter -->
+    <xacro:include filename="$(find vtec_u3_description)/urdf/shooter.xacro"/> 
+
   </xacro:macro>
 
 </robot>

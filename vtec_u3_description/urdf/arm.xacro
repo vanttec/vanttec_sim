@@ -52,7 +52,7 @@
     </gazebo>
 
   <!-- Used to fix arm_base_link -->
-  <joint name="fixed" type="fixed">
+  <joint name="arm_fixed" type="fixed">
      <origin xyz="${arm_origin_x} ${arm_origin_y} ${arm_origin_z}" rpy="0 0 0"/>
      <parent link="vtec_u3/base_link"/>
      <child link="arm_base_link"/>

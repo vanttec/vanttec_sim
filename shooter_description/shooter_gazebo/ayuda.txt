@@ -1,1 +1,0 @@
-http://gazebosim.org/tutorials?tut=ros_roslaunch&cat=connect_ros 

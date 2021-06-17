@@ -73,6 +73,16 @@
       <turnGravityOff>1</turnGravityOff>
     </gazebo>
 
+    <gazebo>
+      <plugin name="object_controller" filename="libgazebo_ros_planar_move.so">
+        <commandTopic>cmd_vel</commandTopic>
+        <odometryTopic>odom</odometryTopic>
+        <odometryFrame>odom</odometryFrame>
+        <odometryRate>20.0</odometryRate>
+        <robotBaseFrame>base_link</robotBaseFrame>
+      </plugin>
+    </gazebo>
+    
     <!-- Include the sensor modules -->
     <xacro:include filename="$(find vtec_s3_description)/urdf/sensors.xacro"/>
 
