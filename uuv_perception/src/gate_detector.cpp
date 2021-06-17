@@ -115,7 +115,6 @@ void callback(const sensor_msgs::PointCloud2ConstPtr& cloud_msg) {
 
     for (pcl::PointCloud<pcl::PointXYZRGB>::Ptr seg : segments) {
         pcl::getMinMax3D(*seg, min_p, max_p);
-
         mid_p.x = (min_p.x + max_p.x) / 2;
         mid_p.y = (min_p.y + max_p.y) / 2;
         mid_p.z = (min_p.z + max_p.z) / 2;
