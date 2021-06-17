@@ -1,0 +1,241 @@
+<?xml version="1.0"?>
+<!-- Copyright (c) 2016 The UUV Simulator Authors.
+     All rights reserved.
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+--> 
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- Macro for a minimal collision block (for when you do not want collision block but gazebo needs one) -->
+  <xacro:macro name="no_collision">
+    <collision>
+      <geometry>
+        <cylinder length="${0.000001}" radius="${0.000001}" />
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 ${0.5*pi} 0"/>
+    </collision> 
+  </xacro:macro>
+
+  <xacro:macro name="realsense_camera" params="namespace parent_link suffix *origin">
+    <xacro:realsense_camera_macro
+      namespace="${namespace}"
+      suffix="${suffix}"
+      parent_link="${parent_link}"
+      topic="camera"
+      mass="0.1"
+      update_rate="30"
+      hfov="1.5125"
+      width="768"
+      height="492"
+      stddev="0.02"
+      scale="1.0"
+      offset_x="0.049"
+      offset_y="0"
+      offset_z="0.053">
+      <inertia ixx="0.00001" ixy="0.0" ixz="0.0" iyy="0.00001" iyz="0.0" izz="0.00001" />
+      <xacro:insert_block name="origin" />
+    </xacro:realsense_camera_macro>
+  </xacro:macro>
+
+  <xacro:macro name="realsense_camera_macro" params="offset_x offset_y offset_z namespace suffix parent_link topic mass update_rate
+      hfov width height stddev scale
+      *inertia *origin">
+  
+    <!-- Camera link -->
+    <link name="${suffix}rs200_camera">
+        <visual>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <geometry>
+                <mesh filename="package://realsense_gazebo_plugin/models/realsense_camera/meshes/realsense.dae"/>
+            </geometry>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.0078 0.130 0.0192"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="0.0615752"/>
+            <origin rpy="0 0 0" xyz="0 0 0"/>
+            <inertia ixx="9.108e-05"
+                     ixy="0"
+                     ixz="0"
+                     iyy="2.51e-06"
+                     iyz="0"
+                     izz="8.931e-05"
+            />
+        </inertial>
+    </link>
+
+    <!-- Connect camera to parent frame-->
+    <joint name="${suffix}realsense_joint" type="fixed">
+        <parent link="${parent_link}"/>
+        <child link="${suffix}rs200_camera"/>
+        <xacro:insert_block name="origin"/>
+    </joint>
+
+    <!-- Virtual links representing the cameras positons and orientations-->
+    <link name="${suffix}color" />
+    <link name="${suffix}depth" />
+    <link name="${suffix}ired1" />
+    <link name="${suffix}ired2" />
+
+    <!-- Joints positioning the virtual links with respect to the camera main link-->
+    <joint name="${suffix}color_joint" type="fixed">
+        <parent link="${suffix}rs200_camera" />
+        <child link="${suffix}color" />
+        <!-- <origin xyz="0 -0.046 0.004" rpy="0 0 0"/> -->
+        <!-- The default position is change since in Rviz the cloud depth axis is Z not X-->
+        <origin xyz="0 -0.046 0.004" rpy="${pi/2} ${pi} ${pi/2}"/>
+    </joint>
+
+    <joint name="${suffix}depth_joint" type="fixed">
+        <parent link="${suffix}rs200_camera" />
+        <child link="${suffix}depth" />
+        <origin xyz="0 -0.03 0.004" rpy="0 0 0"/>
+    </joint>
+
+    <joint name="${suffix}ired1_joint" type="fixed">
+        <parent link="${suffix}rs200_camera" />
+        <child link="${suffix}ired1" />
+        <origin xyz="0 -0.06 0.004" rpy="0 0 0"/>
+    </joint>
+
+    <joint name="${suffix}ired2_joint" type="fixed">
+        <parent link="${suffix}rs200_camera" />
+        <child link="${suffix}ired2" />
+        <origin xyz="0 0.01 0.004" rpy="0 0 0"/>
+    </joint>
+
+<!-- **********************************************************-->
+<!-- GAZEBO DEFINITIONS ***************************************-->
+
+    <!-- Load plugin to the model ("robot" in urdf format)-->
+    <gazebo>
+        <plugin name="${suffix}r200" filename="librealsense_gazebo_plugin.so">
+            <prefix>${suffix}</prefix>
+        </plugin>
+        <!--<pose frame="">0 0 0.015 0 0 0</pose>-->
+    </gazebo>
+
+    <!-- Load parameters to model's main link-->
+    <gazebo reference="${suffix}rs200_camera">
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+        <turnGravityOff>1</turnGravityOff>
+        <!--<mu>1</mu>-->
+        <mu2>1</mu2>
+        <fdir1>0 0 0</fdir1>
+        <!--<slip1>0</slip1>
+        <slip2>0</slip2>-->
+        <kp>1e+13</kp>
+        <kd>1</kd>
+        <!--<max_vel>0.01</max_vel>
+        <min_depth>0</min_depth>-->
+
+        <sensor name="${suffix}color" type="camera">
+            <pose frame="">0 -0.046 0.004 0 0 0</pose>
+            <camera name="${suffix}rs200_camera">
+            <horizontal_fov>1.047</horizontal_fov>
+            <image>
+                <width>640</width>
+                <height>480</height>
+                <format>RGB_INT8</format>
+            </image>
+            <clip>
+                <near>0.1</near>
+                <far>100</far>
+            </clip>
+            <noise>
+                <type>gaussian</type>
+                <mean>0.0</mean>
+                <stddev>0.007</stddev>
+            </noise>
+            </camera>
+            <always_on>1</always_on>
+            <update_rate>60</update_rate>
+            <visualize>1</visualize>
+        </sensor>
+        <sensor name="${suffix}ired1" type="camera">
+            <pose frame="">0 -0.06 0.004 0 0 0</pose>
+            <camera name="${suffix}rs200_camera">
+            <horizontal_fov>1.047</horizontal_fov>
+            <image>
+                <width>640</width>
+                <height>480</height>
+                <format>L_INT8</format>
+            </image>
+            <clip>
+                <near>0.1</near>
+                <far>100</far>
+            </clip>
+            <noise>
+                <type>gaussian</type>
+                <mean>0.0</mean>
+                <stddev>0.05</stddev>
+            </noise>
+            </camera>
+            <always_on>1</always_on>
+            <update_rate>60</update_rate>
+            <visualize>0</visualize>
+        </sensor>
+        <sensor name="${suffix}ired2" type="camera">
+            <pose frame="">0 0.01 0.004 0 0 0</pose>
+            <camera name="${suffix}rs200_camera">
+            <horizontal_fov>1.047</horizontal_fov>
+            <image>
+                <width>640</width>
+                <height>480</height>
+                <format>L_INT8</format>
+            </image>
+            <clip>
+                <near>0.1</near>
+                <far>100</far>
+            </clip>
+            <noise>
+                <type>gaussian</type>
+                <mean>0.0</mean>
+                <stddev>0.05</stddev>
+            </noise>
+            </camera>
+            <always_on>1</always_on>
+            <update_rate>60</update_rate>
+            <visualize>0</visualize>
+        </sensor>
+        <sensor name="${suffix}depth" type="depth">
+            <pose frame="">0 -0.03 0.004 0 0 0</pose>
+            <camera name="${suffix}rs200_camera">
+            <horizontal_fov>1.047</horizontal_fov>
+            <image>
+                    <width>640</width>
+                    <height>480</height>
+            </image>
+            <clip>
+                    <near>0.1</near>
+                    <far>100</far>
+            </clip>
+            <noise>
+                    <type>gaussian</type>
+                    <mean>0.0</mean>
+                    <stddev>0.100</stddev>
+            </noise>
+            </camera>
+            <always_on>1</always_on>
+            <update_rate>60</update_rate>
+            <visualize>0</visualize>
+        </sensor>
+    </gazebo>
+  </xacro:macro>
+
+</robot>

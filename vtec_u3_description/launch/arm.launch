@@ -1,0 +1,59 @@
+<launch>
+  <!-- these are the arguments you can pass this launch file, for example paused:=true -->
+  <arg name="paused" default="false"/>
+  <arg name="use_sim_time" default="true"/>
+  <arg name="gui" default="true"/>
+  <arg name="headless" default="false"/>
+  <arg name="debug" default="false"/>
+
+  <!-- We resume the logic in empty_world.launch -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="debug" value="$(arg debug)" />
+    <arg name="gui" value="$(arg gui)" />
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+    <arg name="headless" value="$(arg headless)"/>
+    <!-- arg name="world_name" value="$(find task_1)/world/tutorial_testing.world"/ -->
+  </include>
+
+  <group ns="brazo">
+    <!-- Convert xacro and load arm description -->
+    <param name="robot_description" command="$(find xacro)/xacro.py '$(find vtec_u3_description)/urdf/brazo.xacro'" />
+
+    <!-- Spawn in gazebo -->
+    <node name="spawn_model" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -model brazo -param robot_description"/>
+
+    <!-- Tip: Node if/unless -->
+
+    <!-- Publishes joint state messages -->
+    <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" >
+      <!-- <remap from="/jo int_states" to="joint_states_interpolated" /> -->
+      <!-- <rosparam param="source_list">["new_joint_states"]</rosparam> -->
+    </node>
+
+    <!-- Calculates transforms between different parts -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+
+    <!-- <node name="joint_state_pub" pkg="vtec_u3_description" type="joint_state_pub.py" /> -->
+  </group>
+
+  <!-- Begin RealSense Camera-->
+    <!-- <group ns="RealSense_Camera">
+        <param name="robot_description" command="$(find xacro)/xacro inorder '$(find vtec_u3_description)/urdf/realsense_camera.xacro'"/>
+
+        <node name="spawn_model_camera" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model rs200"/>
+        
+        <node name="state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+    </group>  -->
+
+    <!-- <node name="rviz" pkg="rviz" type="rviz" args="-d $(find vtec_u3_description)/urdf.rviz" /> -->
+
+
+  <!-- <group ns="object">
+    <param name="robot_description" textfile= '$(find vtec_u3_description)/urdf/bola.urdf' /> -->
+
+    <!-- Spawn in gazebo -->
+    <!-- <node name="spawn_model" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -x 0.36 -model bola -param robot_description"/> -->
+
+  <!-- </group> -->
+</launch>
