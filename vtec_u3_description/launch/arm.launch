@@ -18,7 +18,7 @@
 
   <group ns="brazo">
     <!-- Convert xacro and load arm description -->
-    <param name="robot_description" command="$(find xacro)/xacro.py '$(find brazo_assembly)/urdf/brazo.xacro'" />
+    <param name="robot_description" command="$(find xacro)/xacro.py '$(find vtec_u3_description)/urdf/brazo.xacro'" />
 
     <!-- Spawn in gazebo -->
     <node name="spawn_model" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -model brazo -param robot_description"/>
@@ -34,26 +34,26 @@
     <!-- Calculates transforms between different parts -->
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
 
-    <!-- <node name="joint_state_pub" pkg="brazo_assembly" type="joint_state_pub.py" /> -->
+    <!-- <node name="joint_state_pub" pkg="vtec_u3_description" type="joint_state_pub.py" /> -->
   </group>
 
   <!-- Begin RealSense Camera-->
-  <group ns="RealSense_Camera">
-      <param name="robot_description" command="$(find xacro)/xacro --inorder '$(find brazo_assembly)/urdf/realsense_camera.xacro'"/>
+    <!-- <group ns="RealSense_Camera">
+        <param name="robot_description" command="$(find xacro)/xacro inorder '$(find vtec_u3_description)/urdf/realsense_camera.xacro'"/>
 
-      <node name="spawn_model_camera" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model rs200"/>
-      
-      <node name="state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
-  </group> 
+        <node name="spawn_model_camera" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model rs200"/>
+        
+        <node name="state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+    </group>  -->
 
-    <!-- <node name="rviz" pkg="rviz" type="rviz" args="-d $(find brazo_assembly)/urdf.rviz" /> -->
+    <!-- <node name="rviz" pkg="rviz" type="rviz" args="-d $(find vtec_u3_description)/urdf.rviz" /> -->
 
 
-  <group ns="object">
-    <param name="robot_description" textfile= '$(find brazo_assembly)/urdf/bola.urdf' />
+  <!-- <group ns="object">
+    <param name="robot_description" textfile= '$(find vtec_u3_description)/urdf/bola.urdf' /> -->
 
     <!-- Spawn in gazebo -->
-    <node name="spawn_model" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -x 0.36 -model bola -param robot_description"/>
+    <!-- <node name="spawn_model" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -x 0.36 -model bola -param robot_description"/> -->
 
-  </group>
+  <!-- </group> -->
 </launch>
