@@ -23,8 +23,6 @@
 
 typedef pcl::PointCloud<pcl::PointXYZRGB> PointCloud;
 
-// pcl::visualization::CloudViewer test_viewer("Point Cloud");
-
 boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer(
     new pcl::visualization::PCLVisualizer ("Visualizer")
 );
@@ -54,7 +52,23 @@ std::vector<pcl::PointCloud<pcl::PointXYZRGB>::Ptr> segments;
 ros::Publisher gate_down_pub,
     gate_upper_pub,
     gate_left_waypoint,
-    gate_right_waypoint;
+    gate_right_waypoint,
+    buoy_1_pos_pub,
+    buoy_2_pos_pub;
+
+//variables to check if buoys are detected
+std::pair<bool, pcl::PointXYZRGB> buoys[2];
+
+inline float get_euclidean_distance(pcl::PointXYZRGB a,pcl::PointXYZRGB b) {
+
+    return std::sqrt(std::pow(b.x - a.x, 2) + std::pow(b.y - a.y, 2) + std::pow(b.z - a.z, 2));
+}
+
+pcl::VoxelGrid<pcl::PCLPointCloud2> voxel_grid;
+pcl::PassThrough<pcl::PointXYZRGB> pass;
+std::vector<int> indices;
+
+
 
 void callback(const sensor_msgs::PointCloud2ConstPtr& cloud_msg) {
 
@@ -70,15 +84,14 @@ void callback(const sensor_msgs::PointCloud2ConstPtr& cloud_msg) {
     clusterer.setMinClusterSize (100);
     clusterer.setMaxClusterSize (25000);
 
-    pcl::VoxelGrid<pcl::PCLPointCloud2> voxel_grid;
     voxel_grid.setInputCloud(cloudPtr);
     voxel_grid.setLeafSize(0.05,0.05, 0.05);
     voxel_grid.filter(*cloud_filtered_ptr);
 
-    std::vector<int> indices;
+    indices.clear();
+    indices.reserve(1000);
     pcl::fromPCLPointCloud2(*cloud_filtered_ptr, *temp_cloud);
 
-    pcl::PassThrough<pcl::PointXYZRGB> pass;
     pass.setInputCloud(temp_cloud);
     pass.setFilterFieldName("y");
     pass.setFilterLimits(-3.25, FLT_MAX); // -3.25m to inf height
@@ -113,9 +126,16 @@ void callback(const sensor_msgs::PointCloud2ConstPtr& cloud_msg) {
     for (pcl::PointCloud<pcl::PointXYZRGB>::Ptr seg : segments) {
         pcl::getMinMax3D(*seg, min_p, max_p);
 
+        //Part of the gate detection routine
         mid_p.x = (min_p.x + max_p.x) / 2;
         mid_p.y = (min_p.y + max_p.y) / 2;
         mid_p.z = (min_p.z + max_p.z) / 2;
+
+        //BUOY DETECTION
+        //Compare cloud width vs height, if height > width then it's (probably) a buoy
+        pcl::PointXYZRGB bot_right(max_p);
+        bot_right.y = min_p.y;
+
 
         float diagonal = std::sqrt(std::pow(max_p.x - min_p.x, 2) + std::pow(max_p.y - min_p.y, 2) + std::pow(max_p.z - min_p.z, 2));
         if (diagonal > max_diagonal) {
@@ -132,25 +152,58 @@ void callback(const sensor_msgs::PointCloud2ConstPtr& cloud_msg) {
                 0);
             std::string id_name = std::to_string(counter);
 
+
+            if (get_euclidean_distance(bot_right, min_p) < get_euclidean_distance(bot_right, max_p)) {
+                //shadowing previous color handler bc class wont let me access color variables directly
+                color_handler = pcl::visualization::PointCloudColorHandlerCustom<pcl::PointXYZRGB> (seg,
+                                0,
+                                0,
+                                255);
+
+                // Check if first buoy slot is occupied, if it is then populate second slot
+                size_t index = buoys[0].first ? 1 : 0;
+                buoys[index] = std::make_pair(true, mid_p);
+            }
+
             viewer->addPointCloud<pcl::PointXYZRGB> (seg,color_handler ,id_name);
-            viewer->setPointCloudRenderingProperties (pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 1, id_name);
+            viewer->setPointCloudRenderingProperties (pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 3, id_name);
 
         }
+
         ++counter;
+    }
+    //BUOY PUBLISHING
+    for (int i=0;i<2;i++) {
+        geometry_msgs::Point holder;
+        ros::Publisher* publisher; 
+        if (buoys[i].first) {
+            holder.x = buoys[i].second.x;
+            holder.y = buoys[i].second.y;
+            holder.z = buoys[i].second.z;
+            switch(i) {
+                case 0: {
+                    publisher = &buoy_1_pos_pub;
+                    break;
+                }
+                case 1: {
+                    publisher = &buoy_2_pos_pub;
+                    break;
+                }
+                default: {
+                    throw std::range_error("Program tried to access index out of bounds (2), this should not have happened");
+                }
+            }
+            publisher->publish(holder);
+        }
     }
 
     if (gate != nullptr) {
         pcl::PointXYZRGB left, right, center;
-        // center.x = gate->dimensions
         left = gate_mid_p;
         right = gate_mid_p;
         right.x = (gate_mid_p.x + maxright.x) / 2;
-        // right.y = (gate_mid_p.y + maxright.y) / 2;
-        // right.z = (gate_mid_p.z + maxright.z) / 2;
-
         left.x = (gate_mid_p.x + maxleft.x) / 2;
-        // left.y = (gate_mid_p.y + maxleft.y) / 2;
-        // left.z = (gate_mid_p.z + maxleft.z) / 2;
+
         viewer->addSphere(gate_mid_p, 0.05);
         viewer->addSphere(right,0.05, "right");
         viewer->addSphere(left,0.05, "left");
@@ -166,6 +219,7 @@ void callback(const sensor_msgs::PointCloud2ConstPtr& cloud_msg) {
         downcorner.y = maxright.y;
         downcorner.z = maxright.z;
 
+        //"w" for waypoint
         leftw.x = left.x;
         leftw.y = left.y;
         leftw.z = left.z;
@@ -176,8 +230,8 @@ void callback(const sensor_msgs::PointCloud2ConstPtr& cloud_msg) {
 
         gate_left_waypoint.publish(leftw);
         gate_right_waypoint.publish(rightw);
-        // gate_down_pub.publish(downcorner);
-        // gate_upper_pub.publish(uppercorner);
+        gate_down_pub.publish(downcorner);
+        gate_upper_pub.publish(uppercorner);
 
         pcl::visualization::PointCloudColorHandlerCustom<pcl::PointXYZRGB> color_handler(
             gate,
@@ -187,9 +241,11 @@ void callback(const sensor_msgs::PointCloud2ConstPtr& cloud_msg) {
         std::string id_name = "Gate";
 
         viewer->addPointCloud<pcl::PointXYZRGB> (gate, color_handler ,id_name);
-        viewer->setPointCloudRenderingProperties (pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 1, id_name);
+        viewer->setPointCloudRenderingProperties (pcl::visualization::PCL_VISUALIZER_POINT_SIZE, 3, id_name);
     }
     viewer->spinOnce(100);
+    buoys[0].first = false;
+    buoys[1].first = false;
 }
 
 int main(int argc, char** argv) {
@@ -201,14 +257,17 @@ int main(int argc, char** argv) {
     gate_down_pub = handler.advertise<geometry_msgs::Point>
                     ("gate_inferior_corner", 10);
     gate_upper_pub = handler.advertise<geometry_msgs::Point>
-                    ("gate_superior_corner", 10);
+                     ("gate_superior_corner", 10);
 
     gate_left_waypoint = handler.advertise<geometry_msgs::Point>
-                    ("gate_left_waypoint", 10);
+                         ("gate_left_waypoint", 10);
     gate_right_waypoint = handler.advertise<geometry_msgs::Point>
-                    ("gate_right_waypoint", 10);
+                          ("gate_right_waypoint", 10);
+    buoy_1_pos_pub = handler.advertise<geometry_msgs::Point> ("buoy_1_pos_pub", 10);
 
+    buoy_2_pos_pub = handler.advertise<geometry_msgs::Point> ("buoy_2_pos_pub", 10);
     ros::Subscriber subscriber = handler.subscribe("frontr200/camera/depth_registered/points", 10, callback);
 
     ros::spin();
 }
+
