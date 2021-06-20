@@ -11,7 +11,7 @@
     namespace="$(arg namespace)" >
     <!-- inertial_reference_frame="$(arg inertial_reference_frame)" > -->
     <gazebo>
-
+      
     </gazebo>
   </xacro:vtec_s3_base>
 
