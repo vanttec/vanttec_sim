@@ -1,0 +1,187 @@
+<launch>
+  <!-- We resume the logic in empty_world.launch, changing only the name of the world to be launched -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" value="$(find uv_worlds)/worlds/swarms.world"/>
+    <!-- more default parameters can be changed here -->
+  </include>
+  <!-- Debug flag -->
+  <arg name="debug" default="0"/>
+  <arg name="mode" default="vtec_s3_default"/>
+  <arg name="world_frame" default="world"/>
+  <!-- Boat1 -->
+  <!-- Vehicle's namespace -->
+  <arg name="namespace" default="boat1"/>
+  <!-- Vehicle's initial pose -->
+  <arg name="x"     default="0"/>
+  <arg name="y"     default="0"/>
+  <arg name="z"     default="0"/>
+  <arg name="roll"  default="0"/>
+  <arg name="pitch" default="0"/>
+  <arg name="yaw"   default="0"/>
+  <group ns="$(arg namespace)">
+    <param name="robot_description"
+           command="$(find xacro)/xacro --inorder '$(find vtec_s3_description)/robots/$(arg mode).xacro' debug:=$(arg debug) namespace:=$(arg namespace)" />
+    
+    <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
+    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+            args="-urdf -x $(arg x) -y $(arg y) -z $(arg z) -R $(arg roll) -P $(arg pitch) -Y $(arg yaw) -model $(arg namespace) -param /$(arg namespace)/robot_description"/>
+
+    <!-- A joint state publisher plugin already is started with the model, no need to use the default joint state publisher -->
+
+    <!-- Publish robot model for ROS -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="true" output="screen">
+      <param name="robot_description" value="/$(arg namespace)/robot_description" />
+    </node>
+  </group>
+  <!-- Boat2 -->
+  <!-- Vehicle's namespace -->
+  <arg name="namespace2" default="boat2"/>
+  <!-- Vehicle's initial pose -->
+  <arg name="x2"     default="-2"/>
+  <arg name="y2"     default="2"/>
+  <arg name="z2"     default="0"/>
+  <arg name="roll2"  default="0"/>
+  <arg name="pitch2" default="0"/>
+  <arg name="yaw2"   default="0"/>
+  <group ns="$(arg namespace2)">
+    <param name="robot_description"
+           command="$(find xacro)/xacro --inorder '$(find vtec_s3_description)/robots/$(arg mode).xacro' debug:=$(arg debug) namespace:=$(arg namespace2)" />
+    
+    <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
+    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+            args="-urdf -x $(arg x2) -y $(arg y2) -z $(arg z2) -R $(arg roll2) -P $(arg pitch2) -Y $(arg yaw2) -model $(arg namespace2) -param /$(arg namespace2)/robot_description"/>
+
+    <!-- A joint state publisher plugin already is started with the model, no need to use the default joint state publisher -->
+
+    <!-- Publish robot model for ROS -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="true" output="screen">
+      <param name="robot_description" value="/$(arg namespace2)/robot_description" />
+    </node>
+  </group>
+  <!-- Boat3 -->
+  <!-- Vehicle's namespace -->
+  <arg name="namespace3" default="boat3"/>
+  <!-- Vehicle's initial pose -->
+  <arg name="x3"     default="-2"/>
+  <arg name="y3"     default="-2"/>
+  <arg name="z3"     default="0"/>
+  <arg name="roll3"  default="0"/>
+  <arg name="pitch3" default="0"/>
+  <arg name="yaw3"   default="0"/>
+  <group ns="$(arg namespace3)">
+    <param name="robot_description"
+           command="$(find xacro)/xacro --inorder '$(find vtec_s3_description)/robots/$(arg mode).xacro' debug:=$(arg debug) namespace:=$(arg namespace3)" />
+    
+    <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
+    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+            args="-urdf -x $(arg x3) -y $(arg y3) -z $(arg z3) -R $(arg roll3) -P $(arg pitch3) -Y $(arg yaw3) -model $(arg namespace3) -param /$(arg namespace3)/robot_description"/>
+
+    <!-- A joint state publisher plugin already is started with the model, no need to use the default joint state publisher -->
+
+    <!-- Publish robot model for ROS -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="true" output="screen">
+      <param name="robot_description" value="/$(arg namespace3)/robot_description" />
+    </node>
+  </group>
+  <!-- Boat4 -->
+  <!-- Vehicle's namespace -->
+  <arg name="namespace4" default="boat4"/>
+  <!-- Vehicle's initial pose -->
+  <arg name="x4"     default="-4"/>
+  <arg name="y4"     default="2"/>
+  <arg name="z4"     default="0"/>
+  <arg name="roll4"  default="0"/>
+  <arg name="pitch4" default="0"/>
+  <arg name="yaw4"   default="0"/>
+  <group ns="$(arg namespace4)">
+    <param name="robot_description"
+           command="$(find xacro)/xacro --inorder '$(find vtec_s3_description)/robots/$(arg mode).xacro' debug:=$(arg debug) namespace:=$(arg namespace4)" />
+    
+    <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
+    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+            args="-urdf -x $(arg x4) -y $(arg y4) -z $(arg z4) -R $(arg roll4) -P $(arg pitch4) -Y $(arg yaw4) -model $(arg namespace4) -param /$(arg namespace4)/robot_description"/>
+
+    <!-- A joint state publisher plugin already is started with the model, no need to use the default joint state publisher -->
+
+    <!-- Publish robot model for ROS -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="true" output="screen">
+      <param name="robot_description" value="/$(arg namespace4)/robot_description" />
+    </node>
+  </group>
+  <!-- Boat5 -->
+  <!-- Vehicle's namespace -->
+  <arg name="namespace5" default="boat5"/>
+  <!-- Vehicle's initial pose -->
+  <arg name="x5"     default="-4"/>
+  <arg name="y5"     default="-2"/>
+  <arg name="z5"     default="0"/>
+  <arg name="roll5"  default="0"/>
+  <arg name="pitch5" default="0"/>
+  <arg name="yaw5"   default="0"/>
+  <group ns="$(arg namespace5)">
+    <param name="robot_description"
+           command="$(find xacro)/xacro --inorder '$(find vtec_s3_description)/robots/$(arg mode).xacro' debug:=$(arg debug) namespace:=$(arg namespace5)" />
+    
+    <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
+    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+            args="-urdf -x $(arg x5) -y $(arg y5) -z $(arg z5) -R $(arg roll5) -P $(arg pitch5) -Y $(arg yaw5) -model $(arg namespace5) -param /$(arg namespace5)/robot_description"/>
+
+    <!-- A joint state publisher plugin already is started with the model, no need to use the default joint state publisher -->
+
+    <!-- Publish robot model for ROS -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="true" output="screen">
+      <param name="robot_description" value="/$(arg namespace5)/robot_description" />
+    </node>
+  </group>
+  <!-- Boat6 -->
+  <!-- Vehicle's namespace -->
+  <arg name="namespace6" default="boat6"/>
+  <!-- Vehicle's initial pose -->
+  <arg name="x6"     default="-6"/>
+  <arg name="y6"     default="2"/>
+  <arg name="z6"     default="0"/>
+  <arg name="roll6"  default="0"/>
+  <arg name="pitch6" default="0"/>
+  <arg name="yaw6"   default="0"/>
+  <group ns="$(arg namespace6)">
+    <param name="robot_description"
+           command="$(find xacro)/xacro --inorder '$(find vtec_s3_description)/robots/$(arg mode).xacro' debug:=$(arg debug) namespace:=$(arg namespace6)" />
+    
+    <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
+    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+            args="-urdf -x $(arg x6) -y $(arg y6) -z $(arg z6) -R $(arg roll6) -P $(arg pitch6) -Y $(arg yaw6) -model $(arg namespace6) -param /$(arg namespace6)/robot_description"/>
+
+    <!-- A joint state publisher plugin already is started with the model, no need to use the default joint state publisher -->
+
+    <!-- Publish robot model for ROS -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="true" output="screen">
+      <param name="robot_description" value="/$(arg namespace6)/robot_description" />
+    </node>
+  </group>
+  <!-- Boat7 -->
+  <!-- Vehicle's namespace -->
+  <arg name="namespace7" default="boat7"/>
+  <!-- Vehicle's initial pose -->
+  <arg name="x7"     default="-6"/>
+  <arg name="y7"     default="-2"/>
+  <arg name="z7"     default="0"/>
+  <arg name="roll7"  default="0"/>
+  <arg name="pitch7" default="0"/>
+  <arg name="yaw7"   default="0"/>
+  <group ns="$(arg namespace7)">
+    <param name="robot_description"
+           command="$(find xacro)/xacro --inorder '$(find vtec_s3_description)/robots/$(arg mode).xacro' debug:=$(arg debug) namespace:=$(arg namespace7)" />
+    
+    <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
+    <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+            args="-urdf -x $(arg x7) -y $(arg y7) -z $(arg z7) -R $(arg roll7) -P $(arg pitch7) -Y $(arg yaw7) -model $(arg namespace7) -param /$(arg namespace7)/robot_description"/>
+
+    <!-- A joint state publisher plugin already is started with the model, no need to use the default joint state publisher -->
+
+    <!-- Publish robot model for ROS -->
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" respawn="true" output="screen">
+      <param name="robot_description" value="/$(arg namespace7)/robot_description" />
+    </node>
+  </group>
+
+</launch>

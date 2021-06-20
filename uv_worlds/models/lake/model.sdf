@@ -32,7 +32,7 @@
               </script>
             </material>
         </visual>
-
+ 
         <collision name="lake_bottom">
             <pose>0 0 0 0 0 0</pose>
             <geometry>
