@@ -136,7 +136,6 @@ void callback(const sensor_msgs::PointCloud2ConstPtr& cloud_msg) {
         pcl::PointXYZRGB bot_right(max_p);
         bot_right.y = min_p.y;
 
-        bool seems_like_buoy = get_euclidean_distance(bot_right, min_p) < get_euclidean_distance(bot_right, max_p);
         float diagonal = std::sqrt(std::pow(max_p.x - min_p.x, 2) + std::pow(max_p.y - min_p.y, 2) + std::pow(max_p.z - min_p.z, 2));
         if (diagonal > max_diagonal && !seems_like_buoy) {
             max_diagonal = diagonal;
@@ -153,7 +152,7 @@ void callback(const sensor_msgs::PointCloud2ConstPtr& cloud_msg) {
             std::string id_name = std::to_string(counter);
 
 
-            if (seems_like_buoy) {
+            if (get_euclidean_distance(bot_right, min_p) < get_euclidean_distance(bot_right, max_p)) {
                 //shadowing previous color handler bc class wont let me access color variables directly
                 color_handler = pcl::visualization::PointCloudColorHandlerCustom<pcl::PointXYZRGB> (seg,
                                 0,
