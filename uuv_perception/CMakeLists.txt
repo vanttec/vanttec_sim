@@ -25,23 +25,6 @@ add_definitions(${PCL_DEFINITIONS})
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
 
-#set(OpenCV_INCLUDE_DIRS
-#  /home/sebastian/.local/lib/python2.7/site-packages
-#  /home/sebastian/.local/lib/python2.7/site-packages/cv2
-#)
-
-#set(OpenCV_LIB_DIR
-#  /home/sebastian/.local/lib
-#)
-
-#set(OpenCV_LIBS
-#  opencv_core
-#  opencv_highgui
-#  opencv_imgcodecs
-#)
-
-#include_directories(${OpenCV_INCLUDE_DIRS})
-#link_directories(${OpenCV_LIB_DIR})
 
 ## Uncomment this if the package has a setup.py. This macro ensures
 ## modules and global scripts declared therein get installed

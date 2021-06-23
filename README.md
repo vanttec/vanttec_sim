@@ -9,6 +9,7 @@ To run the USV simulator, in a terminal write the following commands:
  ```
 roslaunch uv_worlds lake.launch
 roslaunch vtec_s3_description upload.launch
+roslaunch usv_master usv_master.launch
 ```
 
 To run the UUV simulator, in a terminal write the following commands:
@@ -26,3 +27,13 @@ run uuv simulation file from vanttec_uuv package
   <img src="https://github.com/vanttec/vanttec_uv_sim/blob/feature/testmissions/sim_challenges/scene.jpeg" width="600" height="440" align="center"/>
 
 </p>
+
+
+
+To run the UV simulator for Aiming System, in a terminal write the following command:
+
+`roslaunch shooter_description shooter_gazebo.launch`
+
+To run the node for shooting the torpedoes, in a terminal write the following command:
+
+`rosrun shooter_description shoot.py`
