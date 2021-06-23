@@ -136,9 +136,8 @@ void callback(const sensor_msgs::PointCloud2ConstPtr& cloud_msg) {
         pcl::PointXYZRGB bot_right(max_p);
         bot_right.y = min_p.y;
 
-
         float diagonal = std::sqrt(std::pow(max_p.x - min_p.x, 2) + std::pow(max_p.y - min_p.y, 2) + std::pow(max_p.z - min_p.z, 2));
-        if (diagonal > max_diagonal) {
+        if (diagonal > max_diagonal && !seems_like_buoy) {
             max_diagonal = diagonal;
             gate = seg;
             gate_mid_p = mid_p;
@@ -159,7 +158,6 @@ void callback(const sensor_msgs::PointCloud2ConstPtr& cloud_msg) {
                                 0,
                                 0,
                                 255);
-
                 // Check if first buoy slot is occupied, if it is then populate second slot
                 size_t index = buoys[0].first ? 1 : 0;
                 buoys[index] = std::make_pair(true, mid_p);

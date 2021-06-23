@@ -1,0 +1,166 @@
+<?xml version="1.0" ?>
+
+<robot name="brazo">
+  <link name= "base_link">
+    <visual>
+      <origin rpi="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="package://brazo_assembly/meshes/base_link.STL" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://brazo_assembly/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="-0.000143143841055618 0.0093355201368952 0.0425505188622381" rpy="0 0 0" />
+      <mass value="0.214808103264679" />
+      <inertia ixx="0.000132481426198286" ixy="1.188655205865E-07" ixz="-3.23742877341229E-07" iyy="0.000172352515935015" iyz="-6.2821695368927E-06" izz="0.000124522809981115" />
+    </inertial>
+  </link>
+
+  <joint name="base_link__Link_brazo" type="prismatic">
+    <axis xyz="0 0 1" />
+    <limit effort="1000.0" lower="-0.09" upper="0.12" velocity="0.001" />
+    <origin xyz="0.15257 -0.00014633 0.003" rpy="1.5708 0 1.5708" />
+    <parent link="base_link" />
+    <child link="Link_brazo" />
+  </joint>
+
+  <link name ="Link_brazo">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://brazo_assembly/meshes/Link_brazo.STL" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://brazo_assembly/meshes/Link_brazo.STL" />
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0.00011792 0.019454 -0.085978" rpy="0 0 0" />
+      <mass value="0.14" />
+      <inertia ixx="0.00063531" ixy="1.2887E-09" ixz="1.2477E-10" iyy="0.00063245" iyz="-2.0574E-06" izz="2.1618E-05" />
+    </inertial>
+  </link>
+
+  <link name="Link_viga_izquierda">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://brazo_assembly/meshes/Link_viga_izquierda.STL" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://brazo_assembly/meshes/Link_viga_izquierda.STL" />
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="-0.0054587 -0.0045 0.020602" rpy="0 0 0" />
+      <mass value="0.0028443" />
+      <inertia ixx="4.9933E-07" ixy="-5.3319E-23" ixz="1.2205E-08" iyy="5.1421E-07" iyz="4.1505E-23" izz="1.6781E-08" />
+    </inertial>
+  </link>
+
+  <joint name="Link_brazo__Link_viga_izquierda" type="revolute">
+    <axis xyz="0 1 0" />
+    <limit lower="0" upper="1" effort="100" velocity="0.001" />
+    <origin xyz="0.025315 0.0212 0.078512" rpy="0 -0.13439 0" />
+    <parent link="Link_brazo" />
+    <child link="Link_viga_izquierda" />
+  </joint>
+
+  <link name="Link_punta_izquierda">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://brazo_assembly/meshes/Link_punta_izquierda.STL" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://brazo_assembly/meshes/Link_punta_izquierda.STL" />
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="-0.010353 -0.0025 0.013922" rpy="0 0 0" />
+      <mass value="0.0028494" />
+      <inertia ixx="4.2796E-07" ixy="8.6609E-24" ixz="7.5238E-08" iyy="4.9556E-07" iyz="2.4565E-23" izz="7.9473E-08" />
+    </inertial>
+  </link>
+
+  <joint name="Link_viga_izquierda__Link_punta_izquierda" type="revolute">
+    <axis xyz="0 1 0" />
+    <limit lower="-1" upper="0" effort="100" velocity="0.001" />
+    <origin xyz="0 -0.002 0.04" rpy="0 0.10761 0" />
+    <child link="Link_punta_izquierda" />
+    <parent link="Link_viga_izquierda" />
+    <mimic joint="Link_brazo__Link_viga_izquierda" multiplier="-1" offset="0" />
+  </joint>
+
+  <link name="Link_viga_derecha">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://brazo_assembly/meshes/Link_viga_derecha.STL" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://brazo_assembly/meshes/Link_viga_derecha.STL" />
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0.0054603 -0.0045 0.020616" rpy="0 0 0" />
+      <mass value="0.0028443" />
+      <inertia ixx="4.9933E-07" ixy="-6.5376E-23" ixz="-1.22E-08" iyy="5.1421E-07" iyz="-3.4444E-22" izz="1.6781E-08" />
+    </inertial>
+  </link>
+
+  <joint name="Link_brazo__Link_viga_derecha" type="revolute">
+    <axis xyz="0 1 0" />
+    <limit lower="-1" upper="0" effort="100" velocity="0.001" />
+    <origin xyz="-0.025315 0.0212 0.078512" rpy="0 0.13167 0" />
+    <child link="Link_viga_derecha" />
+    <parent link="Link_brazo" />
+    <mimic joint="Link_brazo__Link_viga_izquierda" multiplier="-1" offset="0" />
+  </joint>
+
+  <link name="Link_punta_derecha">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://brazo_assembly/meshes/Link_punta_derecha.STL" />
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="package://brazo_assembly/meshes/Link_punta_derecha.STL" />
+      </geometry>
+    </collision>
+    <inertial>
+      <origin xyz="0.010353 -0.0025 0.013922" rpy="0 0 0" />
+      <mass value="0.0028494" />
+      <inertia ixx="4.2796E-07" ixy="3.9739E-24" ixz="-7.5238E-08" iyy="4.9556E-07" iyz="2.3002E-23" izz="7.9473E-08" />
+    </inertial>
+  </link>
+
+  <joint name="Link_viga_derecha__Link_punta_derecha" type="revolute">
+    <axis xyz="0 1 0" />
+    <limit lower="0" upper="1" effort="100" velocity="0.001" />
+    <origin xyz="0 -0.002 0.04" rpy="0 -0.10535 0" />
+    <child link="Link_punta_derecha" />
+    <parent link="Link_viga_derecha" />
+    <mimic joint="Link_brazo__Link_viga_derecha" multiplier="-1" offset="0" />
+  </joint>
+</robot>
