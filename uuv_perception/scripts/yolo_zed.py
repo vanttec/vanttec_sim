@@ -5,14 +5,14 @@ from std_msgs.msg import String
 from imutils.video import VideoStream
 from imutils.video import FPS
 
-from usv_perception.srv import color_id
+from uuv_perception.srv import color_id
 #from srv import DistanceCal
 from cv_bridge import CvBridge, CvBridgeError
 from sensor_msgs.msg import Image
 from sensor_msgs.msg import PointCloud2
 
-from usv_perception.msg import obj_detected
-from usv_perception.msg import obj_detected_list
+from uuv_perception.msg import obj_detected
+from uuv_perception.msg import obj_detected_list
 
 import sensor_msgs.point_cloud2 as pc2
 
@@ -50,7 +50,7 @@ class Detection_Node:
         rospy.Subscriber("/frontr200/camera/color/image_raw", Image, self.callback_zed_img)
         # rospy.Subscriber("/frontr200/camera/depth_registered/points", PointCloud2, self.callback_zed_cp)
 
-        self.detector_pub = rospy.Publisher('/usv_perception/yolo_zed/objects_detected', obj_detected_list, queue_size=10)
+        self.detector_pub = rospy.Publisher('/uuv_perception/yolo_zed/objects_detected', obj_detected_list, queue_size=10)
 
 
     def callback_zed_img(self,img):
