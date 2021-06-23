@@ -125,5 +125,5 @@ class Detector():
 		color = self.COLORS[class_id]
 		cv2.rectangle(img, (x1, y1), (x2, y2), color, 2)
 		cv2.putText(img, label, (x2, y2), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255,255,0), 1)
-		cv2.putText(img, color_obj, (x2, y2+12), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255,255,0), 1)
-		cv2.putText(img, (dist), (x2, y2+24), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255,255,0), 1)
+		# cv2.putText(img, color_obj, (x2, y2+12), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255,255,0), 1)
+		# cv2.putText(img, (dist), (x2, y2+24), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255,255,0), 1)

@@ -5,14 +5,14 @@ from std_msgs.msg import String
 from imutils.video import VideoStream
 from imutils.video import FPS
 
-from uuv_perception.srv import color_id
+from usv_perception.srv import color_id
 #from srv import DistanceCal
 from cv_bridge import CvBridge, CvBridgeError
 from sensor_msgs.msg import Image
 from sensor_msgs.msg import PointCloud2
 
-from uuv_perception.msg import obj_detected
-from uuv_perception.msg import obj_detected_list
+from usv_perception.msg import obj_detected
+from usv_perception.msg import obj_detected_list
 
 import sensor_msgs.point_cloud2 as pc2
 
@@ -42,13 +42,15 @@ class Detection_Node:
         self.bridge = CvBridge()
         self.image = np.zeros((560,1000,3),np.uint8)
         self.depth = np.zeros((560,1000,3),np.uint8)
-        #self.points_list = [[0,0,0]]*921600
+        self.points_list = [[0,0,0]]
 
 
-        rospy.Subscriber("/zed/zed_node/rgb/image_rect_color", Image, self.callback_zed_img)
+        #rospy.Subscriber("/zed/zed_node/left/image_rect_color", Image, self.callback_zed_img)
         #rospy.Subscriber("/zed/zed_node/point_cloud/cloud_registered", PointCloud2, self.callback_zed_cp)
+        rospy.Subscriber("/frontr200/camera/color/image_raw", Image, self.callback_zed_img)
+        # rospy.Subscriber("/frontr200/camera/depth_registered/points", PointCloud2, self.callback_zed_cp)
 
-        self.detector_pub = rospy.Publisher('/uuv_perception/yolo_zed/objects_detected', obj_detected_list, queue_size=10)
+        self.detector_pub = rospy.Publisher('/usv_perception/yolo_zed/objects_detected', obj_detected_list, queue_size=10)
 
 
     def callback_zed_img(self,img):
@@ -57,8 +59,8 @@ class Detection_Node:
 
 
     def callback_zed_cp(self,ros_cloud):
-        self.points_list = list(pc2.read_points(ros_cloud, skip_nans=True, field_names = ("x", "y", "z")))
-        #skip_nans=True
+        """ ZED pointcloud callback"""
+        self.points_list = list(pc2.read_points(ros_cloud, skip_nans=False, field_names = ("x", "y", "z")))
 
     def send_message(self, color, msg):
         """ Publish message to ros node. """
@@ -73,6 +75,7 @@ class Detection_Node:
         rospy.wait_for_service("/get_color")
 
         service = rospy.ServiceProxy("/get_color", color_id)
+        
         color = service(img,x,y,w,h)
 
         return color
@@ -86,7 +89,7 @@ class Detection_Node:
         dirname = os.path.dirname(__file__)
         tiny3_file = dirname + "/yolo-config/config.cfg"
         weights_file = dirname + "/yolo-config/config_best.weights"
-        names_file = dirname + "/yolo-config/obj2.names"
+        names_file = dirname + "/yolo-config/obj.names"
 
         det = Detector(tiny3_file,
                        weights_file,
@@ -97,7 +100,6 @@ class Detection_Node:
         # Load model
         self.send_message(Color.GREEN, "[INFO] Loading network model.")
         net = det.load_model()
-        print(net)
 
         # Initilialize Video Stream
         self.send_message(Color.GREEN, "[INFO] Starting video stream.")
@@ -108,16 +110,19 @@ class Detection_Node:
         detect = True
         fps = FPS().start()
         boxes, confidences, indices, cls_ids, colors, ids, distances = [], [], [], [], [], [], []
-        zed_cam_size = 1280
+        
 
         ret = True
+
+        class_names = ["police", "gangster", "gate", "gun", "badge", "marker", "marker_2", "bin1", "bin2", "dolar", "axe", "octagon", "bottle"]
         while not rospy.is_shutdown():
             # Grab next frame
 
-            #ret, frame = video.read()
+            
+            zed_cam_size = self.image.shape[1]
             frame = self.image
-            #cap = cv2.VideoCapture("/home/nvidia/opencv_install/pajarito/bird.jpg")
-            #hasFrame, frame = cap.read()
+            curr_point_list =  self.points_list
+      
             color = ""
             diststring = ""
 
@@ -130,12 +135,14 @@ class Detection_Node:
                 self.send_message(Color.RED, "[DONE] Quitting program.")
                 break
 
-            frame = imutils.resize(frame, width=1000)
+            #frame = imutils.resize(frame, width=1000)
 
             (H, W) = frame.shape[:2]
-            if det.get_w() is None or det.get_h() is None:
-                det.set_h(H)
-                det.set_w(W)
+
+            det.set_h(H)
+            det.set_w(W)
+                
+            print((H, W))
 
             # Perform detection
 
@@ -158,74 +165,75 @@ class Detection_Node:
                 x, y, w, h = box
                 x, y, w, h = int(x), int(y), int(w), int(h)
 
+                
+
                 if detect == True:
-                    color = self.calculate_color(frame,x,y,h,w)
-                    print(zed_cam_size)
+                    # color = self.calculate_color(frame,x,y,h,w)
 
-                    p1= int((x+w/2)*zed_cam_size/1000) #1.28 hd
-                    p2= int((y+h/2)*zed_cam_size/1000)
+                    p1= int((x+w/2)) #1.28 hd
+                    p2= int((y+h/2))
 
-                    #1280 si es HD , 672
-                    """
-                    ind = p1 + p2*zed_cam_size
+                    # ind = p1 + p2*zed_cam_size
 
-                    d_list = self.points_list[ind-15:ind+15]
+                    # d_list = []
+                    # """
+                    # for yidx in range(-h/2,h/2):
+                    #     ind_y = ind + yidx*640
+                    #     d_list.append(curr_point_list[ind_y-w/2:ind_y+w/2])
+                    # """
+                    # d_list = curr_point_list[ind-5:ind+5]
 
-                    d_list2_Y = []
-                    for j in d_list:
-                        if str(j[0]) != 'nan' and str(j[0]) != 'inf':
-                            d_list2_Y.append(j[0])
+                    # print(d_list)
 
-                    d_list2_X = []
-                    for j in d_list:
-                        if str(j[1]) != 'nan' and str(j[1]) != 'inf':
-                            d_list2_X.append(j[1])
-
-                    d_list = d_list2_Y
-                    d_list_x = d_list2_X
-
-                    if len(d_list_x) != 0:
-                        dist_x = np.mean(d_list_x)
-                    else:
-                        dist_x = 'nan'
-
-                    if len(d_list) != 0:
-                        dist = np.mean(d_list)
-                    else:
-                        dist = 'nan'
+                    # d_list_Y = np.array([point[2] for point in d_list])
+                    # d_list_X = np.array([point[0] for point in d_list])
 
 
-                    if (dist < .30):
-                        diststring = "OUT OF RANGE"
-                    else:
-                        diststring = str(dist) + " m"
-                    """
-                    color = str(color.color)
-                    colors.append(color)
-                    distances.append(dist)
+                    # if len(d_list_X) != 0:
+                    #     dist_x = np.mean(d_list_X[np.isfinite(d_list_X)])*-1
+                    # else:
+                    #     dist_x = 'nan'
 
-                    if str(dist) != 'nan' and str(dist_x) != 'nan':
-                        obj = obj_detected()
-                        #print(p1,p2)
-                        obj.x = x
-                        obj.y = y
-                        obj.h = h
-                        obj.w = w
-                        obj.X = dist
-                        obj.Y = dist_x
-                        obj.color = color
-                        obj.clase = 'bouy' if cls_ids[i] == 0 else 'marker'
-                        len_list += 1
-                        obj_list.objects.append(obj)
+                    # if len(d_list_Y) != 0:
+                    #     dist = np.mean(d_list_Y[np.isfinite(d_list_Y)])
+                    # else:
+                    #     dist = 'nan'
 
-                    det.draw_prediction(frame, cls_ids[i], confidences[i], color,diststring, x, y, x+w, y+h)
+                    
+                    # if (dist < .30):
+                    #     diststring = "OUT OF RANGE"
+                    # else:
+                    #     diststring = str(dist) + " m"
+                    
+                    # diststring = str(round(float(dist),2)) + " m, " +str(round(float(dist_x),2)) + "m"
+                    # color = str(color.color)
+                    # colors.append(color)
+                    # distances.append(dist)
 
-            det_str = "Det: {}, BBoxes {}, Colors {}, Distance {}".format(dets, boxes, colors, distances)
+                    # if str(dist) != 'nan' and str(dist_x) != 'nan':
+                    obj = obj_detected()
+                    obj.x = x
+                    obj.y = y
+                    obj.h = h
+                    obj.w = w
+                    # obj.X = dist
+                    # obj.Y = dist_x
+                    obj.id = -1
+                    obj.color = " "
+                    obj.clase = class_names[cls_ids[i]]
+                    len_list += 1
+                    obj_list.objects.append(obj)
+
+                    # det.draw_prediction(frame, cls_ids[i], confidences[i], color,diststring, x, y, x+w, y+h)
+                    det.draw_prediction(frame, cls_ids[i], confidences[i], "color","diststring", x, y, x+w, y+h)
+
+            # det_str = "Det: {}, BBoxes {}, Colors {}, Distance {}".format(dets, boxes, colors, distances)
+            det_str = "Det: {}, BBoxes {}".format(dets, boxes)
             self.send_message(Color.BLUE, det_str)
             fps.update()
             obj_list.len = len_list
             self.detector_pub.publish(obj_list)
-            cv2.line(frame, (500,560), (500,0), (255,0,0))
+
             fps.stop()
 
             info = [
@@ -238,10 +246,10 @@ class Detection_Node:
                 cv2.putText(frame, text, (10, det.get_h() - ((i * 20) + 20)), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0, 0, 255), 2)
 
             # Show current frame
-            #cv2.imshow("Frame", frame)
+            cv2.imshow("Frame", frame)
             #print(self.depth)
 
-            #cv2.waitKey(3)
+            cv2.waitKey(1)
             rate.sleep()
 
 
