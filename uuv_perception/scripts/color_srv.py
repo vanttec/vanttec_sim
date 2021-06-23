@@ -3,7 +3,7 @@
 import rospy
 import cv2
 import numpy as np
-from usv_perception.srv import color_id
+from uuv_perception.srv import color_id
 from cv_bridge import CvBridge, CvBridgeError
 
 bridge = CvBridge()
