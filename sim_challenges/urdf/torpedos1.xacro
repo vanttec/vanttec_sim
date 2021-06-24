@@ -2,7 +2,7 @@
 <robot name="torpedos_1" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
 <!-- Introducir meshes -->
-<xacro:property name="visual_mesh_file" value="file://$(find sim_challenges)/models/meshes/Mytorpedo1.dae" />
+<xacro:property name="visual_mesh_file" value="file://$(find sim_challenges)/models/meshes/finaltorpedos.dae" />
 
 <!-- <origin xyz="0.085 (0 -0.085) 0 0" rpy="0.0 0.0 1.57075"/> -->
 
