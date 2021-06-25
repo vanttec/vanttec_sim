@@ -56,7 +56,6 @@
           args="-urdf -param robot_description -model bin_2"/>
   </group>
   ?>
-  <?ignore
   <!-- Begin Torpedo1-->
   <group ns="Torpedo1">
     <param name="tf_prefix" value="robot3_tf" />
@@ -66,16 +65,6 @@
           args="-urdf -param robot_description -model torpedos_1"/>
   </group>
 
-  <!-- Begin Torpedo2-->
-
-  <group ns="Torpedo2">
-    <param name="tf_prefix" value="robot3_tf" />
-    <param name="robot_description"
-          command="$(find xacro)/xacro --inorder '$(find sim_challenges)/urdf/torpedos2.xacro' "/> 
-    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
-          args="-urdf -param robot_description -model torpedos_2"/>
-  </group>
-  ?>
   <!-- Begin Pathmarker1 -->
 
   <group ns="Pathmarker1">
@@ -94,62 +83,6 @@
     <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
           args="-urdf -param robot_description -model path_marker3"/>
   </group>
-  <?ignore
-  <!-- Begin Pathmarker5 -->
-
-  <group ns="Pathmarker5">
-    <param name="tf_prefix" value="robot3_tf" />
-    <param name="robot_description" 
-          command="$(find xacro)/xacro --inorder '$(find sim_challenges)/urdf/pathmarkers/pathmarker5.xacro' "/> 
-    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
-          args="-urdf -param robot_description -model path_marker5"/>
-  </group>
-  <!-- Begin Pathmarker6 -->
-
-  <group ns="Pathmarker6">
-    <param name="tf_prefix" value="robot3_tf" />
-    <param name="robot_description" 
-          command="$(find xacro)/xacro --inorder '$(find sim_challenges)/urdf/pathmarkers/pathmarker6.xacro' "/> 
-    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
-          args="-urdf -param robot_description -model path_marker6"/>
-  </group>
-  <!-- Begin Pathmarker7 -->
-
-  <group ns="Pathmarker7">
-    <param name="tf_prefix" value="robot3_tf" />
-    <param name="robot_description" 
-          command="$(find xacro)/xacro --inorder '$(find sim_challenges)/urdf/pathmarkers/pathmarker7.xacro' "/> 
-    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
-          args="-urdf -param robot_description -model path_marker7"/>
-  </group>
-  <!-- Begin Pathmarker8 -->
-
-  <group ns="Pathmarker8">
-    <param name="tf_prefix" value="robot3_tf" />
-    <param name="robot_description" 
-          command="$(find xacro)/xacro --inorder '$(find sim_challenges)/urdf/pathmarkers/pathmarker8.xacro' "/> 
-    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
-          args="-urdf -param robot_description -model path_marker8"/>
-  </group>
-  <!-- Begin Pathmarker9 -->
-
-  <group ns="Pathmarker9">
-    <param name="tf_prefix" value="robot3_tf" />
-    <param name="robot_description" 
-          command="$(find xacro)/xacro --inorder '$(find sim_challenges)/urdf/pathmarkers/pathmarker9.xacro' "/> 
-    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
-          args="-urdf -param robot_description -model path_marker9"/>
-  </group>
-  <!-- Begin Pathmarker10 -->
-
-  <group ns="Pathmarker10">
-    <param name="tf_prefix" value="robot3_tf" />
-    <param name="robot_description" 
-          command="$(find xacro)/xacro --inorder '$(find sim_challenges)/urdf/pathmarkers/pathmarker10.xacro' "/> 
-    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
-          args="-urdf -param robot_description -model path_marker10"/>
-  </group>
-  ?>
   <!-- Enable camera gazebo plugin-->
   <include file="$(find realsense_gazebo_plugin)/launch/depth_procfront.launch">
   </include>
