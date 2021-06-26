@@ -52,7 +52,7 @@
         </inertial>
 
         <visual>
-          <origin xyz="${geocenter}" rpy="0 0 0"/>
+          <origin xyz="${geocenter}" rpy="0 1.57 0"/>
           <geometry>
             <box size= "0.6 0.6 0.6"/>
             <!-- mesh filename="${visual_mesh_file}" scale="0.001 0.001 0.001" /-->
