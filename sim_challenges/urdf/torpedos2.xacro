@@ -2,13 +2,13 @@
 <robot name="torpedos_2" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
 <!-- Introducir meshes -->
-<xacro:property name="visual_mesh_file" value="file://$(find sim_challenges)/models/meshes/Mytorpedos2.dae" />
+<xacro:property name="visual_mesh_file" value="file://$(find props_gazebo)/meshes/gman.dae" />
 
 <!-- <origin xyz="0.085 (0 -0.085) 0 0" rpy="0.0 0.0 1.57075"/> -->
 
 <link name="torpedos2_base">
     <visual>
-        <origin xyz="25.180420 3.082322 -4.0" rpy="0.0 0.0 1.57"/>
+        <origin xyz="25.180420 3.082322 -5.0" rpy="0.0 0.0 1.57"/>
         <geometry>
             <mesh filename="${visual_mesh_file}" scale="1 1 1" />      
         </geometry>
