@@ -1,8 +1,0 @@
-prefix=/home/glazz/code/vanttec_uv_sim/catkin_ws/devel
-
-Name: realsense_gazebo_plugin
-Description: Description of realsense_gazebo_plugin
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: roscpp gazebo_ros

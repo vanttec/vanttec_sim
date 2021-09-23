@@ -1,1 +1,0 @@
-/usr/bin/c++       -rdynamic CMakeFiles/uuv_perception_node.dir/src/gate_detector.cpp.o  -o /home/glazz/code/vanttec_uv_sim/catkin_ws/devel/lib/uuv_perception/uuv_perception_node 
