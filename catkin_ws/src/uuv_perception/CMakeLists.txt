@@ -188,7 +188,7 @@ link_directories(${PCL_LIBRARY_DIRS})
 # target_link_libraries(${PROJECT_NAME}_node
 #   ${catkin_LIBRARIES}
 # )
-target_link_libraries(gate_detector_node ${catkin_LIBRARIES})
+#target_link_libraries(gate_detector_node ${catkin_LIBRARIES})
 #############
 ## Install ##
 #############

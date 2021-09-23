@@ -1,8 +1,0 @@
-prefix=/home/glazz/code/vanttec_uv_sim/catkin_ws/install
-
-Name: sim_challenges
-Description: Description of sim_challenges
-Version: 0.6.1
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 
