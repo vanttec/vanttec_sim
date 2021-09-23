@@ -1,0 +1,8 @@
+prefix=/home/glazz/code/vanttec_uv_sim/catkin_ws/install
+
+Name: sensor_plugins
+Description: Description of sensor_plugins
+Version: 0.6.13
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

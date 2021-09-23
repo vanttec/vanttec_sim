@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sdf version="1.5">
+  <model name="gman_target">
+    <pose>0 0 0  0 0 0</pose>
+    <static>true</static>
+    <link name="body">
+      <visual name="visual">
+        <geometry>
+          <mesh><uri>model://Target/meshes/gman.dae</uri><scale>1 1 1</scale></mesh>
+        </geometry>
+      </visual>
+    </link>
+  </model>
+</sdf>

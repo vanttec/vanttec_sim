@@ -1,0 +1,14 @@
+ <launch>
+    
+  <include file="$(find uv_worlds)/launch/lake.launch">
+  </include>
+  <include file="$(find vtec_u3_description)/launch/upload.launch">
+  </include>
+  <include file="$(find vanttec_uuv)/launch/uuv_simulation.launch">
+  </include>  
+  <!--<include file="$(find uv_worlds)/launch/task_obstacles.launch">
+  </include>-->
+  <!--<node pkg="vanttec_uuv" type="gazebo_interface" name="gazebo_interface">
+  </node>-->
+
+</launch>

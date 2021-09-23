@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <!-- Loading file with sensor macros -->
+  <xacro:include filename="$(find sensor_plugins)/sensor_ros_plugins/urdf/sensor_snippets.xacro"/>
+
+  <!--
+    Vehicle's parameters (remember to enter the model parameters below)
+  -->
+
+  <xacro:property name="mass" value="30"/>
+  <!-- Center of gravity -->
+  <xacro:property name="cog" value="0 0 0.19"/> <!-- Superficie del barco esta a 0.19 m de COM en Z -->
+
+  <!-- Fluid density -->
+  <!-- <xacro:property name="rho" value="1000"/> -->
+
+  <!-- For the collision cube -->
+  <xacro:property name="x_size" value="1"/>
+  <xacro:property name="y_size" value="0.75"/>
+  <xacro:property name="z_size" value="0.5"/>
+
+  <!--
+    Visual mesh file for the vehicle, usually in DAE (Collada) format. Be sure to store the
+    mesh with the origin of the mesh on the same position of the center of mass, otherwise
+    the mesh pose will have to be corrected below in the <visual> block.
+    Open the meshes for the RexROV vehicle in Blender to see an example on the mesh placement.
+  -->
+  <xacro:property name="visual_mesh_file" value="file://$(find vtec_s3_description)/meshes/vtec_s3.dae"/>
+
+  <!-- Collision geometry mesh, usually in STL format (it is recommended to keep
+  this geometry as simple as possible to improve the performance the physics engine
+  regarding the computation of collision forces) -->
+  <xacro:property name="collision_mesh_file" value="file://$(find vtec_s3_description)/meshes/vtec_s3.stl"/>
+
+  <!-- Vehicle macro -->
+  <xacro:macro name="vtec_s3_base" params="namespace *gazebo">
+
+      <!-- Rigid body description of the base link -->
+      <link name="${namespace}/base_link">
+        <!--
+          Be careful to setup the coefficients for the inertial tensor,
+          otherwise your model will become unstable on Gazebo
+        -->
+        <inertial>
+          <mass value="${mass}" />
+          <origin xyz="0.05 0 0.19" rpy="0 0 0"/>
+          <!-- From SolidWorks -->
+          <inertia  ixx="2.5" ixy="-0.04046722475" ixz="-0.248111803" 
+                    iyy="3.704654962" iyz="0.083214169"
+                    izz="4.1" />
+        </inertial>
+
+        <visual>
+          <!-- <origin xyz="0.55 -0.375 0.2" rpy="1.57075 3.141592 -1.57075"/> -->
+          <origin xyz="${cog}" rpy="0 0 0"/>
+          <geometry>
+            <!-- <box size="1 0.75 0.5" />   -->
+            <mesh filename="${visual_mesh_file}" scale="0.001 0.001 0.001" />
+          </geometry>
+        </visual>
+
+        <collision>
+          <origin xyz="0.05 0 0.19" rpy="0 0 0"/>
+          <geometry>
+            <box size="${x_size} ${y_size} ${z_size}"/>
+            <!-- <mesh filename="${collision_mesh_file}" scale="0.001 0.001 0.001" /> --> <!-- To improve performance, we replaced it by a box -->
+          </geometry>
+        </collision>
+      </link>
+
+    <gazebo reference="${namespace}/base_link">
+      <selfCollide>0</selfCollide>
+      <turnGravityOff>1</turnGravityOff>
+    </gazebo>
+
+    <gazebo>
+      <plugin name="object_controller" filename="libgazebo_ros_planar_move.so">
+        <commandTopic>cmd_vel</commandTopic>
+        <odometryTopic>odom</odometryTopic>
+        <odometryFrame>odom</odometryFrame>
+        <odometryRate>20.0</odometryRate>
+        <robotBaseFrame>base_link</robotBaseFrame>
+      </plugin>
+    </gazebo>
+    
+    <!-- Include the sensor modules -->
+    <xacro:include filename="$(find vtec_s3_description)/urdf/sensors.xacro"/>
+
+  </xacro:macro>
+
+</robot>

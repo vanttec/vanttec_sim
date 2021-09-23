@@ -1,0 +1,79 @@
+CAMBIAR A SISTEMA INTERNACIONAL: KG, M³...
+
+
+MEDIDAS SHOOTER_BASE:
+
+Propiedades de masa de base_simulación
+     Configuración:  Predeterminado
+     Sistema de coordenadas:  Sistema de coordenadas2
+
+Densidad = 0.00 gramos por milímetro cúbico
+
+Masa = 1816.51 gramos
+
+Volumen = 1816508.53 milímetros cúbicos
+
+Área de superficie = 229355.26  milímetros cuadrados
+
+Centro de masa: ( milímetros )
+	X = 0.00
+	Y = 0.00
+	Z = 0.00
+
+Ejes principales de inercia y momentos principales de inercia: ( gramos *  milímetros cuadrados )
+Medido desde el centro de masa.
+	 Ix = (-1.00,  0.00,  0.00)   	Px = 7152281.71
+	 Iy = ( 0.00, -1.00,  0.01)   	Py = 11749183.36
+	 Iz = ( 0.00,  0.01,  1.00)   	Pz = 17091494.53
+
+Momentos de inercia: ( gramos *  milímetros cuadrados )
+Obtenidos en el centro de masa y alineados con el sistema de coordenadas de resultados.
+	Lxx = 7152281.71	Lxy = -5.58	Lxz = 12.47
+	Lyx = -5.58	Lyy = 11749348.94	Lyz = -29741.39
+	Lzx = 12.47	Lzy = -29741.39	Lzz = 17091328.95
+
+Momentos de inercia: ( gramos *  milímetros cuadrados)
+Medido desde el sistema de coordenadas de salida.
+	Ixx = 7152281.71	Ixy = -5.58	Ixz = 12.47
+	Iyx = -5.58	Iyy = 11749348.94	Iyz = -29741.39
+	Izx = 12.47	Izy = -29741.39	Izz = 17091328.95
+
+
+
+
+MEDIDAS TORPEDO:
+
+Propiedades de masa de Torpedo_simulación
+     Configuración:  Predeterminado
+     Sistema de coordenadas:  Sistema de coordenadas1
+
+Densidad = 0.00 gramos por milímetro cúbico
+
+Masa = 176.77 gramos
+
+Volumen = 176765.82 milímetros cúbicos
+
+Área de superficie = 21751.12  milímetros cuadrados
+
+Centro de masa: ( milímetros )
+	X = 0.00
+	Y = 0.00
+	Z = 0.00
+
+Ejes principales de inercia y momentos principales de inercia: ( gramos *  milímetros cuadrados )
+Medido desde el centro de masa.
+	 Ix = (-1.00,  0.00,  0.02)   	Px = 36827.00
+	 Iy = ( 0.02,  0.00,  1.00)   	Py = 308449.99
+	 Iz = ( 0.00,  1.00,  0.00)   	Pz = 311936.43
+
+Momentos de inercia: ( gramos *  milímetros cuadrados )
+Obtenidos en el centro de masa y alineados con el sistema de coordenadas de resultados.
+	Lxx = 36896.95	Lxy = 0.00	Lxz = -4358.31
+	Lyx = 0.00	Lyy = 311936.43	Lyz = 0.00
+	Lzx = -4358.31	Lzy = 0.00	Lzz = 308380.04
+
+Momentos de inercia: ( gramos *  milímetros cuadrados)
+Medido desde el sistema de coordenadas de salida.
+	Ixx = 36896.95	Ixy = 0.00	Ixz = -4358.31
+	Iyx = 0.00	Iyy = 311936.43	Iyz = 0.00
+	Izx = -4358.31	Izy = 0.00	Izz = 308380.04
