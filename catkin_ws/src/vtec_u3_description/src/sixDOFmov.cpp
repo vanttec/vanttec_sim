@@ -173,9 +173,9 @@
        const geometry_msgs::Twist::ConstPtr& cmd_msg) 
    {
      boost::mutex::scoped_lock scoped_lock(lock);
-     x_ = cmd_msg->linear().x();
-     y_ = cmd_msg->linear().y();
-     z_ = cmd_msg->linear().z();
+     x_ = cmd_msg->linear.x;
+     y_ = cmd_msg->linear.y;
+     z_ = cmd_msg->linear.z;
      roll_ = cmd_msg->angular.x;
      pitch_ = cmd_msg->angular.y;
      yaw_ = cmd_msg->angular.z;
@@ -227,9 +227,9 @@
  
      // get velocity in /odom frame
      ignition::math::Vector3<double> linear;
-     linear.x() = (pose.Pos().X() - last_odom_pose_.Pos().X()) / step_time;
-     linear.y() = (pose.Pos().Y() - last_odom_pose_.Pos().Y()) / step_time;
-     linear.z() = (pose.Pos().Z() - last_odom_pose_.Pos().Z()) / step_time;
+     linear.X() = (pose.Pos().X() - last_odom_pose_.Pos().X()) / step_time;
+     linear.Y() = (pose.Pos().Y() - last_odom_pose_.Pos().Y()) / step_time;
+     linear.Z() = (pose.Pos().Z() - last_odom_pose_.Pos().Z()) / step_time;
      if (yaw_ > M_PI / step_time) 
      { 
        // we cannot calculate the angular velocity correctly
@@ -278,9 +278,9 @@
      float roll = pose.Rot().Roll();
      float pitch = pose.Rot().Pitch();
      float yaw = pose.Rot().Yaw(); 
-     odom_.twist.twist.linear.x() = cosf(yaw) * linear.x() + sinf(yaw) * linear.y();// + cosf(pitch) * linear.x() - sinf(pitch) * linear.z();
-     odom_.twist.twist.linear.y() = cosf(yaw) * linear.y() - sinf(yaw) * linear.x();// + cosf(roll) * linear.y() + sinf(roll) * linear.z();
-     odom_.twist.twist.linear.z() = linear.z();// cosf(pitch) * linear.z() + sinf(pitch) * linear.x() + cosf(roll) * linear.z() - sinf(roll) * linear.y();
+     odom_.twist.twist.linear.x = cosf(yaw) * linear.X() + sinf(yaw) * linear.Y();// + cosf(pitch) * linear.x() - sinf(pitch) * linear.z();
+     odom_.twist.twist.linear.y = cosf(yaw) * linear.Y() - sinf(yaw) * linear.X();// + cosf(roll) * linear.y() + sinf(roll) * linear.z();
+     odom_.twist.twist.linear.z = linear.Z();// cosf(pitch) * linear.z() + sinf(pitch) * linear.x() + cosf(roll) * linear.z() - sinf(roll) * linear.y();
  
      odom_.header.stamp = current_time;
      odom_.header.frame_id = odom_frame;

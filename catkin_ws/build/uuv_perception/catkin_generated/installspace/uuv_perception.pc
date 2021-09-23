@@ -1,0 +1,8 @@
+prefix=/home/glazz/code/vanttec_uv_sim/catkin_ws/install
+
+Name: uuv_perception
+Description: Description of uuv_perception
+Version: 0.0.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib 
+Requires: geometry_msgs pcl_ros roscpp sensor_msgs std_msgs

@@ -1,0 +1,2 @@
+props_gazebo:sensors/realsense_gazebo_plugin:sensors/sensor_plugins:sensors/velodyne_simulator/velodyne_description:sensors/velodyne_simulator/velodyne_gazebo_plugins:sensors/velodyne_simulator/velodyne_simulator:sim_challenges:uuv_perception:uv_worlds:vtec_s3_description:vtec_u3_description
+-DCATKIN_DEVEL_PREFIX=/home/glazz/code/vanttec_uv_sim/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/glazz/code/vanttec_uv_sim/catkin_ws/install -G Unix Makefiles
