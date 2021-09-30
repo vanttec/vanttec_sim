@@ -218,7 +218,7 @@ class Detection_Node:
                     obj.w = w
                     # obj.X = dist
                     # obj.Y = dist_x
-                    obj.id = -1
+                    # obj.id = -1
                     obj.color = " "
                     obj.clase = class_names[cls_ids[i]]
                     len_list += 1
