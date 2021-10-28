@@ -1,24 +1,22 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(uuv_perception)
+project(cluster_extractor)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
-add_compile_options(-std=c++14)
+# add_compile_options(-std=c++14)
 
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-  geometry_msgs
+  message_generation
+  message_runtime
   pcl_ros
   roscpp
-  sensor_msgs
   std_msgs
-  cv_bridge
   geometry_msgs
-  message_generation
+  uuv_perception
 )
 find_package(PCL 1.2 REQUIRED)
-include_directories(${PCL_INCLUDE_DIRS})
 include_directories(${PCL_INCLUDE_DIRS})
 link_directories(${PCL_LIBRARY_DIRS})
 add_definitions(${PCL_DEFINITIONS})
@@ -56,12 +54,12 @@ add_definitions(${PCL_DEFINITIONS})
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
 ## Generate messages in the 'msg' folder
- add_message_files(
-   FILES
-   obj_detected_list.msg
-   obj_detected.msg
-   obstacles_list.msg
- )
+add_message_files(
+  FILES
+  obj_detected.msg
+  obj_detected_list.msg 
+  obstacles_list.msg
+)
 
 ## Generate services in the 'srv' folder
 # add_service_files(
@@ -77,33 +75,12 @@ add_definitions(${PCL_DEFINITIONS})
 #   Action2.action
 # )
 
-
-
-## Generate services in the 'srv' folder
-add_service_files(
-   FILES
-   color_id.srv
- )
-## Generate actions in the 'action' folder
-# add_action_files(
-#   FILES
-#   Action1.action
-#   Action2.action
-# )
-
-add_message_files(
-   FILES
-   obj_detected.msg
-   obj_detected_list.msg
-   obstacles_list.msg
- )
 ## Generate added messages and services with any dependencies listed here
 generate_messages(
   DEPENDENCIES
-  sensor_msgs
-#  message_generation
-  geometry_msgs
   std_msgs
+  geometry_msgs
+  sensor_msgs
 )
 
 ################################################
@@ -136,10 +113,9 @@ generate_messages(
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
- #INCLUDE_DIRS include
- #LIBRARIES uuv_perception 
- CATKIN_DEPENDS geometry_msgs pcl_ros roscpp sensor_msgs std_msgs
- DEPENDS ${LIBS}#DEPENDS system_lib
+ INCLUDE_DIRS include 
+ LIBRARIES cluster_extractor
+ CATKIN_DEPENDS message_generation message_runtime pcl_ros roscpp std_msgs
 )
 
 ###########
@@ -149,27 +125,31 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-include
+# include
   ${catkin_INCLUDE_DIRS}
-  ${PCL_INCLUDE_DIRS}
+  ${PCL_INCLUDE_DIRECTORIES}
 )
-              add_definitions(${PCL_DEFINITIONS})
+
+add_definitions(${PCL_DEFINITIONS})
+link_directories(${PCL_LIBRARY_DIRS})
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/gate_detector.cpp
+#   src/${PROJECT_NAME}/cluster_extractor.cpp
 # )
-
+add_executable(${PROJECT_NAME}_node src/cluster_extractor_node.cpp)
+target_link_libraries(${PROJECT_NAME}_node
+  ${catkin_LIBRARIES}
+  ${PCL_LIBRARIES}
+)
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
 ## either from message generation or dynamic reconfigure
-#add_dependencies(${PROJECT_NAME} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+# add_dependencies(${PROJECT_NAME} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
- #add_executable(${PROJECT_NAME}_node src/gate_detector.cpp)
-link_directories(${PCL_LIBRARY_DIRS})
-#add_executable(gate_detector_node src/gate_detector.cpp)
+
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
 ## target back to the shorter version for ease of user use
@@ -184,7 +164,7 @@ link_directories(${PCL_LIBRARY_DIRS})
 # target_link_libraries(${PROJECT_NAME}_node
 #   ${catkin_LIBRARIES}
 # )
-#target_link_libraries(gate_detector_node ${catkin_LIBRARIES})
+
 #############
 ## Install ##
 #############
@@ -232,11 +212,10 @@ link_directories(${PCL_LIBRARY_DIRS})
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_gate_detector.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_cluster_extractor.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()
 
 ## Add folders to be run by python nosetests
 # catkin_add_nosetests(test)
-## Generate messages in the 'msg' folder

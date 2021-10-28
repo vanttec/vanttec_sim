@@ -1,3 +1,3 @@
 std_msgs/Header header
 int64 len
-obj_detected[] objects
+geometry_msgs/Vector3[] obstacles

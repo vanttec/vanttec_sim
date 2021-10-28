@@ -18,7 +18,7 @@ import sensor_msgs.point_cloud2 as pc2
 
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
-
+import std_msgs.msg
 import imutils
 import argparse
 import numpy as np
@@ -164,61 +164,16 @@ class Detection_Node:
                 box = boxes[i]
                 x, y, w, h = box
                 x, y, w, h = int(x), int(y), int(w), int(h)
-
-                
-
                 if detect == True:
-                    # color = self.calculate_color(frame,x,y,h,w)
-
                     p1= int((x+w/2)) #1.28 hd
                     p2= int((y+h/2))
 
-                    # ind = p1 + p2*zed_cam_size
-
-                    # d_list = []
-                    # """
-                    # for yidx in range(-h/2,h/2):
-                    #     ind_y = ind + yidx*640
-                    #     d_list.append(curr_point_list[ind_y-w/2:ind_y+w/2])
-                    # """
-                    # d_list = curr_point_list[ind-5:ind+5]
-
-                    # print(d_list)
-
-                    # d_list_Y = np.array([point[2] for point in d_list])
-                    # d_list_X = np.array([point[0] for point in d_list])
-
-
-                    # if len(d_list_X) != 0:
-                    #     dist_x = np.mean(d_list_X[np.isfinite(d_list_X)])*-1
-                    # else:
-                    #     dist_x = 'nan'
-
-                    # if len(d_list_Y) != 0:
-                    #     dist = np.mean(d_list_Y[np.isfinite(d_list_Y)])
-                    # else:
-                    #     dist = 'nan'
-
-                    
-                    # if (dist < .30):
-                    #     diststring = "OUT OF RANGE"
-                    # else:
-                    #     diststring = str(dist) + " m"
-                    
-                    # diststring = str(round(float(dist),2)) + " m, " +str(round(float(dist_x),2)) + "m"
-                    # color = str(color.color)
-                    # colors.append(color)
-                    # distances.append(dist)
-
-                    # if str(dist) != 'nan' and str(dist_x) != 'nan':
                     obj = obj_detected()
                     obj.x = x
                     obj.y = y
                     obj.h = h
                     obj.w = w
-                    # obj.X = dist
-                    # obj.Y = dist_x
-                    # obj.id = -1
+
                     obj.color = " "
                     obj.clase = class_names[cls_ids[i]]
                     len_list += 1
@@ -232,6 +187,7 @@ class Detection_Node:
             self.send_message(Color.BLUE, det_str)
             fps.update()
             obj_list.len = len_list
+            obj_list.header.stamp = rospy.Time.now()
             self.detector_pub.publish(obj_list)
 
             fps.stop()
