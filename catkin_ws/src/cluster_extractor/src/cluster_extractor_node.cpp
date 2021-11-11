@@ -14,20 +14,58 @@
 #include <sensor_msgs/PointCloud2.h>
 #include <message_filters/subscriber.h>
 #include <message_filters/synchronizer.h>
-#include <cluster_extractor/obj_detected_list.h>
 #include <message_filters/sync_policies/approximate_time.h>
 #include <ros/message_traits.h>
 #include <std_msgs/Header.h>
 #include <uuv_perception/obj_detected_list.h>
+#include <pcl/filters/crop_box.h>
+
 boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer(
     new pcl::visualization::PCLVisualizer ("Visualizer")
 );
+// pcl::visualization::CloudViewer cviewer("viewer");
+pcl::PCLPointCloud2::Ptr cloud (new pcl::PCLPointCloud2);
+pcl::PointCloud<pcl::PointXYZ>::Ptr res (new pcl::PointCloud<pcl::PointXYZ>);
+pcl::PointCloud<pcl::PointXYZ>::Ptr temp_cloud (new pcl::PointCloud<pcl::PointXYZ>);
+pcl::CropBox<pcl::PointXYZ> crop;
+bool started = false;
+// Cloud size: 640 x 480
+// YOLO data: 640 x 480 
+pcl::PointCloud<pcl::PointXYZ>::Ptr segment(new pcl::PointCloud<pcl::PointXYZ>);
+
 void callback(const boost::shared_ptr<const sensor_msgs::PointCloud2>& point_cloud, 
     const boost::shared_ptr<const uuv_perception::obj_detected_list>& obj_list) {
-        std::cout << "testing\n";
-    for (int i=0; i<obj_list->len; i++) {
-        std::cout << obj_list->objects[i].clase << '\n';
+    pcl_conversions::toPCL(*point_cloud, *cloud);
+    pcl::fromPCLPointCloud2(*cloud, *temp_cloud);
+    crop.setInputCloud(temp_cloud);
+    viewer->removeAllPointClouds();
+
+    for (int i=0; i < obj_list->len; i++) {
+        // Reset segment cloud
+        segment->clear();
+        // For every detected object crop the surrounding box
+        // Do so without error margin just to test things out
+        float minx, miny, maxx, maxy;
+        minx = obj_list->objects[i].x - obj_list->objects[i].w;
+        miny = obj_list->objects[i].y - obj_list->objects[i].h;
+        if (miny < 0) miny = 0;
+        if (minx < 0) minx = 0;
+        if (maxx < 0) maxx = 0;
+        if (maxy < 0) maxy = 0;
+        Eigen::Vector4f minp(minx, miny, 400.0, 1.0);
+        maxx = obj_list->objects[i].x + obj_list->objects[i].w;
+        maxy = obj_list->objects[i].y + obj_list->objects[i].h;
+        Eigen::Vector4f maxp(maxx, maxy, 400.0, 1.0);
+        std::cout << "max point: " << maxp << " min point: " << minp << '\n';
+        crop.setInputCloud(temp_cloud);
+        crop.setMin(minp);
+        crop.setMax(maxp);
+        crop.filter(*segment);
+        std::cout << "segment size: " << segment->size() << '\n';
+        viewer->addPointCloud(segment, std::to_string(i));
     }
+
+    viewer->spinOnce(100);
 }
 
 const char* YOLO_TOPIC_NAME = "/uuv_perception/yolo_zed/objects_detected";

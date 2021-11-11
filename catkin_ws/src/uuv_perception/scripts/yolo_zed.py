@@ -1,33 +1,28 @@
 #!/usr/bin/env python
 
-from include.detector_lib import Detector
-from std_msgs.msg import String
-from imutils.video import VideoStream
-from imutils.video import FPS
+import argparse
+import math
+import os
+import time
 
-from uuv_perception.srv import color_id
+import cv2
+import imutils
+import matplotlib.animation as animation
+import matplotlib.pyplot as plt
+import numpy as np
+import rospy
+import sensor_msgs.point_cloud2 as pc2
+import std_msgs.msg
 #from srv import DistanceCal
 from cv_bridge import CvBridge, CvBridgeError
-from sensor_msgs.msg import Image
-from sensor_msgs.msg import PointCloud2
+from imutils.video import FPS, VideoStream
+from sensor_msgs.msg import Image, PointCloud2
+from std_msgs.msg import String
+from uuv_perception.msg import obj_detected, obj_detected_list
+from uuv_perception.srv import color_id
 
-from uuv_perception.msg import obj_detected
-from uuv_perception.msg import obj_detected_list
+from include.detector_lib import Detector
 
-import sensor_msgs.point_cloud2 as pc2
-
-import matplotlib.pyplot as plt
-import matplotlib.animation as animation
-import std_msgs.msg
-import imutils
-import argparse
-import numpy as np
-import time
-import rospy
-import cv2
-import math
-
-import os
 
 class Color():
     BLUE  = '\033[94m'
