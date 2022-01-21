@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+
+<!-- https://answers.ros.org/question/257694/questions-to-sdf-urdf-xacro-material-textures-using-gazebo/ -->
+
+<package format="2">
+  <name>vehicles_descriptions</name>
+  <version>0.0.0</version>
+  <description>The vehicles_description package</description>
+
+  <!-- One maintainer tag required, multiple allowed, one person per tag -->
+  <!-- Example:  -->
+  <!-- <maintainer email="jane.doe@example.com">Jane Doe</maintainer> -->
+  <maintainer email="edison@todo.todo">edison</maintainer>
+ 
+
+  <!-- One license tag required, multiple allowed, one license per tag -->
+  <!-- Commonly used license strings: -->
+  <!--   BSD, MIT, Boost Software License, GPLv2, GPLv3, LGPLv2.1, LGPLv3 -->
+  <license>TODO</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_depend>geometry_msgs</build_depend>
+  <build_depend>message_generation</build_depend>
+
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>message_runtime</exec_depend>
+
+  <build_export_depend>geometry_msgs</build_export_depend>
+
+  <depend>gazebo_dev</depend>
+  <depend>gazebo_plugins</depend>
+  <depend>sensor_msgs</depend>
+  <!-- <depend>geometry_msgs</depend> -->
+  <depend>std_msgs</depend>
+  <depend>roscpp</depend>
+  <depend>uuv_gazebo_plugins</depend>
+  <depend>uuv_sensor_ros_plugins_msgs</depend>
+  <depend>tf</depend>
+  <depend>message_filters</depend>
+  <depend>tf2_ros</depend>
+  <depend>tf2</depend>
+  <depend>image_transport</depend>
+  <depend>laser_geometry</depend>
+  <test_depend>rosunit</test_depend>
+  <test_depend>rostest</test_depend>
+  <test_depend>xacro</test_depend>
+
+  <depend>roslaunch</depend>
+  <depend>robot_state_publisher</depend>
+  <depend>rviz</depend>
+  <depend>joint_state_publisher_gui</depend>
+  <depend>gazebo</depend>
+
+</package>
+

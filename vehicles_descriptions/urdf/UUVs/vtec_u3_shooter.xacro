@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:macro name="vtec_u3_shooter" params="parent">
+    <xacro:property name="visual_mesh_file" value="file://$(find vehicles_descriptions)/meshes/shooter/shooter_base.dae" />
+    <!-- <xacro:property name="collision_mesh_file" value="file://$(find vehicles_descriptions)/meshes/shooter/shooter_base.dae"/> -->
+
+    <gazebo reference="shooter_base_link">
+        <material>Gazebo/White</material>
+        <turnGravityOff>true</turnGravityOff>
+        <selfCollide>false</selfCollide>
+    </gazebo>
+
+    <joint name="${parent}_base_link_2_shooter_base_joint" type="fixed">
+      <origin xyz="0 0 0.2" rpy="0 0 -1.57079632679"/>
+      <parent link="${parent}_base_link"/>
+      <child link="shooter_base_link"/>
+    </joint>
+
+    <link name="shooter_base_link">
+        <visual>
+            <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0"/>
+            <geometry>
+                <mesh filename="${visual_mesh_file}" scale="0.001 0.001 0.001"/>      
+            </geometry>
+        </visual>
+
+        <!-- <collision>
+          <origin xyz="0 0 0.0" rpy="0 0 0"/>
+          <geometry>
+            <box size="0.1 0.1 0.1"/>
+            <mesh filename="${collision_mesh_file}" scale="0.001 0.001 0.001" />
+          </geometry>
+        </collision> -->
+
+        <inertial>
+          <origin xyz="0 0 0" rpy="0 0 0"/>
+          <mass value="10"/>
+          <inertia
+            ixx="1.0" ixy="0.0" ixz="0.0"
+            iyy="1.0" iyz="0.0"
+            izz="1.0"/>
+        </inertial>
+    </link>
+
+  </xacro:macro>
+</robot>
