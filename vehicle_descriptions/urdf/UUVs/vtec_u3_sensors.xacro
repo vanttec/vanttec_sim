@@ -43,7 +43,7 @@
 
     <!-- Realsense R200 --> 
     <xacro:realsense_camera namespace="${namespace}" parent_link="${namespace}_base_link" suffix="down">
-      <origin xyz="0.0 0.01961 0.18" rpy="0 -1.57 0"/>
+      <origin xyz="0.0 0.01961 0.18" rpy="0 1.57 0"/>
     </xacro:realsense_camera> 
 
     <!-- Realsense R200 -->

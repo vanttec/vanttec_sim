@@ -6,12 +6,12 @@
 
   <xacro:include filename="$(find vehicles_descriptions)/urdf/UUVs/vtec_u3_base.xacro"/>
   <xacro:include filename="$(find uuv_sensor_ros_plugins)/urdf/sensor_snippets.xacro"/>
-  <!-- <xacro:include filename="$(find vehicles_descriptions)/urdf/UUVs/vtec_u3_sensors.xacro"/>  -->
+  <xacro:include filename="$(find vehicles_descriptions)/urdf/UUVs/vtec_u3_sensors.xacro"/> 
   <xacro:include filename="$(find vehicles_descriptions)/urdf/UUVs/vtec_u3_arm.xacro"/> 
   <xacro:include filename="$(find vehicles_descriptions)/urdf/UUVs/vtec_u3_shooter.xacro"/> 
 
   <xacro:vtec_u3_base namespace="$(arg namespace)"/>
-  <!-- <xacro:vtec_u3_sensors namespace="$(arg namespace)"/> -->
+  <xacro:vtec_u3_sensors namespace="$(arg namespace)"/>
   <xacro:vtec_u3_arm parent="$(arg namespace)"/>
   <xacro:vtec_u3_shooter parent="$(arg namespace)"/>
 
