@@ -66,14 +66,14 @@
       <visual>
         <origin xyz="0 0 0" rpi="0 0 0"/>
         <geometry>
-          <mesh filename="package://vehicles_descriptions/meshes/arm/arm_rail.stl" />
+          <mesh filename="package://vehicle_descriptions/meshes/arm/arm_rail.stl" />
         </geometry>
       </visual>
       <!-- Leave commented. This makes the whole arm to move -->
       <!-- <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://vehicles_descriptions/meshes/arm/arm_rail.stl" />
+          <mesh filename="package://vehicle_descriptions/meshes/arm/arm_rail.stl" />
         </geometry>
       </collision> -->
       <inertial>
@@ -95,13 +95,13 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://vehicles_descriptions/meshes/arm/extendible_arm.stl" />
+          <mesh filename="package://vehicle_descriptions/meshes/arm/extendible_arm.stl" />
         </geometry>
       </visual>
       <!-- <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://vehicles_descriptions/meshes/arm/extendible_arm.stl" />
+          <mesh filename="package://vehicle_descriptions/meshes/arm/extendible_arm.stl" />
         </geometry>
       </collision> -->
       <inertial>
@@ -123,13 +123,13 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://vehicles_descriptions/meshes/arm/left_beam.stl" />
+          <mesh filename="package://vehicle_descriptions/meshes/arm/left_beam.stl" />
         </geometry>
       </visual>
       <!-- <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://vehicles_descriptions/meshes/arm/left_beam.stl" />
+          <mesh filename="package://vehicle_descriptions/meshes/arm/left_beam.stl" />
         </geometry>
       </collision> -->
       <inertial>
@@ -152,13 +152,13 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://vehicles_descriptions/meshes/arm/left_tip.stl" />
+          <mesh filename="package://vehicle_descriptions/meshes/arm/left_tip.stl" />
         </geometry>
       </visual>
       <!-- <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://vehicles_descriptions/meshes/arm/left_tip.stl" />
+          <mesh filename="package://vehicle_descriptions/meshes/arm/left_tip.stl" />
         </geometry>
       </collision> -->
       <inertial>
@@ -181,13 +181,13 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://vehicles_descriptions/meshes/arm/right_beam.stl" />
+          <mesh filename="package://vehicle_descriptions/meshes/arm/right_beam.stl" />
         </geometry>
       </visual>
       <!-- <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://vehicles_descriptions/meshes/arm/right_beam.stl" />
+          <mesh filename="package://vehicle_descriptions/meshes/arm/right_beam.stl" />
         </geometry>
       </collision> -->
       <inertial>
@@ -210,13 +210,13 @@
       <visual>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://vehicles_descriptions/meshes/arm/right_tip.stl" />
+          <mesh filename="package://vehicle_descriptions/meshes/arm/right_tip.stl" />
         </geometry>
       </visual>
       <!-- <collision>
         <origin xyz="0 0 0" rpy="0 0 0" />
         <geometry>
-          <mesh filename="package://vehicles_descriptions/meshes/arm/right_tip.stl" />
+          <mesh filename="package://vehicle_descriptions/meshes/arm/right_tip.stl" />
         </geometry>
       </collision> -->
       <inertial>

@@ -34,7 +34,7 @@
 
   <group ns="$(arg namespace)">
     <param name="robot_description"
-           command="$(find xacro)/xacro --inorder '$(find vehicles_descriptions)/robots/$(arg mode).xacro' debug:=$(arg debug) namespace:=$(arg namespace)" />
+           command="$(find xacro)/xacro --inorder '$(find vehicle_descriptions)/robots/$(arg mode).xacro' debug:=$(arg debug) namespace:=$(arg namespace)" />
     
     <!-- Run a python script to the send a service call to gazebo_ros to spawn a URDF robot -->
       <node name="urdf_spawner" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
@@ -47,7 +47,7 @@
       <param name="robot_description" value="/$(arg namespace)/robot_description" />
     </node>
 
-      <!-- <include file="$(find vehicles_descriptions)/launch/peripherals.launch" /> -->   
+      <!-- <include file="$(find vehicle_descriptions)/launch/peripherals.launch" /> -->   
   </group> 
 
 </launch>

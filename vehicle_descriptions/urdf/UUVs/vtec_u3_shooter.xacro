@@ -2,8 +2,8 @@
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
 
   <xacro:macro name="vtec_u3_shooter" params="parent">
-    <xacro:property name="visual_mesh_file" value="file://$(find vehicles_descriptions)/meshes/shooter/shooter_base.dae" />
-    <!-- <xacro:property name="collision_mesh_file" value="file://$(find vehicles_descriptions)/meshes/shooter/shooter_base.dae"/> -->
+    <xacro:property name="visual_mesh_file" value="file://$(find vehicle_descriptions)/meshes/shooter/shooter_base.dae" />
+    <!-- <xacro:property name="collision_mesh_file" value="file://$(find vehicle_descriptions)/meshes/shooter/shooter_base.dae"/> -->
 
     <gazebo reference="shooter_base_link">
         <material>Gazebo/White</material>

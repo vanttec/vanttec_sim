@@ -3,9 +3,9 @@
 <!-- https://answers.ros.org/question/257694/questions-to-sdf-urdf-xacro-material-textures-using-gazebo/ -->
 
 <package format="2">
-  <name>vehicles_descriptions</name>
+  <name>vehicle_descriptions</name>
   <version>0.0.0</version>
-  <description>The vehicles_description package</description>
+  <description>The vehicle_description package</description>
 
   <!-- One maintainer tag required, multiple allowed, one person per tag -->
   <!-- Example:  -->

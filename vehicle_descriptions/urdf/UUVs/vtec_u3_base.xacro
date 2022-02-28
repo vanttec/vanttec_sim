@@ -13,14 +13,14 @@
     mesh with the origin of the mesh on the same position of the center of mass, otherwise
     the mesh pose will have to be corrected below in the <visual> block.
   -->
-  <xacro:property name="visual_mesh_file" value="file://$(find vehicles_descriptions)/meshes/vtec_u3.dae"/>
+  <xacro:property name="visual_mesh_file" value="file://$(find vehicle_descriptions)/meshes/vtec_u3.dae"/>
 
   <!-- 
     Collision geometry mesh, usually in STL format (it is recommended to keep
     this geometry as simple as possible to improve the performance the physics engine
     regarding the computation of collision forces)
   -->
-  <xacro:property name="collision_mesh_file" value="file://$(find vehicles_descriptions)/meshes/vtec_u3.stl"/>
+  <xacro:property name="collision_mesh_file" value="file://$(find vehicle_descriptions)/meshes/vtec_u3.stl"/>
 
   <xacro:macro name="vtec_u3_base" params="namespace">
       <link name="${namespace}_base_link">

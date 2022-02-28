@@ -4,9 +4,9 @@
   <xacro:arg name="namespace" default="vtec_s3"/>
   <xacro:arg name="inertial_reference_frame" default="world_ned"/>
 
-  <xacro:include filename="$(find vehicles_descriptions)/urdf/USVs/vtec_s3_base.xacro"/>
+  <xacro:include filename="$(find vehicle_descriptions)/urdf/USVs/vtec_s3_base.xacro"/>
   <xacro:include filename="$(find uuv_sensor_ros_plugins)/urdf/sensor_snippets.xacro"/>
-  <!-- <xacro:include filename="$(find vehicles_descriptions)/urdf/USVs/vtec_s3_sensors.xacro"/> -->
+  <!-- <xacro:include filename="$(find vehicle_descriptions)/urdf/USVs/vtec_s3_sensors.xacro"/> -->
   <xacro:include filename="$(find velodyne_description)/urdf/VLP-16.urdf.xacro"/>
 
   <xacro:vtec_s3_base namespace="$(arg namespace)"/>
