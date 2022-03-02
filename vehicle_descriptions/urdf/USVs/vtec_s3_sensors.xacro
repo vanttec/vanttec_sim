@@ -1,5 +1,7 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:include filename="$(find uuv_sensor_ros_plugins)/urdf/sensor_snippets.xacro"/>
+  <xacro:include filename="$(find velodyne_description)/urdf/VLP-16.urdf.xacro"/>
 
   <!--
     Some examples of sensors that can be added to the vehicle frame.
@@ -25,9 +27,9 @@
     </VLP-16> 
 
     <!-- Realsense R200 -->
-    <xacro:realsense_camera namespace="${namespace}" parent_link="${namespace}_base_link" suffix="">
+    <!-- <xacro:realsense_camera namespace="${namespace}" parent_link="${namespace}_base_link" suffix="">
       <origin xyz="0.52 0 0.22" rpy="0 0 0"/>
-    </xacro:realsense_camera>
+    </xacro:realsense_camera> -->
 
     <!-- Mount a camera  -->
     <!-- <xacro:default_camera namespace="${namespace}" parent_link="${namespace}_base_link" suffix="">

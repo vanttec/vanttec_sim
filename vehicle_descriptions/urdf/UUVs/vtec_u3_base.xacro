@@ -1,6 +1,5 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
-  <xacro:include filename="$(find uuv_sensor_ros_plugins)/urdf/sensor_snippets.xacro"/>
 
   <xacro:property name="mass" value="18.74"/>
   <!-- The origin of the model is at 0,0,0 in ENU, which is coincident with the COG of the CAD model, but to increase stability, the COG is assumed

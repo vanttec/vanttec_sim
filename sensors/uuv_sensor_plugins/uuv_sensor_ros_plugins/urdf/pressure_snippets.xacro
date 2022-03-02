@@ -82,6 +82,10 @@
       <xacro:no_collision/>
     </link>
 
+    <gazebo reference="${namespace}/pressure${suffix}_link">>
+      <turnGravityOff>1</turnGravityOff>
+    </gazebo>
+
     <joint name="${namespace}/pressure${suffix}_joint" type="revolute">
       <xacro:insert_block name="origin" />
       <parent link="${parent_link}" />
