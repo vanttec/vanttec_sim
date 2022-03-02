@@ -7,8 +7,8 @@
 
     <gazebo reference="shooter_base_link">
         <material>Gazebo/White</material>
-        <turnGravityOff>true</turnGravityOff>
-        <selfCollide>false</selfCollide>
+        <turnGravityOff>1</turnGravityOff>
+        <selfCollide>0</selfCollide>
     </gazebo>
 
     <joint name="${parent}_base_link_2_shooter_base_joint" type="fixed">

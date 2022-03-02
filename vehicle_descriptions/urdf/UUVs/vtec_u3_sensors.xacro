@@ -37,14 +37,14 @@
     </xacro:default_imu>
 
     <!-- Realsense R200 1-->
-    <xacro:realsense_camera namespace="${namespace}" parent_link="${namespace}_base_link" suffix="front">
+    <!-- <xacro:realsense_camera namespace="${namespace}" parent_link="${namespace}_base_link" suffix="front">
       <origin xyz="0.19281 0.01961 0.06659" rpy="0 0 0"/>
-    </xacro:realsense_camera> 
+    </xacro:realsense_camera>  -->
 
     <!-- Realsense R200 --> 
-    <xacro:realsense_camera namespace="${namespace}" parent_link="${namespace}_base_link" suffix="down">
+    <!-- <xacro:realsense_camera namespace="${namespace}" parent_link="${namespace}_base_link" suffix="down">
       <origin xyz="0.0 0.01961 0.18" rpy="0 1.57 0"/>
-    </xacro:realsense_camera> 
+    </xacro:realsense_camera>  -->
 
     <!-- Realsense R200 -->
     <!-- Import macro for realsense-RS200 camera-->

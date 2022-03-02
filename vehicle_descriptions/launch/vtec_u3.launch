@@ -10,14 +10,14 @@
   <arg name="pitch" default="0"/>
   <arg name="yaw"   default="1.570796"/>
 
-  <arg name="use_geodetic" default="false"/>
+  <!-- <arg name="use_geodetic" default="false"/>
   <arg name="latitude" default="0"/>
   <arg name="longitude" default="0"/>
   <arg name="depth" default="0"/>
 
   <arg name="latitude_ref" default="0"/>
   <arg name="longitude_ref" default="0"/>
-  <arg name="altitude_ref" default="0"/>
+  <arg name="altitude_ref" default="0"/> -->
 
   <!-- Mode to open different robot configurations as set the in file
   nomenclature standard for the files in /robots

@@ -28,8 +28,8 @@
     </link>
 
     <!-- <gazebo reference="base_link">
-        <turnGravityOff>true</turnGravityOff>
-        <selfCollide>false</selfCollide>
+        <turnGravityOff>1</turnGravityOff>
+        <selfCollide>0</selfCollide>
     </gazebo> -->
 
 </robot>
