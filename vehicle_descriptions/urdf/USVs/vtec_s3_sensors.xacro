@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:include filename="$(find uuv_sensor_ros_plugins)/urdf/sensor_snippets.xacro"/>
+  <xacro:include filename="$(find velodyne_description)/urdf/VLP-16.urdf.xacro"/>
+
+  <!--
+    Some examples of sensors that can be added to the vehicle frame.
+    Set the origin of the sensor frames correctly for your application
+    Look into the sensor macros in the package uuv_sensor_ros_plugins/urdf for
+    more examples or add you own custom sensor units.
+  -->
+  <xacro:macro name="vtec_s3_sensors" params="namespace">
+    <!-- Mount a GPS. -->
+    <!-- <xacro:default_gps namespace="${namespace}" parent_link="${namespace}_base_link" /> -->
+
+    <!-- Mount a Pose 3D sensor. -->
+    <!-- <xacro:default_pose_3d namespace="${namespace}" parent_link="${namespace}_base_link" /> -->
+
+    <!-- IMU  -->
+    <xacro:default_imu namespace="${namespace}" parent_link="${namespace}_base_link">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </xacro:default_imu>
+
+    <!-- LiDAR VLP-16 -->
+    <VLP-16 parent="${namespace}_base_link" name="velodyne" topic="/velodyne_points" hz="10" samples="440" gpu="0">
+      <origin xyz="0.25 0 0.38" rpy="0 0 0" />
+    </VLP-16> 
+
+    <!-- Realsense R200 -->
+    <xacro:realsense_camera namespace="${namespace}" parent_link="${namespace}_base_link" suffix="">
+      <origin xyz="0.52 0 0.22" rpy="0 0 0"/>
+    </xacro:realsense_camera>
+
+    <!-- Mount a camera  -->
+    <!-- <xacro:default_camera namespace="${namespace}" parent_link="${namespace}_base_link" suffix="">
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </xacro:default_camera> -->
+  </xacro:macro>
+
+</robot>
