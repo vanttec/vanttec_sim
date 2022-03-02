@@ -36,10 +36,10 @@ list(APPEND CMAKE_CXX_FLAGS "${GAZEBO_CXX_FLAGS}")
 #   src/${PROJECT_NAME}/shooter_description.cpp
 # )
 
-add_library(SixDOFMov
-            lib/mobility/include/SixDOFMov.hpp
-            lib/mobility/src/SixDOFMov.cpp)
-target_link_libraries(SixDOFMov ${GAZEBO_LIBRARIES})
+#add_library(SixDOFMov
+#            lib/mobility/include/SixDOFMov.hpp
+#            lib/mobility/src/SixDOFMov.cpp)
+#target_link_libraries(SixDOFMov ${GAZEBO_LIBRARIES})
 
 #############
 ## Install ##
