@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+
+<arg name="xcoord" default="30"/>
+<arg name="ycoord" default="-15"/>
+
+
+
+    <group ns="sGateRed">
+        <include file="$(find uv_worlds)/launch/test_spawn_reda2.launch">
+                <arg name="robot_name" value="Red_A2_0" />
+                <arg name="x" value="$(eval 24.336 + arg('xcoord'))" />
+                <arg name="y" value="$(eval 2 + arg('ycoord'))" />
+               <arg name="z" value="0.08" />
+                <arg name="roll" value="0" />
+                <arg name="pitch" value="0" />
+                <arg name="yaw" value="0" />
+                <arg name="color" value="red" />
+        </include>
+    </group>
+     <group ns="sGateGreen">
+        <include file="$(find uv_worlds)/launch/test_spawn_greena2.launch">
+                <arg name="robot_name" value="Green_A2_0" />
+                <arg name="x" value="$(eval 24.336 + arg('xcoord'))" />
+                <arg name="y" value="$(eval -2 + arg('ycoord'))" />
+               <arg name="z" value="0.08" />
+                <arg name="roll" value="0" />
+                <arg name="pitch" value="0" />
+                <arg name="yaw" value="0" />
+                <arg name="color" value="green" />
+        </include>
+    </group>
+
+    <group ns="midBuoyBlue">
+        <include file="$(find uv_worlds)/launch/test_spawn_bluea2.launch">
+                <arg name="robot_name" value="Blue_A2_0" />
+                <arg name="x" value="$(eval 3.048 + arg('xcoord'))" />
+                <arg name="y" value="$(eval 0.0 + arg('ycoord'))" />
+               <arg name="z" value="0.08" />
+                <arg name="roll" value="0" />
+                <arg name="pitch" value="0" />
+                <arg name="yaw" value="0" />
+                <arg name="color" value="red" />
+        </include>
+    </group>
+</launch>

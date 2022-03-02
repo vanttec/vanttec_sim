@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+<!--   def for challenge 80  -10  -->
+<arg name="xcoord" default="90"/>
+<arg name="ycoord" default="-20"/>
+
+
+
+    <group ns="obsPole">
+        <include file="$(find uv_worlds)/launch/test_spawn_obs_pole.launch">
+                <arg name="robot_name" value="Obs_pole" />
+                <arg name="x" value="$(eval -14 + arg('xcoord'))" />
+                <arg name="y" value="$(eval -4.9 + arg('ycoord'))" />
+               <arg name="z" value="0.0" />
+                <arg name="roll" value="0" />
+                <arg name="pitch" value="0" />
+                <arg name="yaw" value="0" />
+                <arg name="color" value="red" />
+        </include>
+    </group>
+     <group ns="obsBuoy0">
+        <include file="$(find uv_worlds)/launch/test_spawn_greena0.launch">
+                <arg name="robot_name" value="buoy_A0_0" />
+                <arg name="x" value="$(eval -6.17 + arg('xcoord'))" />
+                <arg name="y" value="$(eval -7.4 + arg('ycoord'))" />
+               <arg name="z" value="0.0525" />
+                <arg name="roll" value="0" />
+                <arg name="pitch" value="0" />
+                <arg name="yaw" value="0" />
+                <arg name="color" value="green" />
+        </include>
+    </group>
+     <group ns="obsBuoy1">
+        <include file="$(find uv_worlds)/launch/test_spawn_yellowa0.launch">
+                <arg name="robot_name" value="buoy_A0_1" />
+                <arg name="x" value="$(eval -6.4 + arg('xcoord'))" />
+                <arg name="y" value="$(eval -4.06+ arg('ycoord'))" />
+               <arg name="z" value="0.0525" />
+                <arg name="roll" value="0" />
+                <arg name="pitch" value="0" />
+                <arg name="yaw" value="0" />
+                <arg name="color" value="red" />
+        </include>
+    </group>
+     <group ns="obsBuoy2">
+        <include file="$(find uv_worlds)/launch/test_spawn_greena0.launch">
+                <arg name="robot_name" value="buoy_A0_2" />
+                <arg name="x" value="$(eval -7.01 + arg('xcoord'))" />
+                <arg name="y" value="$(eval -10.4 + arg('ycoord'))" />
+               <arg name="z" value="0.0525" />
+                <arg name="roll" value="0" />
+                <arg name="pitch" value="0" />
+                <arg name="yaw" value="0" />
+                <arg name="color" value="green" />
+        </include>
+    </group>
+     <group ns="obsBuoy3">
+        <include file="$(find uv_worlds)/launch/test_spawn_blacka0.launch">
+                <arg name="robot_name" value="buoy_A0_3" />
+                <arg name="x" value="$(eval -7.76 + arg('xcoord'))" />
+                <arg name="y" value="$(eval 1.146 + arg('ycoord'))" />
+               <arg name="z" value="0.0525" />
+                <arg name="roll" value="0" />
+                <arg name="pitch" value="0" />
+                <arg name="yaw" value="0" />
+                <arg name="color" value="green" />
+        </include>
+    </group>
+     <group ns="obsBuoy4">
+        <include file="$(find uv_worlds)/launch/test_spawn_blacka0.launch">
+                <arg name="robot_name" value="buoy_A0_4" />
+                <arg name="x" value="$(eval -8.35 + arg('xcoord'))" />
+                <arg name="y" value="$(eval -2.5 + arg('ycoord'))" />
+               <arg name="z" value="0.0525" />
+                <arg name="roll" value="0" />
+                <arg name="pitch" value="0" />
+                <arg name="yaw" value="0" />
+                <arg name="color" value="green" />
+        </include>
+    </group>
+     <group ns="obsBuoy5">
+        <include file="$(find uv_worlds)/launch/test_spawn_reda0.launch">
+                <arg name="robot_name" value="buoy_A0_5" />
+                <arg name="x" value="$(eval -9.57 + arg('xcoord'))" />
+                <arg name="y" value="$(eval -6.44 + arg('ycoord'))" />
+               <arg name="z" value="0.0525" />
+                <arg name="roll" value="0" />
+                <arg name="pitch" value="0" />
+                <arg name="yaw" value="0" />
+                <arg name="color" value="red" />
+        </include>
+    </group>
+     <group ns="obsBuoy6">
+        <include file="$(find uv_worlds)/launch/test_spawn_greena0.launch">
+                <arg name="robot_name" value="buoy_A0_6" />
+                <arg name="x" value="$(eval -10.60 + arg('xcoord'))" />
+                <arg name="y" value="$(eval 0.2 + arg('ycoord'))" />
+               <arg name="z" value="0.0525" />
+                <arg name="roll" value="0" />
+                <arg name="pitch" value="0" />
+                <arg name="yaw" value="0" />
+                <arg name="color" value="green" />
+        </include>
+    </group>
+     <group ns="obsBuoy7">
+        <include file="$(find uv_worlds)/launch/test_spawn_greena0.launch">
+                <arg name="robot_name" value="buoy_A0_7" />
+                <arg name="x" value="$(eval -11.11 + arg('xcoord'))" />
+                <arg name="y" value="$(eval -10.23 + arg('ycoord'))" />
+               <arg name="z" value="0.0525" />
+                <arg name="roll" value="0" />
+                <arg name="pitch" value="0" />
+                <arg name="yaw" value="0" />
+                <arg name="color" value="green" />
+        </include>
+    </group>
+     <group ns="obsBuoy8">
+        <include file="$(find uv_worlds)/launch/test_spawn_reda0.launch">
+                <arg name="robot_name" value="buoy_A0_8" />
+                <arg name="x" value="$(eval -21.74 + arg('xcoord'))" />
+                <arg name="y" value="$(eval -8.67 + arg('ycoord'))" />
+               <arg name="z" value="0.0525" />
+                <arg name="roll" value="0" />
+                <arg name="pitch" value="0" />
+                <arg name="yaw" value="0" />
+                <arg name="color" value="red" />
+        </include>
+    </group>
+     <group ns="obsBuoy9">
+        <include file="$(find uv_worlds)/launch/test_spawn_greena0.launch">
+                <arg name="robot_name" value="buoy_A0_9" />
+                <arg name="x" value="$(eval -12.93 + arg('xcoord'))" />
+                <arg name="y" value="$(eval -11.74 + arg('ycoord'))" />
+               <arg name="z" value="0.0525" />
+                <arg name="roll" value="0" />
+                <arg name="pitch" value="0" />
+                <arg name="yaw" value="0" />
+                <arg name="color" value="green" />
+        </include>
+    </group>
+     <group ns="obsBuoy10">
+        <include file="$(find uv_worlds)/launch/test_spawn_blacka0.launch">
+                <arg name="robot_name" value="buoy_A0_10" />
+                <arg name="x" value="$(eval -14.31 + arg('xcoord'))" />
+                <arg name="y" value="$(eval 3.37 + arg('ycoord'))" />
+               <arg name="z" value="0.0525" />
+                <arg name="roll" value="0" />
+                <arg name="pitch" value="0" />
+                <arg name="yaw" value="0" />
+                <arg name="color" value="green" />
+        </include>
+    </group>
+     <group ns="obsBuoy11">
+        <include file="$(find uv_worlds)/launch/test_spawn_reda0.launch">
+                <arg name="robot_name" value="buoy_A0_11" />
+                <arg name="x" value="$(eval -15.11  + arg('xcoord'))" />
+                <arg name="y" value="$(eval -11.27 + arg('ycoord'))" />
+               <arg name="z" value="0.0525" />
+                <arg name="roll" value="0" />
+                <arg name="pitch" value="0" />
+                <arg name="yaw" value="0" />
+                <arg name="color" value="red" />
+        </include>
+    </group>
+     <group ns="obsBuoy12">
+        <include file="$(find uv_worlds)/launch/test_spawn_greena0.launch">
+                <arg name="robot_name" value="buoy_A0_12" />
+                <arg name="x" value="$(eval -15.33 + arg('xcoord'))" />
+                <arg name="y" value="$(eval -0.48 + arg('ycoord'))" />
+               <arg name="z" value="0.0525" />
+                <arg name="roll" value="0" />
+                <arg name="pitch" value="0" />
+                <arg name="yaw" value="0" />
+                <arg name="color" value="green" />
+        </include>
+    </group>
+      <group ns="obsBuoy13">
+        <include file="$(find uv_worlds)/launch/test_spawn_greena0.launch">
+                <arg name="robot_name" value="buoy_A0_13" />
+                <arg name="x" value="$(eval -16.84 + arg('xcoord'))" />
+                <arg name="y" value="$(eval -9.3 + arg('ycoord'))" />
+               <arg name="z" value="0.0525" />
+                <arg name="roll" value="0" />
+                <arg name="pitch" value="0" />
+                <arg name="yaw" value="0" />
+                <arg name="color" value="green" />
+        </include>
+    </group>
+      <group ns="obsBuoy14">
+        <include file="$(find uv_worlds)/launch/test_spawn_yellowa0.launch">
+                <arg name="robot_name" value="buoy_A0_14" />
+                <arg name="x" value="$(eval -18.31 + arg('xcoord'))" />
+                <arg name="y" value="$(eval -3.5 + arg('ycoord'))" />
+               <arg name="z" value="0.0525" />
+                <arg name="roll" value="0" />
+                <arg name="pitch" value="0" />
+                <arg name="yaw" value="0" />
+                <arg name="color" value="green" />
+        </include>
+    </group>
+      <group ns="obsBuoy15">
+        <include file="$(find uv_worlds)/launch/test_spawn_yellowa0.launch">
+                <arg name="robot_name" value="buoy_A0_15" />
+                <arg name="x" value="$(eval -18.62 + arg('xcoord'))" />
+                <arg name="y" value="$(eval -0.48 + arg('ycoord'))" />
+               <arg name="z" value="0.0525" />
+                <arg name="roll" value="0" />
+                <arg name="pitch" value="0" />
+                <arg name="yaw" value="0" />
+                <arg name="color" value="red" />
+        </include>
+    </group>
+      <group ns="obsBuoy16">
+        <include file="$(find uv_worlds)/launch/test_spawn_greena0.launch">
+                <arg name="robot_name" value="buoy_A0_16" />
+                <arg name="x" value="$(eval -20.17 + arg('xcoord'))" />
+                <arg name="y" value="$(eval -6.05 + arg('ycoord'))" />
+               <arg name="z" value="0.0525" />
+                <arg name="roll" value="0" />
+                <arg name="pitch" value="0" />
+                <arg name="yaw" value="0" />
+                <arg name="color" value="green" />
+        </include>
+    </group>
+      <group ns="obsBuoy17">
+        <include file="$(find uv_worlds)/launch/test_spawn_reda0.launch">
+                <arg name="robot_name" value="buoy_A0_17" />
+                <arg name="x" value="$(eval -21.12 + arg('xcoord'))" />
+                <arg name="y" value="$(eval -2.24 + arg('ycoord'))" />
+               <arg name="z" value="0.0525" />
+                <arg name="roll" value="0" />
+                <arg name="pitch" value="0" />
+                <arg name="yaw" value="0" />
+                <arg name="color" value="red" />
+        </include>
+    </group>
+      <group ns="obsBuoy18">
+        <include file="$(find uv_worlds)/launch/test_spawn_greena0.launch">
+                <arg name="robot_name" value="buoy_A0_18" />
+                <arg name="x" value="$(eval -22.16 + arg('xcoord'))" />
+                <arg name="y" value="$(eval 1.196 + arg('ycoord'))" />
+               <arg name="z" value="0.0525" />
+                <arg name="roll" value="0" />
+                <arg name="pitch" value="0" />
+                <arg name="yaw" value="0" />
+                <arg name="color" value="green" />
+        </include>
+    </group>
+      <group ns="obsBuoy19">
+        <include file="$(find uv_worlds)/launch/test_spawn_greena0.launch">
+                <arg name="robot_name" value="buoy_A0_19" />
+                <arg name="x" value="$(eval -23.26 + arg('xcoord'))" />
+                <arg name="y" value="$(eval -5.11 + arg('ycoord'))" />
+               <arg name="z" value="0.0525" />
+                <arg name="roll" value="0" />
+                <arg name="pitch" value="0" />
+                <arg name="yaw" value="0" />
+                <arg name="color" value="green" />
+        </include>
+    </group>
+      <group ns="obsBuoy20">
+        <include file="$(find uv_worlds)/launch/test_spawn_yellowa0.launch">
+                <arg name="robot_name" value="buoy_A0_20" />
+                <arg name="x" value="$(eval -19.90 + arg('xcoord'))" />
+                <arg name="y" value="$(eval -11.27 + arg('ycoord'))" />
+               <arg name="z" value="0.0525" />
+                <arg name="roll" value="0" />
+                <arg name="pitch" value="0" />
+                <arg name="yaw" value="0" />
+                <arg name="color" value="red" />
+        </include>
+    </group>
+</launch>
+
+    

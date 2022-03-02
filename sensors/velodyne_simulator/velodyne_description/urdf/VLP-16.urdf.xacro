@@ -27,12 +27,12 @@
           <mesh filename="package://velodyne_description/meshes/VLP16_base_2.dae" />
         </geometry>
       </visual>
-      <collision>
+      <!-- <collision>
         <origin rpy="0 0 0" xyz="0 0 0.03585"/>
         <geometry>
           <cylinder radius="0.0516" length="0.0717"/>
         </geometry>
-      </collision>
+      </collision> -->
     </link>
 
     <joint name="${name}_base_scan_joint" type="fixed" >

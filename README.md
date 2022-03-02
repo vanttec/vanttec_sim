@@ -4,15 +4,15 @@ This is the USV and UUV simulation repository. It runs on Gazebo and requires th
 
 To install the repo just run `init_workspace.sh`
 
-To run the USV simulator, in a terminal write the following commands:
+### To run the USV simulator, in a terminal write the following commands:
 
  ```
-roslaunch uv_worlds lake.launch
+roslaunch uv_worlds lake_challenges.launch
 roslaunch vtec_s3_description upload.launch
 roslaunch usv_master usv_master.launch
 ```
 
-To run the UUV simulator, in a terminal write the following commands:
+### To run the UUV simulator, in a terminal write the following commands:
 
 ```
 roslaunch uv_worlds lake.launch
