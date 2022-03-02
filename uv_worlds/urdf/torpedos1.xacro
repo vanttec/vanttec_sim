@@ -1,14 +1,14 @@
 <?xml version="1.0"?>
-<robot name="path_marker3" xmlns:xacro="http://www.ros.org/wiki/xacro">
+<robot name="torpedos_1" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
 <!-- Introducir meshes -->
-<xacro:property name="visual_mesh_file" value="file://$(find sim_challenges)/models/meshes/pathmarkers/pathmarker3.dae" />
+<xacro:property name="visual_mesh_file" value="file://$(find uv_worlds)/models/props//finaltorpedos.dae" />
 
-<!-- <origin xyz="0.085 (0 -0.085) 0 0" rpy="0.0 0.0 0.0075"/> -->
+<!-- <origin xyz="0.085 (0 -0.085) 0 0" rpy="0.0 0.0 1.57075"/> -->
 
-<link name="path_marker_base3">
+<link name="torpedos1_base">
     <visual>
-        <origin xyz="0 2 -8.5" rpy="0.0 0.0 0.0"/>
+        <origin xyz="0 2 -7" rpy="0.0 0.0 0.0"/>
         <geometry>
             <mesh filename="${visual_mesh_file}" scale="1 1 1" />      
         </geometry>
@@ -16,14 +16,14 @@
 
         <!-- Se deben cambiar los parametros reales-->
     <collision>
-      <origin xyz="0 2 -8.5" rpy="0.0 0.0 0.0"/>
+      <origin xyz="0 2 -7" rpy="0.0 0.0 0.0"/>
       <geometry>
         <mesh filename="${visual_mesh_file}" scale="1 1 1" />
       </geometry>
     </collision>
 
     <inertial>
-      <origin xyz="0 2 -8.5" rpy="0.0 0.0 0.0"/>
+      <origin xyz="0 2 -7" rpy="0.0 0.0 0.0"/>
       <mass value="1"/>
       <inertia
         ixx="1.0" ixy="0.0" ixz="0.0"
@@ -31,7 +31,7 @@
         izz="1.0"/>
     </inertial>
 </link>
-<gazebo reference="path_marker_base3">
+<gazebo reference="torpedos1_base">
   <selfCollide>0</selfCollide>
   <turnGravityOff>1</turnGravityOff>
 </gazebo>

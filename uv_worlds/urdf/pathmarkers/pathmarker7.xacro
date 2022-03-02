@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
-<robot name="path_marker4" xmlns:xacro="http://www.ros.org/wiki/xacro">
+<robot name="path_marker7" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
 <!-- Introducir meshes -->
-<xacro:property name="visual_mesh_file" value="file://$(find sim_challenges)/models/meshes/pathmarkers/pathmarker4.dae" />
+<xacro:property name="visual_mesh_file" value="file://$(find uv_worlds)/models/props/pathmarkers/pathmarker7.dae" />
 
 <!-- <origin xyz="0.085 (0 -0.085) 0 0" rpy="0.0 0.0 0.0075"/> -->
 
-<link name="path_marker_base4">
+<link name="path_marker_base7">
     <visual>
         <origin xyz="0 0 -4" rpy="0.0 0.0 0.0"/>
         <geometry>
@@ -31,7 +31,7 @@
         izz="1.0"/>
     </inertial>
 </link>
-<gazebo reference="path_marker_base4">
+<gazebo reference="path_marker_base7">
   <selfCollide>0</selfCollide>
   <turnGravityOff>1</turnGravityOff>
 </gazebo>

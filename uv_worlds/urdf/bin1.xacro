@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
-<robot name="octagon_1" xmlns:xacro="http://www.ros.org/wiki/xacro">
-
+<robot name="bin_1" xmlns:xacro="http://www.ros.org/wiki/xacro">
+<!--Change .dae to binopen.dae, bintapadod.dae, bintapadoi.dae depending on the situation-->
 <!-- Introducir meshes -->
-<xacro:property name="visual_mesh_file" value="file://$(find sim_challenges)/models/meshes/Myoctagon2.dae" />
+<xacro:property name="visual_mesh_file" value="file://$(find uv_worlds)/models/props//bintapadoi.dae" />
 
 <!-- <origin xyz="0.085 (0 -0.085) 0 0" rpy="0.0 0.0 1.57075"/> -->
 
-<link name="octagon_base">
+<link name="bin1_base">
     <visual>
         <origin xyz="0 2 -7" rpy="0.0 0.0 0.0"/>
         <geometry>
@@ -31,7 +31,7 @@
         izz="1.0"/>
     </inertial>
 </link>
-<gazebo reference="octagon_base">
+<gazebo reference="bin1_base">
   <selfCollide>0</selfCollide>
   <turnGravityOff>1</turnGravityOff>
 </gazebo>
