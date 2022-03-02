@@ -5,7 +5,15 @@ project(vehicle_descriptions)
 add_compile_options(-std=c++11)
 
 
-find_package(catkin REQUIRED COMPONENTS geometry_msgs nav_msgs genmsg)
+find_package(catkin REQUIRED COMPONENTS
+      geometry_msgs
+      nav_msgs
+      genmsg
+      tf2
+      tf2_ros
+      tf2_geometry_msgs
+      gazebo_msgs
+)
 find_package(gazebo REQUIRED)
 
 # find_package(catkin REQUIRED COMPONENTS)  
@@ -30,6 +38,9 @@ include_directories(
 include_directories(${GAZEBO_INCLUDE_DIRS})
 link_directories(${GAZEBO_LIBRARY_DIRS})
 list(APPEND CMAKE_CXX_FLAGS "${GAZEBO_CXX_FLAGS}")
+
+add_executable(gazebo_interface lib/mobility/src/gazebo_interface.cpp)
+target_link_libraries(gazebo_interface ${catkin_LIBRARIES})
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
