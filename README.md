@@ -20,6 +20,13 @@ roslaunch vtec_u3_description upload.launch
 run uuv simulation file from vanttec_uuv package
 ```
 
+### To run fixed simulation, in a terminal write the following commands:
+
+```
+roslaunch vehicle_descriptions uuv_sim.launch
+```
+
+
 # Escenario tasks
 
 - **Tasks2020** 
