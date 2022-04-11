@@ -57,6 +57,7 @@
   </group>
   ?>
   <!-- Begin Torpedo1-->
+   <?ignore
   <group ns="Torpedo1">
     <param name="tf_prefix" value="robot3_tf" />
     <param name="robot_description"
@@ -64,7 +65,7 @@
     <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
           args="-urdf -param robot_description -model torpedos_1"/>
   </group>
-
+?>
   <!-- Begin Pathmarker1 -->
 
   <group ns="Pathmarker1">
