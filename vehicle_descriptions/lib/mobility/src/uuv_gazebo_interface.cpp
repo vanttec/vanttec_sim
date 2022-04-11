@@ -12,6 +12,7 @@
 #include "math.h"
 #include "gazebo_msgs/ModelState.h"
 #include "gazebo_msgs/ModelStates.h"
+#include "vanttec_uuv/EtaPose.h"
 #include <geometry_msgs/Pose.h>
 #include <tf2/LinearMath/Quaternion.h>
 #include <tf2_geometry_msgs/tf2_geometry_msgs.h>
@@ -33,23 +34,23 @@ private:
     bool foundFlag = false;
 
 public:
-    void stateCallback(const geometry_msgs::Pose::ConstPtr& msg);
+    void stateCallback(const vanttec_uuv::EtaPose::ConstPtr& msg);
     void gazStateCallback(const gazebo_msgs::ModelStates::ConstPtr& msg);
 };
 
-void SetState::stateCallback(const geometry_msgs::Pose::ConstPtr& msg){
+void SetState::stateCallback(const vanttec_uuv::EtaPose::ConstPtr& msg){
     // https://wiki.ros.org/action/show/geometry2/RotationMethods?action=show&redirect=geometry%2FRotationMethods
     model_msg.model_name = "vtec_u3";
 
     q_rot.setRPY(roll, pitch, yaw);
 
-    q.setRPY(0, 0, msg->orientation.z); // roll, pitch, yaw
+    q.setRPY(msg->phi, msg->theta, msg->psi); // roll, pitch, yaw
     q = q_rot*q;
     q.normalize();
 
-    model_msg.pose.position.x = initPose.position.x + msg->position.y;
-    model_msg.pose.position.y = initPose.position.y + msg->position.x;
-    model_msg.pose.position.z = initPose.position.z - msg->position.z;
+    model_msg.pose.position.x = initPose.position.x + msg->y;
+    model_msg.pose.position.y = initPose.position.y + msg->x;
+    model_msg.pose.position.z = initPose.position.z - msg->z;
 
     model_msg.pose.orientation.x = q.x();
     model_msg.pose.orientation.y = q.y();
