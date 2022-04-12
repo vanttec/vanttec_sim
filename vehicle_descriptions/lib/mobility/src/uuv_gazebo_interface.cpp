@@ -5,6 +5,7 @@
  * @email: sebas.martp@gmail.com
  * 
  * @brief: Publishes UUV pose to gazebo set_model_state topic.
+ * https://github.com/ros-visualization/rviz/issues/597
  * -----------------------------------------------------------------------------
  **/
 
