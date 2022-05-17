@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <launch>
-   <include file="$(find uv_worlds)/launch/lake_challenges.launch"/>
+   <include file="$(find uv_worlds)/launch/lake.launch"/>
    
    <arg name="node_start_delay" value="5.0" />
 
