@@ -583,7 +583,7 @@
       </link>
       <pose frame=''>3.48 1.21 0 0 -0 0</pose>
     </model>
-    <model name='manPole2'>
+    <model name='manPole2'>+
       <link name='basepole_link'>
         <pose frame=''>0 0 0 0 -0 0</pose>
         <inertial>

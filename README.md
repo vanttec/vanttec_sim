@@ -8,15 +8,18 @@ To install the repo just run `init_workspace.sh`
 
  ```
 roslaunch uv_worlds lake_challenges.launch
-roslaunch vtec_s3_description upload.launch
-roslaunch usv_master usv_master.launch
+roslaunch vehicle_descriptions vtec_s3.launch 
+roslaunch usv_master usv_master.launch 
 ```
 
 ### To run the UUV simulator, in a terminal write the following commands:
 
 ```
 roslaunch uv_worlds lake.launch
-roslaunch vtec_u3_description upload.launch
+roslaunch vehicle_descriptions vtec_u3.launch 
+rosrun vehicle_descriptions gazebo_interface
+roslaunch vanttec_uuv uuv_simulation.launch 
+
 run uuv simulation file from vanttec_uuv package
 ```
 

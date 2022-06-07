@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<sdf version="1.4">
+  <world name="default">
+    <include>
+      <uri>model://ground_plane</uri>
+    </include>
+    <include>
+      <uri>model://sun</uri>
+    </include>
+    <model name="my_mesh">
+      <static>true</static>
+      <link name="body">
+        <visual name="visual">
+           <pose frame=''>0 0 0 0 -0 0</pose>
+          <geometry>
+              <mesh><uri>model://props/mygate1.dae</uri></mesh>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+  </world>
+</sdf>
