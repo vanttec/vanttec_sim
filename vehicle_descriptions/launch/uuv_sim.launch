@@ -13,11 +13,11 @@
    <arg name="node_start_delay_3" default="1.0" /> 
 
    <include file="$(find vanttec_uuv)/launch/uuv_simulation.launch"/>
-
+   <include file="$(find vanttec_uuv)/launch/rviz.launch"/>
    <arg name="node_start_delay_4" default="10.0" /> 
    
    <node pkg="vehicle_descriptions" type="gazebo_interface" name="gazebo_interface"/>   
-
-   <node pkg="vanttec_uuv" type="object_detector_node" name="object_detector_node"/>   
+   <!-- 
+      <node pkg="vanttec_uuv" type="object_detector_node" name="object_detector_node"/>    -->
 
    </launch>
