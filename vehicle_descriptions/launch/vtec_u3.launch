@@ -3,9 +3,9 @@
   <arg name="debug" default="0"/>
 
   <!-- Vehicle's initial pose -->
-  <arg name="x"     default="-3"/>
-  <arg name="y"     default="-3"/>
-  <arg name="z"     default="-6.5"/>
+  <arg name="x"     default="10"/>
+  <arg name="y"     default="5"/>
+  <arg name="z"     default="-50"/>
   <arg name="roll"  default="0"/>
   <arg name="pitch" default="0"/>
   <arg name="yaw"   default="1.570796"/>
