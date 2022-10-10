@@ -1,0 +1,7 @@
+.vscode/
+
+# TODO: Reduce mesh qualities.
+# Useful cmd to know the size of each file. 
+# git status --porcelain | awk '{print $2}' | xargs ls -hs | sort -h
+uv_worlds/models/props/*
+uv_worlds/newworlds/*

@@ -3,21 +3,24 @@
    <include file="$(find uv_worlds)/launch/lake.launch"/>
    
    <arg name="node_start_delay" value="5.0" />
-
+<?ignore
    <include file="$(find vehicle_descriptions)/launch/vtec_u3.launch"/>
    
-   <arg name="node_start_delay_2" default="1.0" /> 
-
-   <include file="$(find uv_worlds)/launch/task_obstacles.launch"/>
    
    <arg name="node_start_delay_3" default="1.0" /> 
 
    <include file="$(find vanttec_uuv)/launch/uuv_simulation.launch"/>
-
    <arg name="node_start_delay_4" default="10.0" /> 
    
    <node pkg="vehicle_descriptions" type="gazebo_interface" name="gazebo_interface"/>   
 
+   <?ignore
+   <arg name="node_start_delay_2" default="1.0" /> 
+
+   <include file="$(find uv_worlds)/launch/task_obstacles.launch"/>
+
+
    <node pkg="vanttec_uuv" type="object_detector_node" name="object_detector_node"/>   
+   ?>
 
    </launch>

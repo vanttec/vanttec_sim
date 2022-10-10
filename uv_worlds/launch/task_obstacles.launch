@@ -85,8 +85,8 @@
           args="-urdf -param robot_description -model path_marker3"/>
   </group>
   <!-- Enable camera gazebo plugin-->
-  <include file="$(find realsense_gazebo_plugin)/launch/depth_procfront.launch">
-  </include>
+   <!-- <include file="$(find realsense_gazebo_plugin)/launch/depth_procfront.launch">
+  </include>-->
 
  <!--  <include file="$(find realsense_gazebo_plugin)/launch/depth_procdown.launch">-->
  <!--  </include>-->

@@ -34,7 +34,7 @@
                      iyy="2.51e-06"
                      iyz="0"
                      izz="8.931e-05"
-            />
+            /> 
         </inertial>
     </link>
 

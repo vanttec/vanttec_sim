@@ -3,7 +3,18 @@
         name="robot_description"
         command="$(find xacro)/xacro '$(find realsense_gazebo_plugin)/urdf/rs200_simulation.xacro'"
     />
+    <arg name="gui" default="true"/>
+    <arg name="paused" default="false"/>
+    <arg name="set_timeout" default="false"/>
+    <arg name="timeout" default="0.0"/>
     <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <arg name="world_name" value="$(find uv_worlds)/worlds/testyolact.world"/>
+        <arg name="paused" value="$(arg paused)"/>
+        <arg name="use_sim_time" value="true"/>
+        <arg name="gui" value="$(arg gui)"/>
+        <arg name="headless" value="false"/>
+        <arg name="debug" value="false"/>
+        <arg name="verbose" value="true"/>
     </include>
     <node
         name="spawn_model"

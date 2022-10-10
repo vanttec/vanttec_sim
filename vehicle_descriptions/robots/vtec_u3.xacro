@@ -9,6 +9,8 @@
   <xacro:include filename="$(find vehicle_descriptions)/urdf/UUVs/vtec_u3_arm.xacro"/> 
   <xacro:include filename="$(find vehicle_descriptions)/urdf/UUVs/vtec_u3_shooter.xacro"/>  -->
 
+  <virtual_joint name="world_joint" type="planar" parent_frame="world_ned" child_link="vtec_u3_base_link"/>
+
   <xacro:vtec_u3_base namespace="$(arg namespace)"/>
   <!-- <xacro:vtec_u3_sensors namespace="$(arg namespace)"/>
   <xacro:vtec_u3_arm parent="$(arg namespace)"/>

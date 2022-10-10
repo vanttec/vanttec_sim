@@ -9,6 +9,7 @@
   <arg name="roll"  default="0"/>
   <arg name="pitch" default="0"/>
   <arg name="yaw"   default="1.570796"/>
+  <arg name="allow_trajectory_execution" default="true"/>
 
   <!-- <arg name="use_geodetic" default="false"/>
   <arg name="latitude" default="0"/>
@@ -29,7 +30,7 @@
   <!-- Vehicle's namespace -->
   <arg name="namespace" default="vtec_u3"/>
 
-  <arg name="world_frame" default="world"/>
+  <arg name="world_frame" default="world_ned"/>
 
 
   <group ns="$(arg namespace)">
@@ -49,6 +50,14 @@
 
       <!-- <include file="$(find vehicle_descriptions)/launch/peripherals.launch" /> -->   
   </group> 
+    <!-- Enable camera gazebo plugin-->
+  <include file="$(find realsense_gazebo_plugin)/launch/depth_procfront.launch">
+  </include>
+  <!-- Sensors Functionality -->
+  <!-- <include ns="move_group" file="$(find ur_with_cam_gazebo)/launch/inc/sensor_manager2.launch.xml" if="$(arg allow_trajectory_execution)">
+  </include>-->
+  <node pkg="tf2_ros" type="static_transform_publisher" name="camera_to_body_broadcast" args="0.19281 0.01961 0.06659 0 0 0 vtec_u3_base_link frontrs200_camera" /> 
+  <!-- <node pkg="tf" type="static_transform_publisher" name="link1_broadcaster" args="1 0 0 0 0 0 1 vtec_u3_base_link frontrs200_camera 100" />-->
 
 </launch>
  

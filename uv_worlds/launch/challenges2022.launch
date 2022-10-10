@@ -1,0 +1,17 @@
+<launch>
+
+  <!-- Begin Mapa1 -->
+  <group ns="Mapa1">
+    <param name="robot_description"
+          command="$(find xacro)/xacro --inorder '$(find uv_worlds)/urdf/mapa1.xacro' "/> 
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+          args="-urdf -param robot_description -model mapa1"/>
+  </group>
+  <!-- Begin Bottle -->
+  <group ns="Bottle">
+    <param name="robot_description"
+          command="$(find xacro)/xacro --inorder '$(find uv_worlds)/urdf/bottle.xacro' "/> 
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen"
+          args="-urdf -param robot_description -model bottle"/>
+  </group>
+</launch>
