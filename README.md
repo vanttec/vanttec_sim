@@ -30,7 +30,7 @@ roslaunch vehicle_descriptions uuv_sim.launch
 ```
 
 
-# Escenario tasks
+# Scenario tasks
 
 - **Tasks2020** 
 <p align="center">
