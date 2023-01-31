@@ -1,0 +1,3 @@
+[submodule "src/vanttec_msgs"]
+	path = src/vanttec_msgs
+	url = https://github.com/vanttec/vanttec_msgs.git
