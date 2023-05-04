@@ -18,7 +18,7 @@
 
   <group ns="brazo">
     <!-- Convert xacro and load arm description -->
-    <param name="robot_description" command="$(find xacro)/xacro.py '$(find vtec_u3_description)/urdf/brazo.xacro'" />
+    <param name="robot_description" command="$(find xacro)/xacro '$(find vtec_u3_description)/urdf/brazo.xacro'" />
 
     <!-- Spawn in gazebo -->
     <node name="spawn_model" pkg="gazebo_ros" type="spawn_model" respawn="false" output="screen" args="-urdf -model brazo -param robot_description"/>

@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.0.2)
 project(vehicle_descriptions)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
-add_compile_options(-std=c++11)
+add_compile_options(-std=c++14)
 
 
 find_package(catkin REQUIRED COMPONENTS
@@ -13,7 +13,6 @@ find_package(catkin REQUIRED COMPONENTS
       tf2_ros
       tf2_geometry_msgs
       gazebo_msgs
-      vanttec_msgs
 )
 find_package(gazebo REQUIRED)
 
@@ -42,10 +41,8 @@ list(APPEND CMAKE_CXX_FLAGS "${GAZEBO_CXX_FLAGS}")
 
 add_executable(gazebo_interface lib/mobility/src/gazebo_interface.cpp)
 add_executable(gazebo_interface_usv lib/mobility/src/gazebo_interface_usv.cpp)
-add_executable(gazebo_interface_uuv lib/mobility/src/gazebo_interface_uuv.cpp)
 target_link_libraries(gazebo_interface ${catkin_LIBRARIES})
 target_link_libraries(gazebo_interface_usv ${catkin_LIBRARIES})
-target_link_libraries(gazebo_interface_uuv ${catkin_LIBRARIES})
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
