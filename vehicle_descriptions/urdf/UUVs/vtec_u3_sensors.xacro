@@ -1,6 +1,8 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
   <xacro:include filename="$(find uuv_sensor_ros_plugins)/urdf/sensor_snippets.xacro"/>
+  <include filename="$(find realsense_gazebo_plugin)/models/realsense_camera/model.sdf"/>
+  <xacro:include filename="$(find realsense_gazebo_plugin)/urdf/realsense-RS200.macro.xacro"/>
 
   <!--
     Some examples of sensors that can be added to the vehicle frame.
@@ -38,14 +40,14 @@
     </xacro:default_imu>
 
     <!-- Realsense R200 1-->
-    <xacro:realsense_camera namespace="${namespace}" parent_link="${namespace}_base_link" suffix="front">
+    <xacro:realsense-rs200 prefix="front" parent="${namespace}_base_link">
       <origin xyz="0.19281 0.01961 0.06659" rpy="0 0 0"/>
-    </xacro:realsense_camera> 
+    </xacro:realsense-rs200> 
 
     <!-- Realsense R200 --> 
-    <xacro:realsense_camera namespace="${namespace}" parent_link="${namespace}_base_link" suffix="down">
-      <origin xyz="0.0 0.01961 0.18" rpy="0 1.57 0"/>
-    </xacro:realsense_camera> 
+    <xacro:realsense-rs200 prefix="down" parent="${namespace}_base_link">
+      <origin xyz="0.0 0.01961 0.3" rpy="0 -1.57 0"/>
+    </xacro:realsense-rs200> 
 
     <!-- Realsense R200 -->
     <!-- Import macro for realsense-RS200 camera-->
