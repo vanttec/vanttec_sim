@@ -20,7 +20,6 @@
   <xacro:include filename="$(find uuv_sensor_ros_plugins)/urdf/magnetometer_snippets.xacro" />
   <xacro:include filename="$(find uuv_sensor_ros_plugins)/urdf/pressure_snippets.xacro" />
   <xacro:include filename="$(find uuv_sensor_ros_plugins)/urdf/camera_snippets.xacro" />
-  <xacro:include filename="$(find uuv_sensor_ros_plugins)/urdf/realsense_camera.xacro" />
   <xacro:include filename="$(find uuv_sensor_ros_plugins)/urdf/dvl_snippets.xacro" />
   <xacro:include filename="$(find uuv_sensor_ros_plugins)/urdf/rpt_snippets.xacro" />
   <xacro:include filename="$(find uuv_sensor_ros_plugins)/urdf/sonar_snippets.xacro" />

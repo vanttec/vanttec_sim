@@ -76,15 +76,11 @@
       </inertial>
       <visual>
         <geometry>
-          <mesh filename="file://$(find uuv_sensor_ros_plugins)/meshes/pressure.dae" scale="0.1 0.1 0.1"/>
+          <mesh filename="file://$(find uuv_sensor_ros_plugins)/meshes/pressure.dae" scale="1 1 1"/>
         </geometry>
       </visual>
       <xacro:no_collision/>
     </link>
-
-    <gazebo reference="${namespace}/pressure${suffix}_link">>
-      <turnGravityOff>1</turnGravityOff>
-    </gazebo>
 
     <joint name="${namespace}/pressure${suffix}_joint" type="revolute">
       <xacro:insert_block name="origin" />
