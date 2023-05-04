@@ -15,18 +15,6 @@
     </include>
  
     <include file="$(find uv_worlds)/launch/publish_world_ned_frame.launch"/>
-    
-    <!-- <node name="publish_world_models"
-        pkg="uv_worlds"
-        type="publish_world_models.py"
-        output="screen">
-        <rosparam subst_value="true">
-            meshes:
-                lake:
-                    mesh: package://uv_worlds/models/lake/meshes/LakeBottom.dae
-                    model: lake
-        </rosparam>
-    </node> -->
 
     <group if="$(arg set_timeout)">
         <include file="$(find uv_worlds)/launch/set_simulation_timer.launch">
